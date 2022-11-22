@@ -21,6 +21,9 @@
         android:testOnly="true"
         android:theme="@style/Theme.TraningTimer" >
         <activity
+            android:name="com.example.traningtimer.MainActivity2"
+            android:exported="false" />
+        <activity
             android:name="com.example.traningtimer.MainActivity"
             android:exported="true" >
             <intent-filter>

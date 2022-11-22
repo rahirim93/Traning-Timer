@@ -1,9 +1,9 @@
 -- Merging decision tree log ---
 manifest
-ADDED from C:\Users\Viacheslav\Desktop\Traning-Timer\TraningTimer\app\src\main\AndroidManifest.xml:2:1-27:12
-INJECTED from C:\Users\Viacheslav\Desktop\Traning-Timer\TraningTimer\app\src\main\AndroidManifest.xml:2:1-27:12
-INJECTED from C:\Users\Viacheslav\Desktop\Traning-Timer\TraningTimer\app\src\main\AndroidManifest.xml:2:1-27:12
-INJECTED from C:\Users\Viacheslav\Desktop\Traning-Timer\TraningTimer\app\src\main\AndroidManifest.xml:2:1-27:12
+ADDED from C:\Users\Viacheslav\Desktop\Traning-Timer\TraningTimer\app\src\main\AndroidManifest.xml:2:1-30:12
+INJECTED from C:\Users\Viacheslav\Desktop\Traning-Timer\TraningTimer\app\src\main\AndroidManifest.xml:2:1-30:12
+INJECTED from C:\Users\Viacheslav\Desktop\Traning-Timer\TraningTimer\app\src\main\AndroidManifest.xml:2:1-30:12
+INJECTED from C:\Users\Viacheslav\Desktop\Traning-Timer\TraningTimer\app\src\main\AndroidManifest.xml:2:1-30:12
 MERGED from [com.google.android.material:material:1.7.0] C:\Users\Viacheslav\.gradle\caches\transforms-3\a89ce7a2a8fd1f6e9a5b7672fd317f4b\transformed\material-1.7.0\AndroidManifest.xml:17:1-26:12
 MERGED from [androidx.constraintlayout:constraintlayout:2.1.4] C:\Users\Viacheslav\.gradle\caches\transforms-3\b983d9bcec043f3f432ab8b4a229bd83\transformed\constraintlayout-2.1.4\AndroidManifest.xml:2:1-11:12
 MERGED from [androidx.appcompat:appcompat-resources:1.5.1] C:\Users\Viacheslav\.gradle\caches\transforms-3\182a98765490a4f657420ff1560ef967\transformed\appcompat-resources-1.5.1\AndroidManifest.xml:17:1-22:12
@@ -44,27 +44,27 @@ MERGED from [androidx.documentfile:documentfile:1.0.0] C:\Users\Viacheslav\.grad
 MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] C:\Users\Viacheslav\.gradle\caches\transforms-3\07235dcdbc235dc44a299320136f3739\transformed\localbroadcastmanager-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.print:print:1.0.0] C:\Users\Viacheslav\.gradle\caches\transforms-3\72b8f084cae83bef33eea4727f6a3765\transformed\print-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.annotation:annotation-experimental:1.1.0] C:\Users\Viacheslav\.gradle\caches\transforms-3\9312771a283a953dd698aabf8b4affc5\transformed\annotation-experimental-1.1.0\AndroidManifest.xml:17:1-24:12
-INJECTED from C:\Users\Viacheslav\Desktop\Traning-Timer\TraningTimer\app\src\main\AndroidManifest.xml:2:1-27:12
-INJECTED from C:\Users\Viacheslav\Desktop\Traning-Timer\TraningTimer\app\src\main\AndroidManifest.xml:2:1-27:12
-INJECTED from C:\Users\Viacheslav\Desktop\Traning-Timer\TraningTimer\app\src\main\AndroidManifest.xml:2:1-27:12
+INJECTED from C:\Users\Viacheslav\Desktop\Traning-Timer\TraningTimer\app\src\main\AndroidManifest.xml:2:1-30:12
+INJECTED from C:\Users\Viacheslav\Desktop\Traning-Timer\TraningTimer\app\src\main\AndroidManifest.xml:2:1-30:12
+INJECTED from C:\Users\Viacheslav\Desktop\Traning-Timer\TraningTimer\app\src\main\AndroidManifest.xml:2:1-30:12
 	package
 		ADDED from C:\Users\Viacheslav\Desktop\Traning-Timer\TraningTimer\app\src\main\AndroidManifest.xml:4:5-39
 		INJECTED from C:\Users\Viacheslav\Desktop\Traning-Timer\TraningTimer\app\src\main\AndroidManifest.xml
 		INJECTED from C:\Users\Viacheslav\Desktop\Traning-Timer\TraningTimer\app\src\main\AndroidManifest.xml
 	android:versionName
 		INJECTED from C:\Users\Viacheslav\Desktop\Traning-Timer\TraningTimer\app\src\main\AndroidManifest.xml
-		ADDED from C:\Users\Viacheslav\Desktop\Traning-Timer\TraningTimer\app\src\main\AndroidManifest.xml:2:1-27:12
+		ADDED from C:\Users\Viacheslav\Desktop\Traning-Timer\TraningTimer\app\src\main\AndroidManifest.xml:2:1-30:12
 		INJECTED from C:\Users\Viacheslav\Desktop\Traning-Timer\TraningTimer\app\src\main\AndroidManifest.xml
 	xmlns:tools
 		ADDED from C:\Users\Viacheslav\Desktop\Traning-Timer\TraningTimer\app\src\main\AndroidManifest.xml:3:5-51
 	android:versionCode
 		INJECTED from C:\Users\Viacheslav\Desktop\Traning-Timer\TraningTimer\app\src\main\AndroidManifest.xml
-		ADDED from C:\Users\Viacheslav\Desktop\Traning-Timer\TraningTimer\app\src\main\AndroidManifest.xml:2:1-27:12
+		ADDED from C:\Users\Viacheslav\Desktop\Traning-Timer\TraningTimer\app\src\main\AndroidManifest.xml:2:1-30:12
 		INJECTED from C:\Users\Viacheslav\Desktop\Traning-Timer\TraningTimer\app\src\main\AndroidManifest.xml
 	xmlns:android
 		ADDED from C:\Users\Viacheslav\Desktop\Traning-Timer\TraningTimer\app\src\main\AndroidManifest.xml:2:11-69
 application
-ADDED from C:\Users\Viacheslav\Desktop\Traning-Timer\TraningTimer\app\src\main\AndroidManifest.xml:6:5-25:19
+ADDED from C:\Users\Viacheslav\Desktop\Traning-Timer\TraningTimer\app\src\main\AndroidManifest.xml:6:5-28:19
 MERGED from [com.google.android.material:material:1.7.0] C:\Users\Viacheslav\.gradle\caches\transforms-3\a89ce7a2a8fd1f6e9a5b7672fd317f4b\transformed\material-1.7.0\AndroidManifest.xml:24:5-20
 MERGED from [com.google.android.material:material:1.7.0] C:\Users\Viacheslav\.gradle\caches\transforms-3\a89ce7a2a8fd1f6e9a5b7672fd317f4b\transformed\material-1.7.0\AndroidManifest.xml:24:5-20
 MERGED from [androidx.constraintlayout:constraintlayout:2.1.4] C:\Users\Viacheslav\.gradle\caches\transforms-3\b983d9bcec043f3f432ab8b4a229bd83\transformed\constraintlayout-2.1.4\AndroidManifest.xml:9:5-20
@@ -99,22 +99,28 @@ MERGED from [androidx.startup:startup-runtime:1.1.1] C:\Users\Viacheslav\.gradle
 		ADDED from C:\Users\Viacheslav\Desktop\Traning-Timer\TraningTimer\app\src\main\AndroidManifest.xml:14:9-50
 	android:dataExtractionRules
 		ADDED from C:\Users\Viacheslav\Desktop\Traning-Timer\TraningTimer\app\src\main\AndroidManifest.xml:8:9-65
-activity#com.example.traningtimer.MainActivity
-ADDED from C:\Users\Viacheslav\Desktop\Traning-Timer\TraningTimer\app\src\main\AndroidManifest.xml:16:9-24:20
+activity#com.example.traningtimer.MainActivity2
+ADDED from C:\Users\Viacheslav\Desktop\Traning-Timer\TraningTimer\app\src\main\AndroidManifest.xml:16:9-18:40
 	android:exported
-		ADDED from C:\Users\Viacheslav\Desktop\Traning-Timer\TraningTimer\app\src\main\AndroidManifest.xml:18:13-36
+		ADDED from C:\Users\Viacheslav\Desktop\Traning-Timer\TraningTimer\app\src\main\AndroidManifest.xml:18:13-37
 	android:name
-		ADDED from C:\Users\Viacheslav\Desktop\Traning-Timer\TraningTimer\app\src\main\AndroidManifest.xml:17:13-41
+		ADDED from C:\Users\Viacheslav\Desktop\Traning-Timer\TraningTimer\app\src\main\AndroidManifest.xml:17:13-42
+activity#com.example.traningtimer.MainActivity
+ADDED from C:\Users\Viacheslav\Desktop\Traning-Timer\TraningTimer\app\src\main\AndroidManifest.xml:19:9-27:20
+	android:exported
+		ADDED from C:\Users\Viacheslav\Desktop\Traning-Timer\TraningTimer\app\src\main\AndroidManifest.xml:21:13-36
+	android:name
+		ADDED from C:\Users\Viacheslav\Desktop\Traning-Timer\TraningTimer\app\src\main\AndroidManifest.xml:20:13-41
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
-ADDED from C:\Users\Viacheslav\Desktop\Traning-Timer\TraningTimer\app\src\main\AndroidManifest.xml:19:13-23:29
+ADDED from C:\Users\Viacheslav\Desktop\Traning-Timer\TraningTimer\app\src\main\AndroidManifest.xml:22:13-26:29
 action#android.intent.action.MAIN
-ADDED from C:\Users\Viacheslav\Desktop\Traning-Timer\TraningTimer\app\src\main\AndroidManifest.xml:20:17-69
+ADDED from C:\Users\Viacheslav\Desktop\Traning-Timer\TraningTimer\app\src\main\AndroidManifest.xml:23:17-69
 	android:name
-		ADDED from C:\Users\Viacheslav\Desktop\Traning-Timer\TraningTimer\app\src\main\AndroidManifest.xml:20:25-66
+		ADDED from C:\Users\Viacheslav\Desktop\Traning-Timer\TraningTimer\app\src\main\AndroidManifest.xml:23:25-66
 category#android.intent.category.LAUNCHER
-ADDED from C:\Users\Viacheslav\Desktop\Traning-Timer\TraningTimer\app\src\main\AndroidManifest.xml:22:17-77
+ADDED from C:\Users\Viacheslav\Desktop\Traning-Timer\TraningTimer\app\src\main\AndroidManifest.xml:25:17-77
 	android:name
-		ADDED from C:\Users\Viacheslav\Desktop\Traning-Timer\TraningTimer\app\src\main\AndroidManifest.xml:22:27-74
+		ADDED from C:\Users\Viacheslav\Desktop\Traning-Timer\TraningTimer\app\src\main\AndroidManifest.xml:25:27-74
 uses-sdk
 INJECTED from C:\Users\Viacheslav\Desktop\Traning-Timer\TraningTimer\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from C:\Users\Viacheslav\Desktop\Traning-Timer\TraningTimer\app\src\main\AndroidManifest.xml
