@@ -19,8 +19,8 @@ import android.util.Log
 import android.widget.Toast
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
-import com.example.myapp.NOTIFICATION_CHANNEL_ID
-import com.example.myapp.traningTimer.BROADCAST_ACTION
+import com.example.traningtimer.BROADCAST_ACTION
+import com.example.traningtimer.NOTIFICATION_CHANNEL_ID
 import com.example.traningtimer.R
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
@@ -263,7 +263,7 @@ class EndlessService : Service(), SensorEventListener {
         mSensorManager.unregisterListener(this)
     }
     private fun createNotification(): NotificationCompat.Builder {
-        val builder =NotificationCompat.Builder(this, NOTIFICATION_CHANNEL_ID)
+        val builder = NotificationCompat.Builder(this, NOTIFICATION_CHANNEL_ID)
 
         return builder
             .setContentTitle("Endless Service")

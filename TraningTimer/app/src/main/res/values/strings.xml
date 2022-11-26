@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Traning Timer</string>
+    <string name="ButtonStart">start</string>
+    <string name="ButtonStop">stop</string>
 </resources>

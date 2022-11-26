@@ -2762,6 +2762,9 @@ id button7
 id button8
 id button9
 id buttonPanel
+id buttonStart
+id buttonStop
+id buttonTime
 id cache_measures
 id callMeasure
 id cancel_button
@@ -2833,6 +2836,7 @@ id easeIn
 id easeInOut
 id easeOut
 id east
+id editTextTime
 id edit_query
 id elastic
 id embed
@@ -3141,6 +3145,9 @@ id wrap_content
 id wrap_content_constrained
 id x_left
 id x_right
+id xyValue
+id xzValue
+id zyValue
 integer abc_config_activityDefaultDur
 integer abc_config_activityShortDur
 integer app_bar_elevation_anim_duration
@@ -3342,6 +3349,8 @@ layout support_simple_spinner_dropdown_item
 mipmap ic_launcher
 mipmap ic_launcher_round
 plurals mtrl_badge_content_description
+string ButtonStart
+string ButtonStop
 string abc_action_bar_home_description
 string abc_action_bar_up_description
 string abc_action_menu_overflow_description
