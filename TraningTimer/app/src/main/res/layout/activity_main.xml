@@ -130,7 +130,7 @@
             android:textSize="50sp" />
 
         <Button
-            android:id="@+id/button11"
+            android:id="@+id/buttonReport"
             android:layout_margin="5dp"
             android:layout_marginTop="0dp"
             android:layout_marginLeft="0dp"
@@ -142,7 +142,7 @@
             android:textSize="15sp" />
 
         <Button
-            android:id="@+id/button12"
+            android:id="@+id/buttonReset"
             android:layout_margin="5dp"
             android:layout_marginTop="0dp"
             android:layout_marginLeft="0dp"
@@ -165,32 +165,42 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
+
             <Button
                 android:id="@+id/buttonStart"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:text="@string/ButtonStart"/>
+                android:insetTop="0dp"
+                android:insetBottom="0dp"
+                android:text="@string/ButtonStart"
+                android:textSize="13sp" />
             <Button
                 android:id="@+id/buttonStop"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
+                android:insetTop="0dp"
+                android:insetBottom="0dp"
                 android:text="@string/ButtonStop"/>
             <Button
                 android:id="@+id/buttonTime"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
+                android:insetTop="0dp"
+                android:insetBottom="0dp"
                 android:text="save"/>
             <Button
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1" />
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:insetTop="0dp"
+                android:insetBottom="0dp"/>
             <EditText
                 android:id="@+id/editTextTime"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_weight="1"/>
         </LinearLayout>
 
