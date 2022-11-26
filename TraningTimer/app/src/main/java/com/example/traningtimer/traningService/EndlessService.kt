@@ -1,6 +1,5 @@
 package com.example.traningtimer.traningService
 
-import android.Manifest.permission.SET_ALARM
 import android.app.AlarmManager
 import android.app.Notification
 import android.app.PendingIntent
@@ -19,14 +18,15 @@ import android.util.Log
 import android.widget.Toast
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
-import com.example.traningtimer.BROADCAST_ACTION
 import com.example.traningtimer.NOTIFICATION_CHANNEL_ID
 import com.example.traningtimer.R
+import com.example.traningtimer.BROADCAST_ACTION
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import java.util.*
+import com.example.traningtimer.SET_ALARM
 
 private const val TAG = "rahirim"
 
@@ -178,9 +178,10 @@ class EndlessService : Service(), SensorEventListener {
             when (action) {
                 Actions.START.name -> startService()
                 Actions.STOP.name -> stopService()
-                Actions.STOP_VIBRATOR.name -> flag = false
+                Actions.STOP_VIBRATOR.name -> {
+                    flag = false
+                }
                 Actions.PLAY.name -> {
-                    Toast.makeText(this, "play", Toast.LENGTH_SHORT).show()
                     flag = true
                     vibrateDelay = 1000
                     ringtone.play()

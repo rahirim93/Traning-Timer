@@ -30,7 +30,6 @@ import com.example.traningtimer.traningService.ServiceState
 import com.example.traningtimer.traningService.getServiceState
 import java.text.SimpleDateFormat
 import java.util.*
-import kotlin.collections.ArrayList
 
 const val EXTRA_BUTTON_1 = "button1"
 const val TAG = "myMain"
@@ -239,38 +238,40 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, SensorEventListe
         val calendar2 = Calendar.getInstance()
         calendar2.timeInMillis = calendar
 
-        //timeToAlarm = calendar2.timeInMillis
-
         val intent = Intent(this, EndlessService::class.java)
         intent.action = Actions.PLAY.name
         pendingIntent = PendingIntent.getService(
             this,
             0,
             intent,
-            0
+            PendingIntent.FLAG_IMMUTABLE
         )
 
 
 
         setAlarm(calendar2, pendingIntent)
 
-
         val intent2 = Intent(this, EndlessService::class.java)
         intent2.action = Actions.STOP_VIBRATOR.name
         startService(intent2)
-
     }
 
     private fun setAlarm(calendar: Calendar, alarmActionPendingIntent: PendingIntent) {
-        val alarmClockInfo = AlarmManager.AlarmClockInfo(calendar.timeInMillis, getAlarmInfoPendingIntent())
+        val alarmInfoIntent = Intent(this, MainActivity::class.java)
+        alarmInfoIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
+        val alarmInfoPendingIntent = PendingIntent
+            .getActivity(this, 0, alarmInfoIntent,
+            PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE)
+
+        val alarmClockInfo = AlarmManager.AlarmClockInfo(calendar.timeInMillis, alarmInfoPendingIntent)
         alarmManager.setAlarmClock(alarmClockInfo, alarmActionPendingIntent)
     }
 
-    private fun getAlarmInfoPendingIntent(): PendingIntent {
-        val alarmInfoIntent = Intent(this, MainActivity::class.java)
-        alarmInfoIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
-        return PendingIntent.getActivity(this, 0, alarmInfoIntent, PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE)
-    }
+//    private fun getAlarmInfoPendingIntent(): PendingIntent {
+//        //val alarmInfoIntent = Intent(this, MainActivity::class.java)
+//        //alarmInfoIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
+//        //return PendingIntent.getActivity(this, 0, alarmInfoIntent, PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE)
+//    }
 
     override fun onClick(v: View?) {
         val intent = Intent(this, MainActivity2::class.java)
@@ -280,7 +281,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, SensorEventListe
 
     private val receiver = object : BroadcastReceiver() {
         override fun onReceive(context: Context?, intent: Intent?) {
-            val startAlarm = intent?.getIntExtra(SET_ALARM, 0)
+            val startAlarm = intent?.getIntExtra(com.example.traningtimer.SET_ALARM, 0)
             if (startAlarm == 100) {
                 Toast.makeText(context, "Сработала тревога", Toast.LENGTH_SHORT).show()
                 setTestAlarm()

@@ -130,7 +130,7 @@
             android:textSize="50sp" />
 
         <Button
-            android:id="@+id/button11"
+            android:id="@+id/buttonReport"
             android:layout_margin="5dp"
             android:layout_marginTop="0dp"
             android:layout_marginLeft="0dp"
@@ -142,7 +142,7 @@
             android:textSize="15sp" />
 
         <Button
-            android:id="@+id/button12"
+            android:id="@+id/buttonReset"
             android:layout_margin="5dp"
             android:layout_marginTop="0dp"
             android:layout_marginLeft="0dp"

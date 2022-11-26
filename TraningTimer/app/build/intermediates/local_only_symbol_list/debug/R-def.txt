@@ -11,8 +11,6 @@ drawable ic_launcher_background
 drawable ic_launcher_foreground
 id button1
 id button10
-id button11
-id button12
 id button2
 id button21
 id button210
@@ -33,6 +31,8 @@ id button6
 id button7
 id button8
 id button9
+id buttonReport
+id buttonReset
 id buttonStart
 id buttonStop
 id buttonTime
