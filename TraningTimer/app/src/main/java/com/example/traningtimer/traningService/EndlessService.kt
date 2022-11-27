@@ -6,6 +6,7 @@ import android.app.PendingIntent
 import android.app.Service
 import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.hardware.Sensor
 import android.hardware.SensorEvent
 import android.hardware.SensorEventListener
@@ -18,11 +19,8 @@ import android.util.Log
 import android.widget.Toast
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
-import com.example.traningtimer.NOTIFICATION_CHANNEL_ID
-import com.example.traningtimer.R
-import com.example.traningtimer.BROADCAST_ACTION
+import com.example.traningtimer.*
 import java.util.*
-import com.example.traningtimer.SET_ALARM
 import kotlinx.coroutines.*
 
 private const val TAG = "rahirim"
@@ -30,6 +28,12 @@ private const val TAG = "rahirim"
 
 
 class EndlessService : Service(), SensorEventListener {
+    private var timeTraining = 0
+
+    private lateinit var alarmManager: AlarmManager
+
+    private lateinit var timeToAlarm: Calendar
+
 
     private lateinit var b: Job
 
@@ -37,6 +41,9 @@ class EndlessService : Service(), SensorEventListener {
 
     private var counter: Long = 0
     var vibrateDelay = 1000
+
+    private lateinit var pendingIntent: PendingIntent // Для поиска будильника
+
 
     private var calendar: Long = 0
 
@@ -69,6 +76,9 @@ class EndlessService : Service(), SensorEventListener {
     private var wakeLock: PowerManager.WakeLock? = null
     private var isServiceStarted = false
 
+    private var sharedPreferences: SharedPreferences? = null
+
+
     override fun onCreate() {
         super.onCreate()
         counter = Calendar.getInstance().timeInMillis
@@ -84,7 +94,11 @@ class EndlessService : Service(), SensorEventListener {
         @Suppress("DEPRECATION")
         vibrator = getSystemService(VIBRATOR_SERVICE) as Vibrator
         canVibrate = vibrator.hasVibrator()
+        sharedPreferences = getSharedPreferences(SHARED_PREFERENCES_NAME, Context.MODE_PRIVATE)
+        alarmManager = getSystemService(ALARM_SERVICE) as AlarmManager
+
     }
+
     override fun onSensorChanged(event: SensorEvent?) {
         if (flag) {
             // Считывание показаний датчика положения
@@ -133,14 +147,20 @@ class EndlessService : Service(), SensorEventListener {
                 rightMove = false // Сброс состояний движений
                 leftMove = false    // Сброс состояний движений
 
-
-
                 if (ringtone.isPlaying) ringtone.stop() // Отключение прогрывания мелодии
 
+
+
                 // Отправка сообщения в главное активити для установки таймера
-                val intent = Intent(BROADCAST_ACTION)
-                intent.putExtra(SET_ALARM, 100)
-                sendBroadcast(intent)
+//                val intent = Intent(BROADCAST_ACTION)
+//                intent.putExtra(SET_ALARM, 100)
+//                sendBroadcast(intent)
+
+                setTestAlarm()
+
+                val intentTest = Intent(this, EndlessService::class.java)
+                intentTest.action = Actions.TEST.name
+                startService(intentTest)
 
 
 
@@ -162,24 +182,37 @@ class EndlessService : Service(), SensorEventListener {
             }
         }
     }
-    override fun onAccuracyChanged(sensor: Sensor?, accuracy: Int) {
-    }
-    private fun vibrate(milliseconds: Long) {
-        if (canVibrate) {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                // API 26
-                vibrator.vibrate(
-                    VibrationEffect.createOneShot(
-                        milliseconds,
-                        VibrationEffect.DEFAULT_AMPLITUDE
-                    )
-                )
-            } else {
-                // This method was deprecated in API level 26
-                vibrator.vibrate(milliseconds)
-            }
+
+    private fun setTestAlarm() {
+        if (sharedPreferences != null) {
+            timeTraining = sharedPreferences!!.getInt(SHARED_TRAINING_TIME, 0)
         }
+        val calendar = Calendar.getInstance().timeInMillis + (timeTraining * 1000)
+        val calendar2 = Calendar.getInstance()
+        calendar2.timeInMillis = calendar
+
+        val intent = Intent(this, EndlessService::class.java)
+        intent.action = Actions.PLAY.name
+        pendingIntent = PendingIntent.getService(this, 0, intent, PendingIntent.FLAG_IMMUTABLE)
+
+        setAlarm(calendar2, pendingIntent)
+
+        val intent2 = Intent(this, EndlessService::class.java)
+        intent2.action = Actions.STOP_VIBRATOR.name
+        startService(intent2)
     }
+
+    private fun setAlarm(calendar: Calendar, alarmActionPendingIntent: PendingIntent) {
+        val alarmInfoIntent = Intent(this, MainActivity::class.java)
+        alarmInfoIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
+        val alarmInfoPendingIntent = PendingIntent
+            .getActivity(this, 0, alarmInfoIntent,
+                PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE)
+
+        val alarmClockInfo = AlarmManager.AlarmClockInfo(calendar.timeInMillis, alarmInfoPendingIntent)
+        alarmManager.setAlarmClock(alarmClockInfo, alarmActionPendingIntent)
+    }
+
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
         log("onStartCommand executed with startId: $startId")
         if (intent != null) {
@@ -188,6 +221,7 @@ class EndlessService : Service(), SensorEventListener {
             when (action) {
                 Actions.START.name -> startService()
                 Actions.STOP.name -> stopService()
+                Actions.TEST.name -> toast(this, "Тест")
                 Actions.STOP_VIBRATOR.name -> {
                     flag = false
                 }
@@ -206,6 +240,24 @@ class EndlessService : Service(), SensorEventListener {
         }
         // by returning this we make sure the service is restarted if the system kills the service
         return START_STICKY
+    }
+    override fun onAccuracyChanged(sensor: Sensor?, accuracy: Int) {
+    }
+    private fun vibrate(milliseconds: Long) {
+        if (canVibrate) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                // API 26
+                vibrator.vibrate(
+                    VibrationEffect.createOneShot(
+                        milliseconds,
+                        VibrationEffect.DEFAULT_AMPLITUDE
+                    )
+                )
+            } else {
+                // This method was deprecated in API level 26
+                vibrator.vibrate(milliseconds)
+            }
+        }
     }
     private fun startService() {
         counterTimeWork = 0.0

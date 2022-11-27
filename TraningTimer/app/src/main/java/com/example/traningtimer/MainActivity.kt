@@ -1,6 +1,5 @@
 package com.example.traningtimer
 
-import android.Manifest.permission.SET_ALARM
 import android.app.Activity
 import android.app.AlarmManager
 import android.app.NotificationManager
@@ -24,10 +23,7 @@ import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.NotificationManagerCompat
-import com.example.traningtimer.traningService.Actions
-import com.example.traningtimer.traningService.EndlessService
-import com.example.traningtimer.traningService.ServiceState
-import com.example.traningtimer.traningService.getServiceState
+import com.example.traningtimer.traningService.*
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -92,13 +88,17 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, SensorEventListe
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        // Инициализируем все переменные
         init()
 
-        //actionOnService(Actions.START)
-
+        // Инициализация кнопок
         initButtons()
 
-        changeMuteMode()
+        // Запускаем сервис
+        actionOnService(Actions.START)
+
+        // При запуске переключаем на громкий режим
+        setRingerModeMine(AudioManager.RINGER_MODE_NORMAL)
     }
 
     private fun init() {
@@ -111,17 +111,6 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, SensorEventListe
         notificationManager = getSystemService(NOTIFICATION_SERVICE) as NotificationManager
 
         sharedPreferences = getSharedPreferences(SHARED_PREFERENCES_NAME, Context.MODE_PRIVATE)
-
-        arrayButtons.forEach {
-            val key1 = it.id.toString()
-            val key2 = it.id.toString() + "C"
-            val text = sharedPreferences?.getString(key1, "")
-            it.text = text
-            val color = sharedPreferences?.getInt(key2, 0)
-            if (color != null) {
-                it.setTextColor(color)
-            }
-        }
 
         resultLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
             if (result.resultCode == Activity.RESULT_OK) {
@@ -166,8 +155,19 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, SensorEventListe
         button10 = findViewById(R.id.button10)
         createArrayButtons()
         arrayButtons.forEach {
+            // Настройка кнопок
             it.textSize = 20.0F
             it.setOnClickListener(this)
+
+            // Заполнение сохраненными значениями и цветом
+            val key1 = it.id.toString()
+            val key2 = it.id.toString() + "C"
+            val text = sharedPreferences?.getString(key1, "")
+            it.text = text
+            val color = sharedPreferences?.getInt(key2, 0)
+            if (color != null) {
+                it.setTextColor(color)
+            }
         }
 
         buttonReport = findViewById(R.id.buttonReport)
@@ -211,7 +211,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, SensorEventListe
             } catch (e: Exception) {
                 Toast.makeText(this, "Исключение при отключении будильника", Toast.LENGTH_SHORT).show()
             }
-            changeMuteMode()
+            setRingerModeMine(AudioManager.RINGER_MODE_SILENT)
             finish()
         }
 
@@ -240,14 +240,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, SensorEventListe
 
         val intent = Intent(this, EndlessService::class.java)
         intent.action = Actions.PLAY.name
-        pendingIntent = PendingIntent.getService(
-            this,
-            0,
-            intent,
-            PendingIntent.FLAG_IMMUTABLE
-        )
-
-
+        pendingIntent = PendingIntent.getService(this, 0, intent, PendingIntent.FLAG_IMMUTABLE)
 
         setAlarm(calendar2, pendingIntent)
 
@@ -301,19 +294,13 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, SensorEventListe
         zyView.text = zyAngle.toInt().toString()
     }
 
-    private fun changeMuteMode(){
+    private fun setRingerModeMine(ringerMode: Int){
         if (!notificationManager.isNotificationPolicyAccessGranted) {
             val intent = Intent(Settings.ACTION_NOTIFICATION_POLICY_ACCESS_SETTINGS)
             startActivity(intent)
         }
         val am = getSystemService(Context.AUDIO_SERVICE) as AudioManager
-        val a = am.ringerMode
-        if (a == 0 || a == 1) {
-            am.ringerMode = 2
-            Toast.makeText(this, "Режим: $a", Toast.LENGTH_SHORT).show()
-        } else if (a == 2) {
-            am.ringerMode = 0
-        }
+        am.ringerMode = ringerMode
     }
 
     private fun actionOnService(action: Actions) {
@@ -349,6 +336,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, SensorEventListe
             editor?.apply()
         }
         unregisterReceiver(receiver)
+        setRingerModeMine(AudioManager.RINGER_MODE_SILENT)
     }
 
     override fun onAccuracyChanged(sensor: Sensor?, accuracy: Int) {
