@@ -87,37 +87,35 @@ class EndlessService : Service(), SensorEventListener {
     }
     override fun onSensorChanged(event: SensorEvent?) {
         if (flag) {
+            // Считывание показаний датчика положения
             if (event != null) {
                 xyAngle = event.values[0]  //Плоскость XY
                 xzAngle = event.values[1] //Плоскость XZ
                 zyAngle = event.values[2] //Плоскость ZY
-                //vibrate(30)
             }
 
+            // Отключение сработанной тревоги
             if (xzAngle > 0 && xzAngle < 10) {
                 if (ringtone.isPlaying) {
                     ringtone.stop()
                 }
             }
 
+            // Срабатывание правого движения
             if (zyAngle < -40 && !rightMove && xzAngle < 0) {
-                Log.d(TAG, "rightMove")
                 rightMove = true
-                //vibrate(100)
                 vibrateDelay = 500
-                updateNotification("rightMove")
                 timeRightMove = Calendar.getInstance().timeInMillis
             }
 
+            // Срабатывание левого движения
             if (zyAngle > 40 && rightMove && xzAngle < 0) {
-                Log.d(TAG, "leftMove")
                 leftMove = true
-                updateNotification("leftMove")
             }
 
+            // Вибрация через определенный промежуток времени
             if (Calendar.getInstance().timeInMillis - counter > vibrateDelay) {
                 counter = Calendar.getInstance().timeInMillis
-                //Toast.makeText(this, "Да", Toast.LENGTH_SHORT).show()
                 vibrate(400)
             }
 
@@ -128,8 +126,10 @@ class EndlessService : Service(), SensorEventListener {
                 vibrateDelay = 1000
             }
 
+            // Если сработали признаки правого и левого движения
+            // включаем таймер
             if (rightMove && leftMove) {
-                vibrate(200) // Не помню зачем. Не нужен по идее.
+
                 rightMove = false // Сброс состояний движений
                 leftMove = false    // Сброс состояний движений
 
