@@ -21,18 +21,17 @@ import androidx.core.app.NotificationManagerCompat
 import com.example.traningtimer.NOTIFICATION_CHANNEL_ID
 import com.example.traningtimer.R
 import com.example.traningtimer.BROADCAST_ACTION
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
 import java.util.*
 import com.example.traningtimer.SET_ALARM
+import kotlinx.coroutines.*
 
 private const val TAG = "rahirim"
 
 
 
 class EndlessService : Service(), SensorEventListener {
+
+    private lateinit var b: Job
 
     var timeRightMove: Long = 0
 
@@ -130,16 +129,27 @@ class EndlessService : Service(), SensorEventListener {
             }
 
             if (rightMove && leftMove) {
-                flagUpdateNotification = true
-                vibrate(200)
-                rightMove = false
-                leftMove = false
+                vibrate(200) // Не помню зачем. Не нужен по идее.
+                rightMove = false // Сброс состояний движений
+                leftMove = false    // Сброс состояний движений
+
+
+
+                if (ringtone.isPlaying) ringtone.stop() // Отключение прогрывания мелодии
+
+                // Отправка сообщения в главное активити для установки таймера
                 val intent = Intent(BROADCAST_ACTION)
                 intent.putExtra(SET_ALARM, 100)
                 sendBroadcast(intent)
-                if (ringtone.isPlaying) ringtone.stop()
+
+
+
+
+                // Поток для обновления времени до срабатывания в уведомлении
+                // Неконтролируемый, переделать чтобы можно было управлять
+                flagUpdateNotification = true
                 calendar = Calendar.getInstance().timeInMillis + 180000
-                GlobalScope.launch(Dispatchers.IO) {
+                b = GlobalScope.launch(Dispatchers.IO) {
                     while (flagUpdateNotification) {
                         launch(Dispatchers.IO) {
                             val a = (calendar - Calendar.getInstance().timeInMillis) / 1000
