@@ -29,7 +29,7 @@ import java.util.*
 
 const val EXTRA_BUTTON_1 = "button1"
 const val TAG = "myMain"
-const val SHARED_PREFERENCES_NAME = "name"
+const val SHARED_PREFERENCES_NAME = "shared_pref_training_timer"
 const val BROADCAST_ACTION = "broadcastAction"
 const val SHARED_TRAINING_TIME = "training time"
 const val SET_ALARM = "setAlarm"
@@ -326,6 +326,8 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, SensorEventListe
         super.onStop()
         mSensorManager.unregisterListener(this)
     }
+
+
 
     override fun onDestroy() {
         super.onDestroy()

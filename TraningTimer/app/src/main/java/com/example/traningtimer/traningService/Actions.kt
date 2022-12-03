@@ -4,6 +4,5 @@ enum class Actions {
     START,
     STOP,
     PLAY,
-    STOP_VIBRATOR,
-    TEST
+    STOP_VIBRATOR
 }

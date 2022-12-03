@@ -5,7 +5,7 @@ import android.util.Log
 import android.widget.Toast
 
 fun log(msg: String) {
-    Log.d("ENDLESS-SERVICE", msg)
+    Log.d("TrainingApp", msg)
 }
 
 fun toast(context: Context ,msg: String) {

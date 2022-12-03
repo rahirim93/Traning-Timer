@@ -15,24 +15,53 @@ import android.media.Ringtone
 import android.media.RingtoneManager
 import android.net.Uri
 import android.os.*
-import android.util.Log
 import android.widget.Toast
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import com.example.traningtimer.*
-import java.util.*
 import kotlinx.coroutines.*
+import java.util.*
 
 private const val TAG = "rahirim"
 
-
+private const val MODE_WAITING = 0
+private const val MODE_ALARM_SET = 1
 
 class EndlessService : Service(), SensorEventListener {
+
+    // Переменные датчика положения
+    private lateinit var mSensorManager: SensorManager
+    private lateinit var mOrientation: Sensor
+    private var xyAngle = 0f
+    private var xzAngle = 0f
+    private var zyAngle = 0f
+    // Переменные датчика положения
+
+    // Перменные для обработки движений
+    private var rightMove: Boolean = false
+    private var leftMove: Boolean = false
+    private var mode = MODE_WAITING
+    // Перменные для обработки движений
+
+    // Переменные для таймера
+    private lateinit var alarmManager: AlarmManager
+    private lateinit var pendingIntent: PendingIntent // Для поиска будильника
+    private var timeToAlarm: Calendar = Calendar.getInstance()
+    // Переменные для таймера
+
+    // Переменные для вибратора
+    private lateinit var vibrator: Vibrator
+    private var canVibrate: Boolean = false
+    // Переменные для вибратора
+
+    // Переменные сервиса
+    private var wakeLock: PowerManager.WakeLock? = null
+    private var isServiceStarted = false
+    // Переменные сервиса
+
     private var timeTraining = 0
 
-    private lateinit var alarmManager: AlarmManager
 
-    private lateinit var timeToAlarm: Calendar
 
 
     private lateinit var b: Job
@@ -42,30 +71,14 @@ class EndlessService : Service(), SensorEventListener {
     private var counter: Long = 0
     var vibrateDelay = 1000
 
-    private lateinit var pendingIntent: PendingIntent // Для поиска будильника
 
 
     private var calendar: Long = 0
 
-    private var flagUpdateNotification = false
 
     private lateinit var ringtone: Ringtone
     private lateinit var notificationUri: Uri
 
-    private var flag = true
-
-    private var xyAngle = 0f
-    private var xzAngle = 0f
-    private var zyAngle = 0f
-
-    private lateinit var vibrator: Vibrator
-    private var canVibrate: Boolean = false
-
-    private var rightMove: Boolean = false
-    private var leftMove: Boolean = false
-
-    private lateinit var mSensorManager: SensorManager
-    private lateinit var mOrientation: Sensor
 
     // Счетчик времени работы сервиса без запуска приложения
     private var counterTimeWork: Double = 0.0
@@ -73,11 +86,7 @@ class EndlessService : Service(), SensorEventListener {
     private lateinit var builder: NotificationCompat.Builder
     private lateinit var notificationManagerCompat: NotificationManagerCompat
 
-    private var wakeLock: PowerManager.WakeLock? = null
-    private var isServiceStarted = false
-
     private var sharedPreferences: SharedPreferences? = null
-
 
     override fun onCreate() {
         super.onCreate()
@@ -94,13 +103,14 @@ class EndlessService : Service(), SensorEventListener {
         @Suppress("DEPRECATION")
         vibrator = getSystemService(VIBRATOR_SERVICE) as Vibrator
         canVibrate = vibrator.hasVibrator()
-        sharedPreferences = getSharedPreferences(SHARED_PREFERENCES_NAME, Context.MODE_PRIVATE)
+        //sharedPreferences = getSharedPreferences(SHARED_PREFERENCES_NAME, Context.MODE_PRIVATE)
+        sharedPreferences = applicationContext.getSharedPreferences(SHARED_PREFERENCES_NAME, Context.MODE_PRIVATE)
         alarmManager = getSystemService(ALARM_SERVICE) as AlarmManager
 
     }
 
     override fun onSensorChanged(event: SensorEvent?) {
-        if (flag) {
+        if (mode == MODE_WAITING) {
             // Считывание показаний датчика положения
             if (event != null) {
                 xyAngle = event.values[0]  //Плоскость XY
@@ -149,53 +159,43 @@ class EndlessService : Service(), SensorEventListener {
 
                 if (ringtone.isPlaying) ringtone.stop() // Отключение прогрывания мелодии
 
-
-
-                // Отправка сообщения в главное активити для установки таймера
-//                val intent = Intent(BROADCAST_ACTION)
-//                intent.putExtra(SET_ALARM, 100)
-//                sendBroadcast(intent)
-
                 setTestAlarm()
 
-                val intentTest = Intent(this, EndlessService::class.java)
-                intentTest.action = Actions.TEST.name
-                startService(intentTest)
-
-
-
+                mode = MODE_ALARM_SET
 
                 // Поток для обновления времени до срабатывания в уведомлении
                 // Неконтролируемый, переделать чтобы можно было управлять
-                flagUpdateNotification = true
-                calendar = Calendar.getInstance().timeInMillis + 180000
-                b = GlobalScope.launch(Dispatchers.IO) {
-                    while (flagUpdateNotification) {
-                        launch(Dispatchers.IO) {
-                            val a = (calendar - Calendar.getInstance().timeInMillis) / 1000
-                            updateNotification("$a")
-                        }
-                        delay(10)
-                    }
-                    log("End of the loop for the service")
-                }
+//                flagUpdateNotification = true
+//                calendar = Calendar.getInstance().timeInMillis + 180000
+//                b = GlobalScope.launch(Dispatchers.IO) {
+//                    while (flagUpdateNotification) {
+//                        launch(Dispatchers.IO) {
+//                            val a = (calendar - Calendar.getInstance().timeInMillis) / 1000
+//                            updateNotification("$a")
+//                        }
+//                        delay(10)
+//                    }
+//                    log("End of the loop for the service")
+//                }
             }
+        } else if (mode == MODE_ALARM_SET) {
+            val a = (timeToAlarm.timeInMillis - Calendar.getInstance().timeInMillis) / 1000
+            updateNotification("$a")
         }
     }
 
     private fun setTestAlarm() {
         if (sharedPreferences != null) {
             timeTraining = sharedPreferences!!.getInt(SHARED_TRAINING_TIME, 0)
+            log("Time = $timeTraining")
         }
-        val calendar = Calendar.getInstance().timeInMillis + (timeTraining * 1000)
-        val calendar2 = Calendar.getInstance()
-        calendar2.timeInMillis = calendar
+        timeToAlarm.timeInMillis = Calendar.getInstance().timeInMillis + (timeTraining * 1000)
 
         val intent = Intent(this, EndlessService::class.java)
         intent.action = Actions.PLAY.name
         pendingIntent = PendingIntent.getService(this, 0, intent, PendingIntent.FLAG_IMMUTABLE)
 
-        setAlarm(calendar2, pendingIntent)
+        setAlarm(timeToAlarm, pendingIntent)
 
         val intent2 = Intent(this, EndlessService::class.java)
         intent2.action = Actions.STOP_VIBRATOR.name
@@ -221,15 +221,13 @@ class EndlessService : Service(), SensorEventListener {
             when (action) {
                 Actions.START.name -> startService()
                 Actions.STOP.name -> stopService()
-                Actions.TEST.name -> toast(this, "Тест")
                 Actions.STOP_VIBRATOR.name -> {
-                    flag = false
+                    mode = MODE_ALARM_SET
                 }
                 Actions.PLAY.name -> {
-                    flag = true
+                    mode = MODE_WAITING
                     vibrateDelay = 1000
                     ringtone.play()
-                    flagUpdateNotification = false
                 }
                 else -> log("This should never happen. No action in the received intent")
             }
