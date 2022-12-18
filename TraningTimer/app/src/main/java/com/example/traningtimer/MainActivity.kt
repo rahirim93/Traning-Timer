@@ -194,13 +194,21 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, SensorEventListe
         buttonReset = findViewById(R.id.buttonReset)
         buttonReset.isEnabled = true
         buttonReset.setOnClickListener {
+            // Очищаем сохраненные состояния кнопок
             val editor = sharedPreferences?.edit()
             editor?.clear()
             editor?.apply()
+            // Кнопки заполняем значения от 1 до 10
             for (a in 1..arrayButtons.size) {
                 arrayButtons[a-1].text = a.toString()
                 arrayButtons[a-1].setTextColor(Color.BLACK)
             }
+            // Так как мы очистили SharedPreferences полностью
+            // То время таймера тоже удаляется
+            // Поэтому пересохраняем время таймера
+            editor?.putInt(SHARED_TRAINING_TIME, editTextTime.text.toString().toInt())
+            editor?.apply()
+            Toast.makeText(this, "Выполнено", Toast.LENGTH_SHORT).show()
         }
 
         buttonStop = findViewById(R.id.buttonStop)
