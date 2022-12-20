@@ -2764,6 +2764,7 @@ id buttonReport
 id buttonReset
 id buttonStart
 id buttonStop
+id buttonStopAlarm
 id buttonTime
 id cache_measures
 id callMeasure

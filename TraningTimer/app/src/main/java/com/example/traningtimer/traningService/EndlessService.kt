@@ -45,14 +45,9 @@ class EndlessService : Service(), SensorEventListener {
 
     // Переменные для таймера
     private lateinit var alarmManager: AlarmManager
-    private lateinit var pendingIntent: PendingIntent // Для поиска будильника
+    lateinit var pendingIntent: PendingIntent // Для поиска будильника
     private var timeToAlarm: Calendar = Calendar.getInstance()
     // Переменные для таймера
-
-    // Переменные для вибратора
-    private lateinit var vibrator: Vibrator
-    private var canVibrate: Boolean = false
-    // Переменные для вибратора
 
     // Переменные сервиса
     private var wakeLock: PowerManager.WakeLock? = null
@@ -69,12 +64,6 @@ class EndlessService : Service(), SensorEventListener {
     var timeRightMove: Long = 0
 
     private var counter: Long = 0
-    var vibrateDelay = 1000
-
-
-
-    private var calendar: Long = 0
-
 
     private lateinit var ringtone: Ringtone
     private lateinit var notificationUri: Uri
@@ -87,6 +76,8 @@ class EndlessService : Service(), SensorEventListener {
     private lateinit var notificationManagerCompat: NotificationManagerCompat
 
     private var sharedPreferences: SharedPreferences? = null
+
+    private lateinit var vibratorHelper: VibrateHelper
 
     override fun onCreate() {
         super.onCreate()
@@ -101,12 +92,10 @@ class EndlessService : Service(), SensorEventListener {
         mOrientation = mSensorManager.getDefaultSensor(Sensor.TYPE_ORIENTATION)
         mSensorManager.registerListener(this, mOrientation, SensorManager.SENSOR_DELAY_UI)
         @Suppress("DEPRECATION")
-        vibrator = getSystemService(VIBRATOR_SERVICE) as Vibrator
-        canVibrate = vibrator.hasVibrator()
         //sharedPreferences = getSharedPreferences(SHARED_PREFERENCES_NAME, Context.MODE_PRIVATE)
         sharedPreferences = applicationContext.getSharedPreferences(SHARED_PREFERENCES_NAME, Context.MODE_PRIVATE)
         alarmManager = getSystemService(ALARM_SERVICE) as AlarmManager
-
+        vibratorHelper = VibrateHelper(applicationContext)
     }
 
     override fun onSensorChanged(event: SensorEvent?) {
@@ -128,7 +117,7 @@ class EndlessService : Service(), SensorEventListener {
             // Срабатывание правого движения
             if (zyAngle < -40 && !rightMove && xzAngle < 0) {
                 rightMove = true
-                vibrateDelay = 500
+                vibratorHelper.vibrateDelay = 500
                 timeRightMove = Calendar.getInstance().timeInMillis
             }
 
@@ -138,16 +127,16 @@ class EndlessService : Service(), SensorEventListener {
             }
 
             // Вибрация через определенный промежуток времени
-            if (Calendar.getInstance().timeInMillis - counter > vibrateDelay) {
+            if (Calendar.getInstance().timeInMillis - counter > vibratorHelper.vibrateDelay) {
                 counter = Calendar.getInstance().timeInMillis
-                vibrate(400)
+                vibratorHelper.vibrate()
             }
 
             // Если сработал признак правого движения и прошло 2 секунды,
             // то признак правого движения сбрасывается.
             if (rightMove && Calendar.getInstance().timeInMillis - timeRightMove > 2000) {
                 rightMove = false
-                vibrateDelay = 1000
+                vibratorHelper.vibrateDelay = 1000
             }
 
             // Если сработали признаки правого и левого движения
@@ -226,8 +215,13 @@ class EndlessService : Service(), SensorEventListener {
                 }
                 Actions.PLAY.name -> {
                     mode = MODE_WAITING
-                    vibrateDelay = 1000
+                    vibratorHelper.vibrateDelay = 1000
                     ringtone.play()
+                }
+                Actions.STOP_ALARM.name -> {
+                    alarmManager.cancel(pendingIntent)
+                    mode = MODE_WAITING
+                    vibratorHelper.vibrateDelay = 1000
                 }
                 else -> log("This should never happen. No action in the received intent")
             }
@@ -241,22 +235,7 @@ class EndlessService : Service(), SensorEventListener {
     }
     override fun onAccuracyChanged(sensor: Sensor?, accuracy: Int) {
     }
-    private fun vibrate(milliseconds: Long) {
-        if (canVibrate) {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                // API 26
-                vibrator.vibrate(
-                    VibrationEffect.createOneShot(
-                        milliseconds,
-                        VibrationEffect.DEFAULT_AMPLITUDE
-                    )
-                )
-            } else {
-                // This method was deprecated in API level 26
-                vibrator.vibrate(milliseconds)
-            }
-        }
-    }
+
     private fun startService() {
         counterTimeWork = 0.0
         if (isServiceStarted) return
@@ -306,6 +285,7 @@ class EndlessService : Service(), SensorEventListener {
         if(ringtone.isPlaying) ringtone.stop()
         isServiceStarted = false
         setServiceState(this, ServiceState.STOPPED)
+        notificationManagerCompat.cancel(1) // Закрываем уведомление после закрытия приложения
     }
     override fun onTaskRemoved(rootIntent: Intent) {
         val restartServiceIntent = Intent(applicationContext, EndlessService::class.java).also {
@@ -321,6 +301,9 @@ class EndlessService : Service(), SensorEventListener {
         Toast.makeText(this, "Service destroyed", Toast.LENGTH_SHORT).show()
         //builder.setContentText("Service was destroyed")
         //notificationManagerCompat.notify(1, builder.build())
+        try {
+            alarmManager.cancel(pendingIntent)
+        } catch (e: Exception) {}
         mSensorManager.unregisterListener(this)
     }
     private fun createNotification(): NotificationCompat.Builder {

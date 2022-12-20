@@ -168,6 +168,8 @@
 
             <Button
                 android:id="@+id/buttonStart"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -192,11 +194,14 @@
                 android:insetBottom="0dp"
                 android:text="save"/>
             <Button
+                android:id="@+id/buttonStopAlarm"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:insetTop="0dp"
-                android:insetBottom="0dp"/>
+                android:insetBottom="0dp"
+                android:text="stop\nalarm"
+                android:textSize="11sp"/>
             <EditText
                 android:inputType="number"
                 android:id="@+id/editTextTime"
@@ -211,6 +216,7 @@
             android:orientation="horizontal">
             <TextView
                 android:layout_width="0dp"
+                android:layout_marginLeft="5dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="УголXY:"/>

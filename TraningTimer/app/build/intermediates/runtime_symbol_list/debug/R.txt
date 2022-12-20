@@ -2763,6 +2763,7 @@ int id buttonReport 0x7f080079
 int id buttonReset 0x7f08007a
 int id buttonStart 0x7f08007b
 int id buttonStop 0x7f08007c
+int id buttonStopAlarm 0x7f0801fd
 int id buttonTime 0x7f08007d
 int id cache_measures 0x7f08007e
 int id callMeasure 0x7f08007f

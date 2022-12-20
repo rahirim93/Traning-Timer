@@ -39,23 +39,24 @@ const val SET_ALARM = "setAlarm"
 class MainActivity : AppCompatActivity(), View.OnClickListener, SensorEventListener {
 
     // Кнопки /////////////////////////////////////////////////////////////////////////////////
-    private lateinit var button1: Button        // Кнопка для подхода
-    private lateinit var button2: Button        // Кнопка для подхода
-    private lateinit var button3: Button        // Кнопка для подхода
-    private lateinit var button4: Button        // Кнопка для подхода
-    private lateinit var button5: Button        // Кнопка для подхода
-    private lateinit var button6: Button        // Кнопка для подхода
-    private lateinit var button7: Button        // Кнопка для подхода
-    private lateinit var button8: Button        // Кнопка для подхода
-    private lateinit var button9: Button        // Кнопка для подхода
-    private lateinit var button10: Button       // Кнопка для подхода
-    var arrayButtons = ArrayList<Button>()      // Массив для хранения кнопок подходов
-    private lateinit var buttonReport: Button   // Кнопка для формирования отчета о тренировке
-    private lateinit var buttonReset: Button    // Кнопка сброса состояния тренировки
-    private lateinit var buttonTime: Button     // Кнопка сохранения времени таймера
-    private lateinit var buttonStart: Button    // Кнопка запуска сервиса
-    private lateinit var buttonStop: Button     // Кнопка остановки сервиса
-    // Кнопки /////////////////////////////////////////////////////////////////////////////////
+    private lateinit var button1: Button            // Кнопка для подхода
+    private lateinit var button2: Button            // Кнопка для подхода
+    private lateinit var button3: Button            // Кнопка для подхода
+    private lateinit var button4: Button            // Кнопка для подхода
+    private lateinit var button5: Button            // Кнопка для подхода
+    private lateinit var button6: Button            // Кнопка для подхода
+    private lateinit var button7: Button            // Кнопка для подхода
+    private lateinit var button8: Button            // Кнопка для подхода
+    private lateinit var button9: Button            // Кнопка для подхода
+    private lateinit var button10: Button           // Кнопка для подхода                              ///
+    var arrayButtons = ArrayList<Button>()          // Массив для хранения кнопок подходов             ///
+    private lateinit var buttonReport: Button       // Кнопка для формирования отчета о тренировке     ///
+    private lateinit var buttonReset: Button        // Кнопка сброса состояния тренировки              ///
+    private lateinit var buttonTime: Button         // Кнопка сохранения времени таймера               ///
+    private lateinit var buttonStart: Button        // Кнопка запуска сервиса                          ///
+    private lateinit var buttonStop: Button         // Кнопка остановки сервиса                        ///
+    private lateinit var buttonStopAlarm: Button    // Кнопка отмены таймера                           ///
+    // Кнопки ////////////////////////////////////////////////////////////////////////////////////////////
 
     // Переменные для датчика положения
     private lateinit var mSensorManager: SensorManager
@@ -234,6 +235,11 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, SensorEventListe
         buttonStart = findViewById(R.id.buttonStart)
         buttonStart.setOnClickListener {
             actionOnService(Actions.START)
+        }
+
+        buttonStopAlarm = findViewById(R.id.buttonStopAlarm)
+        buttonStopAlarm.setOnClickListener {
+            actionOnService(Actions.STOP_ALARM)
         }
     }
 

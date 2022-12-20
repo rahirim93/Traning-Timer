@@ -35,6 +35,7 @@ id buttonReport
 id buttonReset
 id buttonStart
 id buttonStop
+id buttonStopAlarm
 id buttonTime
 id editTextTime
 id gridLayout
