@@ -94,15 +94,6 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, SensorEventListe
         setContentView(R.layout.activity_main)
 
 
-        startActivity(
-            Intent(
-                Settings.ACTION_REQUEST_IGNORE_BATTERY_OPTIMIZATIONS, Uri.parse(
-                    "package:$packageName"
-                )
-            )
-        )
-
-
         // Инициализируем все переменные
         init()
 
@@ -380,6 +371,9 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, SensorEventListe
         unregisterReceiver(receiver)
         setRingerModeMine(AudioManager.RINGER_MODE_SILENT)
         //mSensorManager.unregisterListener(this)
+        val date = Intent()
+        setResult(Activity.RESULT_OK, date)
+        finish()
     }
 
     override fun onAccuracyChanged(sensor: Sensor?, accuracy: Int) {
