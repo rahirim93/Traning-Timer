@@ -25,7 +25,9 @@ id button27
 id button28
 id button29
 id button3
+id button3minTimer
 id button4
+id button4minTimer
 id button5
 id button6
 id button7
@@ -40,11 +42,13 @@ id buttonTime
 id editTextTime
 id gridLayout
 id seekBar
+id textView
 id xyValue
 id xzValue
 id zyValue
 layout activity_main
 layout activity_main2
+layout activity_start
 mipmap ic_launcher
 mipmap ic_launcher_round
 string ButtonStart

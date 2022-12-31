@@ -2753,7 +2753,9 @@ id button27
 id button28
 id button29
 id button3
+id button3minTimer
 id button4
+id button4minTimer
 id button5
 id button6
 id button7
@@ -3098,6 +3100,7 @@ id textSpacerNoButtons
 id textSpacerNoTitle
 id textStart
 id textTop
+id textView
 id text_input_end_icon
 id text_input_error_icon
 id text_input_start_icon
@@ -3273,6 +3276,7 @@ layout abc_select_dialog_material
 layout abc_tooltip
 layout activity_main
 layout activity_main2
+layout activity_start
 layout custom_dialog
 layout design_bottom_navigation_item
 layout design_bottom_sheet_dialog

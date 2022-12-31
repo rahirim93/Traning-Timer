@@ -1,7 +1,6 @@
 package com.example.traningtimer.traningService
 
 import android.app.AlarmManager
-import android.app.Notification
 import android.app.PendingIntent
 import android.app.Service
 import android.content.Context
@@ -22,7 +21,7 @@ import com.example.traningtimer.*
 import kotlinx.coroutines.*
 import java.util.*
 
-private const val TAG = "rahirim"
+//private const val TAG = "rahirim"
 
 private const val MODE_WAITING = 0
 private const val MODE_ALARM_SET = 1
@@ -45,7 +44,7 @@ class EndlessService : Service(), SensorEventListener {
 
     // Переменные для таймера
     private lateinit var alarmManager: AlarmManager
-    lateinit var pendingIntent: PendingIntent // Для поиска будильника
+    private lateinit var pendingIntent: PendingIntent // Для поиска будильника
     private var timeToAlarm: Calendar = Calendar.getInstance()
     // Переменные для таймера
 
@@ -56,12 +55,7 @@ class EndlessService : Service(), SensorEventListener {
 
     private var timeTraining = 0
 
-
-
-
-    private lateinit var b: Job
-
-    var timeRightMove: Long = 0
+    private var timeRightMove: Long = 0
 
     private var counter: Long = 0
 
@@ -219,7 +213,11 @@ class EndlessService : Service(), SensorEventListener {
                     ringtone.play()
                 }
                 Actions.STOP_ALARM.name -> {
-                    alarmManager.cancel(pendingIntent)
+                    try {
+                        alarmManager.cancel(pendingIntent)
+                    } catch (_: Exception) {
+
+                    }
                     mode = MODE_WAITING
                     vibratorHelper.vibrateDelay = 1000
                 }
@@ -303,7 +301,7 @@ class EndlessService : Service(), SensorEventListener {
         //notificationManagerCompat.notify(1, builder.build())
         try {
             alarmManager.cancel(pendingIntent)
-        } catch (e: Exception) {}
+        } catch (_: Exception) {}
         mSensorManager.unregisterListener(this)
     }
     private fun createNotification(): NotificationCompat.Builder {
@@ -315,7 +313,7 @@ class EndlessService : Service(), SensorEventListener {
             .setSmallIcon(R.mipmap.ic_launcher)
             .setTicker("Ticker text")
             .setSilent(true)
-            .setPriority(Notification.PRIORITY_HIGH) // for under android 26 compatibility
+            .setPriority(NotificationManagerCompat.IMPORTANCE_HIGH) // for under android 26 compatibility
 
     }
     override fun onBind(intent: Intent): IBinder? {
