@@ -11,6 +11,7 @@ import android.hardware.SensorEvent
 import android.hardware.SensorEventListener
 import android.hardware.SensorManager
 import android.media.AudioManager
+import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.provider.Settings
@@ -26,6 +27,7 @@ import androidx.core.app.NotificationManagerCompat
 import com.example.traningtimer.traningService.*
 import java.text.SimpleDateFormat
 import java.util.*
+
 
 const val EXTRA_BUTTON_1 = "button1"
 const val TAG = "myMain"
@@ -49,13 +51,15 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, SensorEventListe
     private lateinit var button8: Button            // Кнопка для подхода
     private lateinit var button9: Button            // Кнопка для подхода
     private lateinit var button10: Button           // Кнопка для подхода                              ///
-    var arrayButtons = ArrayList<Button>()          // Массив для хранения кнопок подходов             ///
+    private var arrayButtons = ArrayList<Button>()  // Массив для хранения кнопок подходов             ///
     private lateinit var buttonReport: Button       // Кнопка для формирования отчета о тренировке     ///
     private lateinit var buttonReset: Button        // Кнопка сброса состояния тренировки              ///
     private lateinit var buttonTime: Button         // Кнопка сохранения времени таймера               ///
     private lateinit var buttonStart: Button        // Кнопка запуска сервиса                          ///
     private lateinit var buttonStop: Button         // Кнопка остановки сервиса                        ///
     private lateinit var buttonStopAlarm: Button    // Кнопка отмены таймера                           ///
+    private lateinit var button3minTimer: Button    // Выбор времени таймера 2 мин                     ///
+    private lateinit var button4minTimer: Button    // Выбор времени таймера 3 мин                     ///
     // Кнопки ////////////////////////////////////////////////////////////////////////////////////////////
 
     // Переменные для датчика положения
@@ -88,6 +92,16 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, SensorEventListe
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+
+        startActivity(
+            Intent(
+                Settings.ACTION_REQUEST_IGNORE_BATTERY_OPTIMIZATIONS, Uri.parse(
+                    "package:$packageName"
+                )
+            )
+        )
+
 
         // Инициализируем все переменные
         init()
@@ -135,9 +149,9 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, SensorEventListe
         xyView = findViewById(R.id.xyValue)
         xzView = findViewById(R.id.xzValue)
         zyView = findViewById(R.id.zyValue)
-        mSensorManager = getSystemService(SENSOR_SERVICE) as SensorManager
-        mOrientation = mSensorManager.getDefaultSensor(Sensor.TYPE_ORIENTATION)
-        mSensorManager.registerListener(this, mOrientation, SensorManager.SENSOR_DELAY_UI)
+        //mSensorManager = getSystemService(SENSOR_SERVICE) as SensorManager
+        //mOrientation = mSensorManager.getDefaultSensor(Sensor.TYPE_ORIENTATION)
+        //mSensorManager.registerListener(this, mOrientation, SensorManager.SENSOR_DELAY_UI)
 
         editTextTime = findViewById(R.id.editTextTime)
         editTextTime.setText(sharedPreferences?.getInt(SHARED_TRAINING_TIME, 0).toString())
@@ -187,7 +201,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, SensorEventListe
             }
             val intent = Intent(Intent.ACTION_SEND)
             intent.type = "text/plain"
-            intent.setPackage("com.google.android.keep");
+            intent.setPackage("com.google.android.keep")
             intent.putExtra(Intent.EXTRA_TEXT, string)
             startActivity(intent)
         }
@@ -241,6 +255,25 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, SensorEventListe
         buttonStopAlarm.setOnClickListener {
             actionOnService(Actions.STOP_ALARM)
         }
+
+        button3minTimer = findViewById(R.id.button3minTimer)
+        button3minTimer.isEnabled = false
+        button3minTimer.setOnClickListener {
+            button3minTimer.isEnabled = false
+            button4minTimer.isEnabled = true
+            val editor = sharedPreferences?.edit()
+            editor?.putInt(SHARED_TRAINING_TIME, 180)
+            editor?.apply()
+        }
+
+        button4minTimer = findViewById(R.id.button4minTimer)
+        button4minTimer.setOnClickListener {
+            button3minTimer.isEnabled = true
+            button4minTimer.isEnabled = false
+            val editor = sharedPreferences?.edit()
+            editor?.putInt(SHARED_TRAINING_TIME, 240)
+            editor?.apply()
+        }
     }
 
     private fun setTestAlarm() {
@@ -288,7 +321,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, SensorEventListe
 
     private val receiver = object : BroadcastReceiver() {
         override fun onReceive(context: Context?, intent: Intent?) {
-            val startAlarm = intent?.getIntExtra(com.example.traningtimer.SET_ALARM, 0)
+            val startAlarm = intent?.getIntExtra(SET_ALARM, 0)
             if (startAlarm == 100) {
                 Toast.makeText(context, "Сработала тревога", Toast.LENGTH_SHORT).show()
                 setTestAlarm()
@@ -333,15 +366,8 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, SensorEventListe
 
     override fun onResume() {
         super.onResume()
-        mSensorManager.registerListener(this, mOrientation, SensorManager.SENSOR_DELAY_UI)
+        //mSensorManager.registerListener(this, mOrientation, SensorManager.SENSOR_DELAY_UI)
     }
-
-    override fun onStop() {
-        super.onStop()
-        mSensorManager.unregisterListener(this)
-    }
-
-
 
     override fun onDestroy() {
         super.onDestroy()
@@ -353,6 +379,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, SensorEventListe
         }
         unregisterReceiver(receiver)
         setRingerModeMine(AudioManager.RINGER_MODE_SILENT)
+        //mSensorManager.unregisterListener(this)
     }
 
     override fun onAccuracyChanged(sensor: Sensor?, accuracy: Int) {
