@@ -27,6 +27,8 @@ private const val MODE_WAITING = 0
 private const val MODE_ALARM_SET = 1
 
 class EndlessService : Service(), SensorEventListener {
+    // Флаг звонка при времени сигнала об 30 секундах до подхода
+    var flagBeep = false
 
     // Переменные датчика положения
     private lateinit var mSensorManager: SensorManager
@@ -164,6 +166,15 @@ class EndlessService : Service(), SensorEventListener {
         } else if (mode == MODE_ALARM_SET) {
             val a = (timeToAlarm.timeInMillis - Calendar.getInstance().timeInMillis) / 1000
             updateNotification("$a")
+
+            if (a < 30 && !flagBeep) {
+                ringtone.play()
+                flagBeep = true
+            }
+
+            if (a < 29 && ringtone.isPlaying) {
+                ringtone.stop()
+            }
         }
     }
 

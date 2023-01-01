@@ -11,20 +11,21 @@ import android.hardware.SensorEvent
 import android.hardware.SensorEventListener
 import android.hardware.SensorManager
 import android.media.AudioManager
-import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.provider.Settings
 import android.view.View
 import android.widget.Button
-import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.NotificationManagerCompat
-import com.example.traningtimer.traningService.*
+import com.example.traningtimer.traningService.Actions
+import com.example.traningtimer.traningService.EndlessService
+import com.example.traningtimer.traningService.ServiceState
+import com.example.traningtimer.traningService.getServiceState
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -54,7 +55,6 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, SensorEventListe
     private var arrayButtons = ArrayList<Button>()  // Массив для хранения кнопок подходов             ///
     private lateinit var buttonReport: Button       // Кнопка для формирования отчета о тренировке     ///
     private lateinit var buttonReset: Button        // Кнопка сброса состояния тренировки              ///
-    private lateinit var buttonTime: Button         // Кнопка сохранения времени таймера               ///
     private lateinit var buttonStart: Button        // Кнопка запуска сервиса                          ///
     private lateinit var buttonStop: Button         // Кнопка остановки сервиса                        ///
     private lateinit var buttonStopAlarm: Button    // Кнопка отмены таймера                           ///
@@ -77,8 +77,6 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, SensorEventListe
     private lateinit var notificationManagerCompat: NotificationManagerCompat
 
     private lateinit var alarmManager: AlarmManager
-
-    private lateinit var editTextTime: EditText
 
     private lateinit var resultLauncher: ActivityResultLauncher<Intent>
 
@@ -140,12 +138,9 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, SensorEventListe
         xyView = findViewById(R.id.xyValue)
         xzView = findViewById(R.id.xzValue)
         zyView = findViewById(R.id.zyValue)
-        //mSensorManager = getSystemService(SENSOR_SERVICE) as SensorManager
-        //mOrientation = mSensorManager.getDefaultSensor(Sensor.TYPE_ORIENTATION)
-        //mSensorManager.registerListener(this, mOrientation, SensorManager.SENSOR_DELAY_UI)
-
-        editTextTime = findViewById(R.id.editTextTime)
-        editTextTime.setText(sharedPreferences?.getInt(SHARED_TRAINING_TIME, 0).toString())
+        mSensorManager = getSystemService(SENSOR_SERVICE) as SensorManager
+        mOrientation = mSensorManager.getDefaultSensor(Sensor.TYPE_ORIENTATION)
+        mSensorManager.registerListener(this, mOrientation, SensorManager.SENSOR_DELAY_UI)
     }
 
     private fun initButtons() {
@@ -209,12 +204,6 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, SensorEventListe
                 arrayButtons[a-1].text = a.toString()
                 arrayButtons[a-1].setTextColor(Color.BLACK)
             }
-            // Так как мы очистили SharedPreferences полностью
-            // То время таймера тоже удаляется
-            // Поэтому пересохраняем время таймера
-            editor?.putInt(SHARED_TRAINING_TIME, editTextTime.text.toString().toInt())
-            editor?.apply()
-            Toast.makeText(this, "Выполнено", Toast.LENGTH_SHORT).show()
         }
 
         buttonStop = findViewById(R.id.buttonStop)
@@ -227,14 +216,6 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, SensorEventListe
             }
             setRingerModeMine(AudioManager.RINGER_MODE_SILENT)
             finish()
-        }
-
-        buttonTime = findViewById(R.id.buttonTime)
-        buttonTime.setOnClickListener {
-            val editor = sharedPreferences?.edit()
-            editor?.putInt(SHARED_TRAINING_TIME, editTextTime.text.toString().toInt())
-            editor?.apply()
-            Toast.makeText(this, "Выполнено", Toast.LENGTH_SHORT).show()
         }
 
         buttonStart = findViewById(R.id.buttonStart)
@@ -271,7 +252,6 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, SensorEventListe
         if (sharedPreferences != null) {
             timeTraining = sharedPreferences!!.getInt(SHARED_TRAINING_TIME, 0)
         }
-        editTextTime.setText(timeTraining.toString())
         val calendar = Calendar.getInstance().timeInMillis + (timeTraining * 1000)
         val calendar2 = Calendar.getInstance()
         calendar2.timeInMillis = calendar
@@ -357,7 +337,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, SensorEventListe
 
     override fun onResume() {
         super.onResume()
-        //mSensorManager.registerListener(this, mOrientation, SensorManager.SENSOR_DELAY_UI)
+        mSensorManager.registerListener(this, mOrientation, SensorManager.SENSOR_DELAY_UI)
     }
 
     override fun onDestroy() {

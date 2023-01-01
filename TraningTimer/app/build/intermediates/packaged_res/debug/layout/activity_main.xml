@@ -187,32 +187,18 @@
                 android:insetBottom="0dp"
                 android:textSize="6sp"
                 android:text="@string/ButtonStop"/>
-            <Button
-                android:id="@+id/buttonTime"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_marginRight="5dp"
-                android:layout_weight="1"
-                android:insetTop="0dp"
-                android:insetBottom="0dp"
-                android:textSize="6sp"
-                android:text="save"/>
+
             <Button
                 android:id="@+id/buttonStopAlarm"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:insetTop="0dp"
+                android:layout_marginRight="5dp"
                 android:insetBottom="0dp"
                 android:text="stop\nalarm"
                 android:textSize="5sp"/>
-            <EditText
-                android:inputType="number"
-                android:id="@+id/editTextTime"
-                android:layout_width="0dp"
-                android:gravity="center"
-                android:layout_height="match_parent"
-                android:layout_weight="1"/>
+
             <Button
                 android:id="@+id/button3minTimer"
                 android:layout_width="0dp"

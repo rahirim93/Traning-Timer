@@ -2766,7 +2766,6 @@ int id buttonReset 0x7f08007c
 int id buttonStart 0x7f08007d
 int id buttonStop 0x7f08007e
 int id buttonStopAlarm 0x7f08007f
-int id buttonTime 0x7f080080
 int id cache_measures 0x7f080081
 int id callMeasure 0x7f080082
 int id cancel_button 0x7f080083
@@ -2838,7 +2837,6 @@ int id easeIn 0x7f0800c4
 int id easeInOut 0x7f0800c5
 int id easeOut 0x7f0800c6
 int id east 0x7f0800c7
-int id editTextTime 0x7f0800c8
 int id edit_query 0x7f0800c9
 int id elastic 0x7f0800ca
 int id embed 0x7f0800cb

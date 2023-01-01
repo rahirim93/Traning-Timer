@@ -38,8 +38,6 @@ id buttonReset
 id buttonStart
 id buttonStop
 id buttonStopAlarm
-id buttonTime
-id editTextTime
 id gridLayout
 id seekBar
 id textView

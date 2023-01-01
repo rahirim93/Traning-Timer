@@ -2767,7 +2767,6 @@ id buttonReset
 id buttonStart
 id buttonStop
 id buttonStopAlarm
-id buttonTime
 id cache_measures
 id callMeasure
 id cancel_button
@@ -2839,7 +2838,6 @@ id easeIn
 id easeInOut
 id easeOut
 id east
-id editTextTime
 id edit_query
 id elastic
 id embed
