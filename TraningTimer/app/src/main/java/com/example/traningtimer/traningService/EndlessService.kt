@@ -27,8 +27,12 @@ private const val MODE_WAITING = 0
 private const val MODE_ALARM_SET = 1
 
 class EndlessService : Service(), SensorEventListener {
+    // Переменные для функции однократного срабатывания звонка
+    // за 30 секунд до окончания отдыха (время может меняться)
     // Флаг звонка при времени сигнала об 30 секундах до подхода
     var flagBeep = false
+    // Время до окончания подхода для срабатывания однократного звонка
+    var timeBeep = 30
 
     // Переменные датчика положения
     private lateinit var mSensorManager: SensorManager
@@ -61,8 +65,10 @@ class EndlessService : Service(), SensorEventListener {
 
     private var counter: Long = 0
 
-    private lateinit var ringtone: Ringtone
-    private lateinit var notificationUri: Uri
+    private lateinit var ringtone: Ringtone         // Для основного звонка
+    private lateinit var notificationUri: Uri       // Для основного звонка
+    private lateinit var ringtoneBeep: Ringtone     // Для единократного за 30 сек до подхода звонка
+    private lateinit var notificationUriBeep: Uri   // Для единократного за 30 сек до подхода звонка
 
 
     // Счетчик времени работы сервиса без запуска приложения
@@ -78,9 +84,14 @@ class EndlessService : Service(), SensorEventListener {
     override fun onCreate() {
         super.onCreate()
         counter = Calendar.getInstance().timeInMillis
+
         notificationManagerCompat = NotificationManagerCompat.from(this)
+
         notificationUri = Uri.parse("content://media/internal/audio/media/119?title=Beep-Beep&canonical=1")
         ringtone = RingtoneManager.getRingtone(this, notificationUri)
+        notificationUriBeep = Uri.parse("content://media/internal/audio/media/119?title=Beep_Once&canonical=1")
+        ringtoneBeep = RingtoneManager.getRingtone(this, notificationUriBeep)
+
         builder = createNotification()
         val notification = createNotification().build()
         startForeground(1, notification)
@@ -164,16 +175,17 @@ class EndlessService : Service(), SensorEventListener {
 //                }
             }
         } else if (mode == MODE_ALARM_SET) {
-            val a = (timeToAlarm.timeInMillis - Calendar.getInstance().timeInMillis) / 1000
-            updateNotification("$a")
+            val a = (timeToAlarm.timeInMillis - Calendar.getInstance().timeInMillis) / 1000.0
+            updateNotification("${a.toInt()}")
 
-            if (a < 30 && !flagBeep) {
-                ringtone.play()
+            if (a < timeBeep && a > timeBeep - 1 && !flagBeep) {
+                ringtoneBeep.play()
                 flagBeep = true
             }
 
-            if (a < 29 && ringtone.isPlaying) {
-                ringtone.stop()
+            if (a < timeBeep - 1 && ringtoneBeep.isPlaying) {
+                ringtoneBeep.stop()
+                flagBeep = false
             }
         }
     }
