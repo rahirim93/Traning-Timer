@@ -14,6 +14,7 @@ import android.media.AudioManager
 import android.os.Build
 import android.os.Bundle
 import android.provider.Settings
+import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.TextView
@@ -22,10 +23,13 @@ import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.NotificationManagerCompat
+import androidx.lifecycle.Observer
+import com.example.traningtimer.database.TrainingEntity
 import com.example.traningtimer.traningService.Actions
 import com.example.traningtimer.traningService.EndlessService
 import com.example.traningtimer.traningService.ServiceState
 import com.example.traningtimer.traningService.getServiceState
+import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -86,6 +90,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, SensorEventListe
 
     private lateinit var pendingIntent: PendingIntent // Для поиска будильника
 
+    private val mainViewModel: MainViewModel by viewModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -103,6 +108,11 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, SensorEventListe
 
         // При запуске переключаем на громкий режим
         setRingerModeMine(AudioManager.RINGER_MODE_NORMAL)
+
+        val databaseObserver = Observer<List<TrainingEntity>> {
+            Log.d("observerMine", it.size.toString())
+        }
+        mainViewModel.allLiveData.observe(this, databaseObserver)
     }
 
     private fun init() {

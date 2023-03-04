@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.traningtimer.app-mergeDebugResources-27:/values-h720dp-v13/values-h720dp-v13.xml",
+            "outputFile": "com.example.traningtimer.app-mergeDebugResources-37:/values-h720dp-v13/values-h720dp-v13.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\Viacheslav\\.gradle\\caches\\transforms-3\\ba9c93f2d016945cca8db9870dfebc1e\\transformed\\appcompat-1.5.1\\res\\values-h720dp-v13\\values-h720dp-v13.xml",
+                    "source": "C:\\Users\\Viacheslav\\.gradle\\caches\\transforms-3\\10721da65f20075e1e7ee43161f80a4f\\transformed\\appcompat-1.6.1\\res\\values-h720dp-v13\\values-h720dp-v13.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
