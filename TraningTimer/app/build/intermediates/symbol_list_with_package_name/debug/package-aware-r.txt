@@ -2928,9 +2928,15 @@ id button9
 id buttonPanel
 id buttonReport
 id buttonReset
+id buttonResetSettings
 id buttonStart
 id buttonStop
 id buttonStopAlarm
+id buttonType1
+id buttonType2
+id buttonType3
+id buttonWeight0
+id buttonWeight16
 id cache_measures
 id callMeasure
 id cancel_button

@@ -64,6 +64,9 @@ public final class ActivityMainBinding implements ViewBinding {
   public final Button buttonReset;
 
   @NonNull
+  public final Button buttonResetSettings;
+
+  @NonNull
   public final Button buttonStart;
 
   @NonNull
@@ -71,6 +74,21 @@ public final class ActivityMainBinding implements ViewBinding {
 
   @NonNull
   public final Button buttonStopAlarm;
+
+  @NonNull
+  public final Button buttonType1;
+
+  @NonNull
+  public final Button buttonType2;
+
+  @NonNull
+  public final Button buttonType3;
+
+  @NonNull
+  public final Button buttonWeight0;
+
+  @NonNull
+  public final Button buttonWeight16;
 
   @NonNull
   public final GridLayout gridLayout;
@@ -89,8 +107,10 @@ public final class ActivityMainBinding implements ViewBinding {
       @NonNull Button button3minTimer, @NonNull Button button4, @NonNull Button button4minTimer,
       @NonNull Button button5, @NonNull Button button6, @NonNull Button button7,
       @NonNull Button button8, @NonNull Button button9, @NonNull Button buttonReport,
-      @NonNull Button buttonReset, @NonNull Button buttonStart, @NonNull Button buttonStop,
-      @NonNull Button buttonStopAlarm, @NonNull GridLayout gridLayout, @NonNull TextView xyValue,
+      @NonNull Button buttonReset, @NonNull Button buttonResetSettings, @NonNull Button buttonStart,
+      @NonNull Button buttonStop, @NonNull Button buttonStopAlarm, @NonNull Button buttonType1,
+      @NonNull Button buttonType2, @NonNull Button buttonType3, @NonNull Button buttonWeight0,
+      @NonNull Button buttonWeight16, @NonNull GridLayout gridLayout, @NonNull TextView xyValue,
       @NonNull TextView xzValue, @NonNull TextView zyValue) {
     this.rootView = rootView;
     this.button1 = button1;
@@ -107,9 +127,15 @@ public final class ActivityMainBinding implements ViewBinding {
     this.button9 = button9;
     this.buttonReport = buttonReport;
     this.buttonReset = buttonReset;
+    this.buttonResetSettings = buttonResetSettings;
     this.buttonStart = buttonStart;
     this.buttonStop = buttonStop;
     this.buttonStopAlarm = buttonStopAlarm;
+    this.buttonType1 = buttonType1;
+    this.buttonType2 = buttonType2;
+    this.buttonType3 = buttonType3;
+    this.buttonWeight0 = buttonWeight0;
+    this.buttonWeight16 = buttonWeight16;
     this.gridLayout = gridLayout;
     this.xyValue = xyValue;
     this.xzValue = xzValue;
@@ -227,6 +253,12 @@ public final class ActivityMainBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.buttonResetSettings;
+      Button buttonResetSettings = ViewBindings.findChildViewById(rootView, id);
+      if (buttonResetSettings == null) {
+        break missingId;
+      }
+
       id = R.id.buttonStart;
       Button buttonStart = ViewBindings.findChildViewById(rootView, id);
       if (buttonStart == null) {
@@ -242,6 +274,36 @@ public final class ActivityMainBinding implements ViewBinding {
       id = R.id.buttonStopAlarm;
       Button buttonStopAlarm = ViewBindings.findChildViewById(rootView, id);
       if (buttonStopAlarm == null) {
+        break missingId;
+      }
+
+      id = R.id.buttonType1;
+      Button buttonType1 = ViewBindings.findChildViewById(rootView, id);
+      if (buttonType1 == null) {
+        break missingId;
+      }
+
+      id = R.id.buttonType2;
+      Button buttonType2 = ViewBindings.findChildViewById(rootView, id);
+      if (buttonType2 == null) {
+        break missingId;
+      }
+
+      id = R.id.buttonType3;
+      Button buttonType3 = ViewBindings.findChildViewById(rootView, id);
+      if (buttonType3 == null) {
+        break missingId;
+      }
+
+      id = R.id.buttonWeight0;
+      Button buttonWeight0 = ViewBindings.findChildViewById(rootView, id);
+      if (buttonWeight0 == null) {
+        break missingId;
+      }
+
+      id = R.id.buttonWeight16;
+      Button buttonWeight16 = ViewBindings.findChildViewById(rootView, id);
+      if (buttonWeight16 == null) {
         break missingId;
       }
 
@@ -271,7 +333,8 @@ public final class ActivityMainBinding implements ViewBinding {
 
       return new ActivityMainBinding((LinearLayout) rootView, button1, button10, button2, button3,
           button3minTimer, button4, button4minTimer, button5, button6, button7, button8, button9,
-          buttonReport, buttonReset, buttonStart, buttonStop, buttonStopAlarm, gridLayout, xyValue,
+          buttonReport, buttonReset, buttonResetSettings, buttonStart, buttonStop, buttonStopAlarm,
+          buttonType1, buttonType2, buttonType3, buttonWeight0, buttonWeight16, gridLayout, xyValue,
           xzValue, zyValue);
     }
     String missingId = rootView.getResources().getResourceName(id);

@@ -14,4 +14,16 @@ class TrainingTypeConverters {
     fun fromUUID(uuid: UUID?): String? {
         return uuid?.toString()
     }
+
+    @TypeConverter
+    fun toCalendar(dateInMillis: Long): Calendar {
+        val calendar = Calendar.getInstance()
+        calendar.timeInMillis = dateInMillis
+        return calendar
+    }
+
+    @TypeConverter
+    fun fromCalendar(dateCalendar: Calendar): Long {
+        return dateCalendar.timeInMillis
+    }
 }

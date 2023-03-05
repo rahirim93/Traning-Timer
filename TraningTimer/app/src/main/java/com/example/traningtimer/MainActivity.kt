@@ -25,6 +25,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.NotificationManagerCompat
 import androidx.lifecycle.Observer
 import com.example.traningtimer.database.TrainingEntity
+import com.example.traningtimer.databinding.ActivityMainBinding
 import com.example.traningtimer.traningService.Actions
 import com.example.traningtimer.traningService.EndlessService
 import com.example.traningtimer.traningService.ServiceState
@@ -41,7 +42,9 @@ const val BROADCAST_ACTION = "broadcastAction"
 const val SHARED_TRAINING_TIME = "training time"
 const val SET_ALARM = "setAlarm"
 
-
+/**
+ * <
+ */
 
 class MainActivity : AppCompatActivity(), View.OnClickListener, SensorEventListener {
 
@@ -57,6 +60,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, SensorEventListe
     private lateinit var button9: Button            // Кнопка для подхода
     private lateinit var button10: Button           // Кнопка для подхода                              ///
     private var arrayButtons = ArrayList<Button>()  // Массив для хранения кнопок подходов             ///
+    private var arrayButtonsWeightType = ArrayList<Button>()  // Массив для хранения кнопок веса и типа///
     private lateinit var buttonReport: Button       // Кнопка для формирования отчета о тренировке     ///
     private lateinit var buttonReset: Button        // Кнопка сброса состояния тренировки              ///
     private lateinit var buttonStart: Button        // Кнопка запуска сервиса                          ///
@@ -92,9 +96,12 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, SensorEventListe
 
     private val mainViewModel: MainViewModel by viewModel()
 
+    private lateinit var binding: ActivityMainBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
 
         // Инициализируем все переменные
@@ -110,9 +117,24 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, SensorEventListe
         setRingerModeMine(AudioManager.RINGER_MODE_NORMAL)
 
         val databaseObserver = Observer<List<TrainingEntity>> {
-            Log.d("observerMine", it.size.toString())
+            if (it.isNotEmpty()) {
+                Log.d("observerMine", it.size.toString())
+                val item = it[0]
+                Log.d("TrainingEntity", item.id.toString())
+                Log.d("TrainingEntity", item.date.time.toString())
+                val data = item.count.split(";")
+                Log.d("TrainingEntity", data.size.toString())
+                data.forEachIndexed { index, s ->
+                    if (index != data.size - 1) {
+                        val data1 = s.split(".")
+                        Log.d("TrainingEntity", "Подход: ${data1[0]}. Кол-во: ${data1[1]}")
+                    }
+                }
+            }
         }
         mainViewModel.allLiveData.observe(this, databaseObserver)
+
+        Toast.makeText(this, "${mainViewModel.weight} ${mainViewModel.type}", Toast.LENGTH_LONG).show()
     }
 
     private fun init() {
@@ -154,6 +176,53 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, SensorEventListe
     }
 
     private fun initButtons() {
+        binding.buttonType1.setOnClickListener {
+            binding.buttonType2.visibility = View.GONE
+            binding.buttonType3.visibility = View.GONE
+            binding.buttonType1.isEnabled = false
+            mainViewModel.type = 1
+        }
+        binding.buttonType2.setOnClickListener {
+            binding.buttonType1.visibility = View.GONE
+            binding.buttonType3.visibility = View.GONE
+            binding.buttonType2.isEnabled = false
+            mainViewModel.type = 2
+        }
+        binding.buttonType3.setOnClickListener {
+            binding.buttonType1.visibility = View.GONE
+            binding.buttonType2.visibility = View.GONE
+            binding.buttonType3.isEnabled = false
+            mainViewModel.type = 3
+        }
+        binding.buttonWeight0.setOnClickListener {
+            binding.buttonWeight16.visibility = View.GONE
+            binding.buttonWeight0.isEnabled = false
+            mainViewModel.weight = 0
+        }
+        binding.buttonWeight16.setOnClickListener {
+            binding.buttonWeight0.visibility = View.GONE
+            binding.buttonWeight16.isEnabled = false
+            mainViewModel.weight = 16
+        }
+        binding.buttonResetSettings.setOnClickListener {
+            Toast.makeText(this, "clicked", Toast.LENGTH_SHORT).show()
+            binding.buttonType1.visibility = View.VISIBLE
+            binding.buttonType2.visibility = View.VISIBLE
+            binding.buttonType3.visibility = View.VISIBLE
+            binding.buttonWeight0.visibility = View.VISIBLE
+            binding.buttonWeight16.visibility = View.VISIBLE
+
+            binding.buttonType1.isEnabled = true
+            binding.buttonType2.isEnabled = true
+            binding.buttonType3.isEnabled = true
+            binding.buttonWeight16.isEnabled = true
+            binding.buttonWeight0.isEnabled = true
+
+            mainViewModel.type = -1
+            mainViewModel.weight = -1
+
+        }
+
         button1 = findViewById(R.id.button1)
         button2 = findViewById(R.id.button2)
         button3 = findViewById(R.id.button3)
@@ -181,25 +250,57 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, SensorEventListe
             }
         }
 
+        arrayButtonsWeightType.apply {
+            if (arrayButtonsWeightType.isEmpty()) {
+                add(binding.buttonType1)
+                add(binding.buttonType2)
+                add(binding.buttonType3)
+                add(binding.buttonWeight0)
+                add(binding.buttonWeight16)
+            }
+            // Перебираем и подгружаем состояние
+            forEach {
+                it.apply {
+                    isEnabled = sharedPreferences!!.getBoolean("${it.id}E", true)
+                    visibility = sharedPreferences!!.getInt("${it.id}V", View.VISIBLE)
+                }
+            }
+        }
+
         buttonReport = findViewById(R.id.buttonReport)
         buttonReport.setOnClickListener {
+            if (mainViewModel.weight == -1 || mainViewModel.type == -1) {
+                Toast.makeText(this, "Выберете тип тренировки и вес.", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
             buttonReset.isEnabled = true
-            var string = ""
+            var stringForGoogleKeeps = ""
+            var stringForDatabase = ""
             var counter = 0
 
             val date = SimpleDateFormat("dd.MM.yyyy", Locale.getDefault())
                 .format(Calendar.getInstance().time)
-            string = string + date + "\n"
+            stringForGoogleKeeps = stringForGoogleKeeps + date + "\n"
 
             for (i in 1..arrayButtons.size) {
                 counter += arrayButtons[i-1].text.toString().toInt()
-                string = string + "$i - ${arrayButtons[i-1].text} $counter 3" + "\n"
+                stringForGoogleKeeps = stringForGoogleKeeps + "$i - ${arrayButtons[i-1].text} $counter 3" + "\n"
+                stringForDatabase += "$i.${arrayButtons[i - 1].text};"
             }
             val intent = Intent(Intent.ACTION_SEND)
             intent.type = "text/plain"
             intent.setPackage("com.google.android.keep")
-            intent.putExtra(Intent.EXTRA_TEXT, string)
+            intent.putExtra(Intent.EXTRA_TEXT, stringForGoogleKeeps)
             startActivity(intent)
+
+            mainViewModel
+                .addTraining(
+                    TrainingEntity(
+                        date = Calendar.getInstance(),
+                        count = stringForDatabase,
+                        weight = mainViewModel.weight,
+                        type = mainViewModel.type)
+                )
         }
 
         buttonReset = findViewById(R.id.buttonReset)
@@ -354,16 +455,40 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, SensorEventListe
         super.onDestroy()
         arrayButtons.forEach {
             val editor = sharedPreferences?.edit()
-            editor?.putString("${it.id}", it.text.toString())
-            editor?.putInt("${it.id}C", it.currentTextColor)
+            // Сохранение состояния кнопок от 1 до 10
+            editor?.putString("${it.id}", it.text.toString()) // Сохранение количество раз
+            editor?.putInt("${it.id}C", it.currentTextColor) // Сохранение цвета
             editor?.apply()
         }
+
+        // Сохранение состояния кнопок выбора веса и типа тренировки.
+        // Добавляем их в массив
+        arrayButtonsWeightType.apply {
+            if (arrayButtonsWeightType.isEmpty()) {
+                add(binding.buttonType1)
+                add(binding.buttonType2)
+                add(binding.buttonType3)
+                add(binding.buttonWeight0)
+                add(binding.buttonWeight16)
+            }
+            // Перебираем и сохраняем состояние
+            forEach {
+                val editor = sharedPreferences?.edit()
+                editor?.apply {
+                    putBoolean("${it.id}E", it.isEnabled) // Состояние isEnabled
+                    putInt("${it.id}V", it.visibility) // Состояние visibility
+                }
+                editor?.apply()
+            }
+        }
+
+
         unregisterReceiver(receiver)
         setRingerModeMine(AudioManager.RINGER_MODE_SILENT)
         //mSensorManager.unregisterListener(this)
         val date = Intent()
         setResult(Activity.RESULT_OK, date)
-        finish()
+        //finish() #todo зачем здесть эта строчка
     }
 
     override fun onAccuracyChanged(sensor: Sensor?, accuracy: Int) {

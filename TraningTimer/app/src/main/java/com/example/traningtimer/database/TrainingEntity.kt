@@ -26,6 +26,7 @@ import java.util.*
 @Entity(tableName = "training_table")
 data class TrainingEntity(
     @PrimaryKey var id: UUID = UUID.randomUUID(),
+    var date: Calendar,
     var count: String,
     var weight: Int,
     var type: Int)

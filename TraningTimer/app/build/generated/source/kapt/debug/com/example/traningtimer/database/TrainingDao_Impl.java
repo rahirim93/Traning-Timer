@@ -15,6 +15,7 @@ import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Collections;
 import java.util.List;
 import java.util.UUID;
@@ -35,7 +36,7 @@ public final class TrainingDao_Impl implements TrainingDao {
     this.__insertionAdapterOfTrainingEntity = new EntityInsertionAdapter<TrainingEntity>(__db) {
       @Override
       public String createQuery() {
-        return "INSERT OR ABORT INTO `training_table` (`id`,`count`,`weight`,`type`) VALUES (?,?,?,?)";
+        return "INSERT OR ABORT INTO `training_table` (`id`,`date`,`count`,`weight`,`type`) VALUES (?,?,?,?,?)";
       }
 
       @Override
@@ -46,13 +47,15 @@ public final class TrainingDao_Impl implements TrainingDao {
         } else {
           stmt.bindString(1, _tmp);
         }
+        final long _tmp_1 = __trainingTypeConverters.fromCalendar(value.getDate());
+        stmt.bindLong(2, _tmp_1);
         if (value.getCount() == null) {
-          stmt.bindNull(2);
+          stmt.bindNull(3);
         } else {
-          stmt.bindString(2, value.getCount());
+          stmt.bindString(3, value.getCount());
         }
-        stmt.bindLong(3, value.getWeight());
-        stmt.bindLong(4, value.getType());
+        stmt.bindLong(4, value.getWeight());
+        stmt.bindLong(5, value.getType());
       }
     };
     this.__preparedStmtOfDeleteAll = new SharedSQLiteStatement(__db) {
@@ -100,6 +103,7 @@ public final class TrainingDao_Impl implements TrainingDao {
         final Cursor _cursor = DBUtil.query(__db, _statement, false, null);
         try {
           final int _cursorIndexOfId = CursorUtil.getColumnIndexOrThrow(_cursor, "id");
+          final int _cursorIndexOfDate = CursorUtil.getColumnIndexOrThrow(_cursor, "date");
           final int _cursorIndexOfCount = CursorUtil.getColumnIndexOrThrow(_cursor, "count");
           final int _cursorIndexOfWeight = CursorUtil.getColumnIndexOrThrow(_cursor, "weight");
           final int _cursorIndexOfType = CursorUtil.getColumnIndexOrThrow(_cursor, "type");
@@ -114,6 +118,10 @@ public final class TrainingDao_Impl implements TrainingDao {
               _tmp = _cursor.getString(_cursorIndexOfId);
             }
             _tmpId = __trainingTypeConverters.toUUID(_tmp);
+            final Calendar _tmpDate;
+            final long _tmp_1;
+            _tmp_1 = _cursor.getLong(_cursorIndexOfDate);
+            _tmpDate = __trainingTypeConverters.toCalendar(_tmp_1);
             final String _tmpCount;
             if (_cursor.isNull(_cursorIndexOfCount)) {
               _tmpCount = null;
@@ -124,7 +132,7 @@ public final class TrainingDao_Impl implements TrainingDao {
             _tmpWeight = _cursor.getInt(_cursorIndexOfWeight);
             final int _tmpType;
             _tmpType = _cursor.getInt(_cursorIndexOfType);
-            _item = new TrainingEntity(_tmpId,_tmpCount,_tmpWeight,_tmpType);
+            _item = new TrainingEntity(_tmpId,_tmpDate,_tmpCount,_tmpWeight,_tmpType);
             _result.add(_item);
           }
           return _result;
