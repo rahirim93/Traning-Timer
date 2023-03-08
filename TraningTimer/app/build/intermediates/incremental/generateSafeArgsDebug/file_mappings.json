@@ -1,1 +1,1 @@
-[{"navFile":"src\\main\\res\\navigation\\nav_graph.xml","javaFiles":["com.example.traningtimer.ui.launch.LaunchFragmentDirections"]}]
+[{"navFile":"src\\main\\res\\navigation\\nav_graph.xml","javaFiles":["com.example.traningtimer.ui.launch.LaunchFragmentDirections","com.example.traningtimer.ui.main.MainFragmentDirections"]}]

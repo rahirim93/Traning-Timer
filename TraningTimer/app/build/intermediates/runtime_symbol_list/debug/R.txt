@@ -3276,6 +3276,7 @@ int id search_view_status_bar_spacer 0x7f0801a8
 int id search_view_toolbar 0x7f0801a9
 int id search_view_toolbar_container 0x7f0801aa
 int id search_voice_btn 0x7f0801ab
+int id secondFragment 0x7f080222
 int id seekBar 0x7f0801ac
 int id select_dialog_listview 0x7f0801ad
 int id selected 0x7f0801ae
@@ -3356,6 +3357,7 @@ int id title 0x7f0801f8
 int id titleDividerNoCustom 0x7f0801f9
 int id title_template 0x7f0801fa
 int id toMainFragment 0x7f0801fb
+int id toSecondFragment 0x7f080223
 int id toggle 0x7f0801fc
 int id top 0x7f0801fd
 int id topPanel 0x7f0801fe

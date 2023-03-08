@@ -15,5 +15,13 @@
     <fragment
         android:id="@+id/mainFragment"
         android:name="com.example.traningtimer.ui.main.MainFragment"
-        android:label="@string/app_name"/>
+        android:label="@string/app_name">
+        <action
+            android:id="@+id/toSecondFragment"
+            app:destination="@id/secondFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/secondFragment"
+        android:name="com.example.traningtimer.ui.second.SecondFragment"
+        android:label="SecondFragment" />
 </navigation>

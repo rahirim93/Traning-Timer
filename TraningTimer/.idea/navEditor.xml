@@ -19,7 +19,7 @@
                         </option>
                         <option name="myPositions">
                           <map>
-                            <entry key="action_launchFragment_to_mainFragment">
+                            <entry key="toMainFragment">
                               <value>
                                 <LayoutPositions />
                               </value>

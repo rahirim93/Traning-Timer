@@ -3277,6 +3277,7 @@ id search_view_status_bar_spacer
 id search_view_toolbar
 id search_view_toolbar_container
 id search_voice_btn
+id secondFragment
 id seekBar
 id select_dialog_listview
 id selected
@@ -3357,6 +3358,7 @@ id title
 id titleDividerNoCustom
 id title_template
 id toMainFragment
+id toSecondFragment
 id toggle
 id top
 id topPanel

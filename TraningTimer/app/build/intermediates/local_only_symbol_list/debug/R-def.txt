@@ -49,9 +49,11 @@ id launchFragment
 id mainFragment
 id nav_graph.xml
 id nav_host
+id secondFragment
 id seekBar
 id textView
 id toMainFragment
+id toSecondFragment
 id xyValue
 id xzValue
 id zyValue
