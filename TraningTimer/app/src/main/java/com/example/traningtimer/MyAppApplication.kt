@@ -5,6 +5,7 @@ import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.os.Build
 import com.example.traningtimer.database.TrainingDatabase
+import com.example.traningtimer.ui.main.MainViewModelFrag
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.SupervisorJob
 import org.koin.android.ext.koin.androidContext
@@ -24,10 +25,12 @@ class MyAppApplication: Application() {
         single {
             TrainingRepository(
                 get<TrainingDatabase>().getTrainingDao(),
-                get(named("appScope"))
+                get(named("appScope")),
+                androidContext()
             )
         }
         viewModel { MainViewModel(get()) }
+        viewModel { MainViewModelFrag(get()) }
     }
 
     override fun onCreate() {

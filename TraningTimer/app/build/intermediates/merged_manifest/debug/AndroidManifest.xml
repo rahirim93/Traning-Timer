@@ -38,14 +38,17 @@
         android:testOnly="true"
         android:theme="@style/Theme.TraningTimer" >
         <activity
-            android:name="com.example.traningtimer.StartActivity"
+            android:name="com.example.traningtimer.ui.containerFragmentActivity.ContainerFragmentActivity"
             android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
+        </activity>
+        <activity
+            android:name="com.example.traningtimer.StartActivity"
+            android:exported="true" >
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
@@ -55,8 +58,7 @@
             android:exported="false" />
         <activity
             android:name="com.example.traningtimer.MainActivity"
-            android:exported="true" >
-        </activity>
+            android:exported="true" />
 
         <receiver
             android:name="com.example.traningtimer.traningService.StartReceiver"
@@ -66,12 +68,18 @@
         <service
             android:name="com.example.traningtimer.traningService.EndlessService"
             android:enabled="true"
-            android:exported="false" >
-        </service>
+            android:exported="false" />
         <service
             android:name="androidx.room.MultiInstanceInvalidationService"
             android:directBootAware="true"
             android:exported="false" />
+
+        <uses-library
+            android:name="androidx.window.extensions"
+            android:required="false" />
+        <uses-library
+            android:name="androidx.window.sidecar"
+            android:required="false" />
 
         <provider
             android:name="androidx.startup.InitializationProvider"

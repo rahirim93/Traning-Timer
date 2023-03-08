@@ -326,7 +326,8 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, SensorEventListe
                 Toast.makeText(this, "Исключение при отключении будильника", Toast.LENGTH_SHORT).show()
             }
             setRingerModeMine(AudioManager.RINGER_MODE_SILENT)
-            finish()
+            finishAffinity()
+            finishAndRemoveTask()
         }
 
         buttonStart = findViewById(R.id.buttonStart)

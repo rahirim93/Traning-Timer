@@ -52,11 +52,5 @@ class StartActivity : AppCompatActivity() {
             textView.text = "Выключите оптимизацию расхода батареи\n и перезапустите приложение"
             startActivity(Intent(Settings.ACTION_IGNORE_BATTERY_OPTIMIZATION_SETTINGS))
         }
-
-
-
-
-
-
     }
 }

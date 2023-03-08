@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.traningtimer.app-mergeDebugResources-37:/values-small-v4/values-small-v4.xml",
+            "outputFile": "com.example.traningtimer.app-mergeDebugResources-47:/values-small-v4/values-small-v4.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\Viacheslav\\.gradle\\caches\\transforms-3\\8fe975660662ebf3bb153627997fd91b\\transformed\\material-1.8.0\\res\\values-small-v4\\values-small-v4.xml",
+                    "source": "C:\\Users\\Viacheslav\\.gradle\\caches\\transforms-3\\f8edbf28177431e5105196302ad2d946\\transformed\\material-1.8.0\\res\\values-small-v4\\values-small-v4.xml",
                     "from": {
                         "startLines": "2,3,4,5",
                         "startColumns": "4,4,4,4",
