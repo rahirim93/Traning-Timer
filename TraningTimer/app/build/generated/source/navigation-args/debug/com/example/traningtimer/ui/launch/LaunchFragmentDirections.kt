@@ -6,6 +6,7 @@ import com.example.traningtimer.R
 
 public class LaunchFragmentDirections private constructor() {
   public companion object {
-    public fun toMainFragment(): NavDirections = ActionOnlyNavDirections(R.id.toMainFragment)
+    public fun tosettingsFragment(): NavDirections =
+        ActionOnlyNavDirections(R.id.tosettingsFragment)
   }
 }

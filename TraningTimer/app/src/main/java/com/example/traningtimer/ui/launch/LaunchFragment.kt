@@ -30,7 +30,7 @@ class LaunchFragment : Fragment() {
             TODO("VERSION.SDK_INT < M")
         }
         if (isIgnoring) {
-            findNavController().navigate(LaunchFragmentDirections.toMainFragment())
+            findNavController().navigate(LaunchFragmentDirections.tosettingsFragment())
         } else {
             startActivity(Intent(Settings.ACTION_IGNORE_BATTERY_OPTIMIZATION_SETTINGS))
             Toast.makeText(requireContext(), "Выключите оптимизация расхода батареи и перезапустите приложение", Toast.LENGTH_LONG).show()

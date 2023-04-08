@@ -8,7 +8,12 @@ import androidx.lifecycle.LiveData
 import com.example.traningtimer.database.TrainingDao
 import com.example.traningtimer.database.TrainingEntity
 import kotlinx.coroutines.CoroutineScope
+import java.util.Calendar
 import java.util.concurrent.Executors
+
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.withContext
+import java.util.UUID
 
 
 private const val SHARED_PREFERENCES_NAME1 = "shared_preferences_training_timer"
@@ -21,41 +26,109 @@ class TrainingRepository(
     // Работа с базой данных.
     private val executor = Executors.newSingleThreadExecutor()
     fun getAllLiveData(): LiveData<List<TrainingEntity>> = trainingDao.getAll()
+    fun getAllFlow(): Flow<List<TrainingEntity>> = trainingDao.getAllFlow()
     fun addItem(trainingEntity: TrainingEntity) { executor.execute { trainingDao.addTraining(trainingEntity) } }
+    fun find(id: UUID?): LiveData<TrainingEntity?> = trainingDao.findLiveData(id)
+    suspend fun save(trainingEntity: TrainingEntity) {
+        withContext(appScope.coroutineContext) {
+            trainingDao.save(trainingEntity)
+        }
+    }
+    suspend fun delete(trainingEntity: TrainingEntity) {
+        withContext(appScope.coroutineContext) {
+            trainingDao.delete(trainingEntity)
+        }
+    }
     fun deleteAll() { executor.execute { trainingDao.deleteAll() } }
 
+    // todo
     /**
-     * Сохранение состояния кнопок сделаем пока следующим образом.
-     * В активити создаем массив кнопок которые хотим сохранить и передаем
-     * сюда и здесь сохраняем в sharPref. Подгружаем также.
+     * При старте тренировки сделать так, чтобы в репозиторий записывалось время начала тренировки.
      */
-    // Работа с SharedPreferences
+
+    // todo
+    /**
+     * Расписать все возможные действия во фрагментах и обработать их.
+     */
+
+    /**
+     * Отразить в окне настроек уже выбранные вес и тип.
+     * Отразить также что тренировка была уже начата если мы зашли туда после ее начала.
+     */
+
+    // Работа c SharedPreferences
     private val sharedPreferences = context.getSharedPreferences(SHARED_PREFERENCES_NAME1, Context.MODE_PRIVATE)
-    // Сохранение состояния массива кнопок.
-    fun saveStateArrayButtons(listButtons: ArrayList<Button>) {
-        val editor = sharedPreferences.edit()
-        listButtons.forEach {
-            editor.putString("${it.id}", it.text.toString()) // Сохраняем текст
-            editor.putInt("${it.id}C", it.currentTextColor) // Сохраняем цвет текста
-            editor.putBoolean("${it.id}E", it.isEnabled) // Сохраняем состояние isEnabled
-            editor.putInt("${it.id}V", it.visibility) // Сохраняем состояние visibility
-        }
-        editor.apply()
-    }
-    fun loadStateArrayButtons(listButtons: ArrayList<Button>) {
-        listButtons.forEach {
-            it.text = sharedPreferences.getString("${it.id}", "")
-            it.setTextColor(sharedPreferences.getInt("${it.id}C", Color.BLACK))
-            it.isEnabled = sharedPreferences.getBoolean("${it.id}E", true)
-            it.visibility = sharedPreferences.getInt("${it.id}V", View.VISIBLE)
+    // Очистка SharedPreferences
+    fun clearSharPref() {
+        sharedPreferences.edit().apply {
+            clear()
+            apply()
         }
     }
-    fun clearSharedPreferences(listButtons: ArrayList<Button>) {
-        val editor = sharedPreferences.edit()
-        editor.clear()
-        listButtons.forEachIndexed { index, button ->
-            editor.putString("${button.id}", "${index + 1}")
+    // Получения состояния кнопок
+    fun getText(id: Int, defaultValue: String) : String  = sharedPreferences.getString("${id}T", defaultValue).toString()
+    fun getColor(id: Int, defaultValue: Int) : Int = sharedPreferences.getInt("${id}C", defaultValue)
+    fun getEnabled(id: Int, defaultValue: Boolean) : Boolean = sharedPreferences.getBoolean("${id}E", defaultValue)
+    fun getVisibility(id: Int, defaultValue: Int) : Int = sharedPreferences.getInt("${id}V", defaultValue)
+
+    // Сохранение состояния кнопок
+    fun setText(id: Int, text: String) {
+        sharedPreferences.edit().apply {
+            putString("${id}T", text)
+            apply()
         }
-        editor.apply()
+    }
+    fun setColor(id: Int, color: Int) {
+        sharedPreferences.edit().apply {
+            putInt("${id}C", color)
+            apply()
+        }
+    }
+    fun setEnabled(id: Int, isEnabled: Boolean) {
+        sharedPreferences.edit().apply {
+            putBoolean("${id}E", isEnabled)
+            apply()
+        }
+    }
+    fun setVisibility(id: Int, visibility: Int) {
+        sharedPreferences.edit().apply {
+            putInt("${id}V", visibility)
+            apply()
+        }
+    }
+
+    // todo сделать модель для хранения состояния тренировки
+    // Состояние тренировки
+    fun getStarted(): Boolean = sharedPreferences.getBoolean("KEY_IS_STARTED", false)
+    fun setStarted(isStarted: Boolean) {
+        sharedPreferences.edit().apply {
+            putBoolean("KEY_IS_STARTED", isStarted)
+            apply()
+        }
+    }
+    fun getWeight(): Int = sharedPreferences.getInt("KEY_WEIGHT", 0)
+    fun setWeight(weight: Int) {
+        sharedPreferences.edit().apply {
+            putInt("KEY_WEIGHT", weight)
+            apply()
+        }
+    }
+    fun getType(): Int = sharedPreferences.getInt("KEY_TYPE", 1)
+    fun setType(type: Int) {
+        sharedPreferences.edit().apply {
+            putInt("KEY_TYPE", type)
+            apply()
+        }
+    }
+    fun getDate(): Calendar {
+        val calendar = Calendar.getInstance()
+        calendar.timeInMillis = sharedPreferences.getLong("KEY_DATE", 0)
+        return calendar
+    }
+    fun setDate() {
+        sharedPreferences.edit().apply {
+            putLong("KEY_DATE", Calendar.getInstance().timeInMillis)
+            apply()
+        }
     }
 }

@@ -7,5 +7,7 @@ import com.example.traningtimer.R
 public class MainFragmentDirections private constructor() {
   public companion object {
     public fun toSecondFragment(): NavDirections = ActionOnlyNavDirections(R.id.toSecondFragment)
+
+    public fun toSaveFragment(): NavDirections = ActionOnlyNavDirections(R.id.toSaveFragment)
   }
 }

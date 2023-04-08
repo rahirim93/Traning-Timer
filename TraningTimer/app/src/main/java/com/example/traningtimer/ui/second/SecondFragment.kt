@@ -1,22 +1,23 @@
 package com.example.traningtimer.ui.second
 
+import android.graphics.Color
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.GridLayout
-import android.widget.Toast
 import androidx.core.os.bundleOf
 import androidx.core.view.forEach
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.traningtimer.databinding.ActivityMain2Binding
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class SecondFragment : Fragment(), View.OnClickListener {
 
     private var binding: ActivityMain2Binding? = null
+    private val secondFragmentViewModel: SecondFragmentViewModel by viewModel()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -40,6 +41,7 @@ class SecondFragment : Fragment(), View.OnClickListener {
     }
 
     override fun onClick(v: View?) {
+        // Добавляем данные для передачи первому фрагменту
         parentFragmentManager
             .setFragmentResult(
                 REQUEST_CODE,
@@ -48,7 +50,18 @@ class SecondFragment : Fragment(), View.OnClickListener {
                     COUNT to (v as Button).text.toString().toInt()
                 )
             )
-        findNavController().popBackStack()
+
+
+        // Здесь нужно внести изменения в репозиторий
+        val id = requireArguments().getInt(BUTTON_ID) // Получаем id кнопки подхожа нажатой в первом фрагменте
+        val count = (v as Button).text.toString() // Получаем количество раз от кнопки нажатой по втором фрагменте
+        // Сохраняем в репозиторий
+        secondFragmentViewModel.apply {
+            setText(id, count)
+            setColor(id, Color.GREEN)
+        }
+
+        findNavController().popBackStack() // Возврат к первому фрагменту
     }
 
     companion object {

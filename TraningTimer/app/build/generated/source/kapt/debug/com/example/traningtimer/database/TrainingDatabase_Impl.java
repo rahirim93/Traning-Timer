@@ -37,9 +37,9 @@ public final class TrainingDatabase_Impl extends TrainingDatabase {
     final SupportSQLiteOpenHelper.Callback _openCallback = new RoomOpenHelper(configuration, new RoomOpenHelper.Delegate(1) {
       @Override
       public void createAllTables(SupportSQLiteDatabase _db) {
-        _db.execSQL("CREATE TABLE IF NOT EXISTS `training_table` (`id` TEXT NOT NULL, `date` INTEGER NOT NULL, `count` TEXT NOT NULL, `weight` INTEGER NOT NULL, `type` INTEGER NOT NULL, PRIMARY KEY(`id`))");
+        _db.execSQL("CREATE TABLE IF NOT EXISTS `training_table` (`id` TEXT NOT NULL, `date` INTEGER NOT NULL, `count` TEXT NOT NULL, `weight` INTEGER NOT NULL, `type` INTEGER NOT NULL, `isChecked` INTEGER NOT NULL, PRIMARY KEY(`id`))");
         _db.execSQL("CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)");
-        _db.execSQL("INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '0cebed110cbca2ffa955939126ada7c6')");
+        _db.execSQL("INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'b95f91146772af25f5a6c42251fd9e47')");
       }
 
       @Override
@@ -83,12 +83,13 @@ public final class TrainingDatabase_Impl extends TrainingDatabase {
 
       @Override
       public RoomOpenHelper.ValidationResult onValidateSchema(SupportSQLiteDatabase _db) {
-        final HashMap<String, TableInfo.Column> _columnsTrainingTable = new HashMap<String, TableInfo.Column>(5);
+        final HashMap<String, TableInfo.Column> _columnsTrainingTable = new HashMap<String, TableInfo.Column>(6);
         _columnsTrainingTable.put("id", new TableInfo.Column("id", "TEXT", true, 1, null, TableInfo.CREATED_FROM_ENTITY));
         _columnsTrainingTable.put("date", new TableInfo.Column("date", "INTEGER", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
         _columnsTrainingTable.put("count", new TableInfo.Column("count", "TEXT", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
         _columnsTrainingTable.put("weight", new TableInfo.Column("weight", "INTEGER", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
         _columnsTrainingTable.put("type", new TableInfo.Column("type", "INTEGER", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsTrainingTable.put("isChecked", new TableInfo.Column("isChecked", "INTEGER", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
         final HashSet<TableInfo.ForeignKey> _foreignKeysTrainingTable = new HashSet<TableInfo.ForeignKey>(0);
         final HashSet<TableInfo.Index> _indicesTrainingTable = new HashSet<TableInfo.Index>(0);
         final TableInfo _infoTrainingTable = new TableInfo("training_table", _columnsTrainingTable, _foreignKeysTrainingTable, _indicesTrainingTable);
@@ -100,7 +101,7 @@ public final class TrainingDatabase_Impl extends TrainingDatabase {
         }
         return new RoomOpenHelper.ValidationResult(true, null);
       }
-    }, "0cebed110cbca2ffa955939126ada7c6", "479b5ff2134d1c283ca590d1f2b21eb7");
+    }, "b95f91146772af25f5a6c42251fd9e47", "75e4740a4dcaa236f6d669d0599ac32b");
     final SupportSQLiteOpenHelper.Configuration _sqliteConfig = SupportSQLiteOpenHelper.Configuration.builder(configuration.context)
         .name(configuration.name)
         .callback(_openCallback)

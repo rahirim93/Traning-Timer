@@ -9,6 +9,8 @@
     <color name="white">#FFFFFFFF</color>
     <string name="ButtonStart">start</string>
     <string name="ButtonStop">stop</string>
+    <string name="_4">4:</string>
+    <string name="_6">6:</string>
     <string name="app_name">Traning Timer</string>
     <style name="Theme.TraningTimer" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
         

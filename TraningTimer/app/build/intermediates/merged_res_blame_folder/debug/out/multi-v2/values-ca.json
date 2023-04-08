@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.traningtimer.app-mergeDebugResources-47:/values-ca/values-ca.xml",
+            "outputFile": "com.example.traningtimer.app-mergeDebugResources-48:/values-ca/values-ca.xml",
             "map": [
                 {
                     "source": "C:\\Users\\Viacheslav\\.gradle\\caches\\transforms-3\\7452a23594a756569f45097998c5ec11\\transformed\\core-1.9.0\\res\\values-ca\\values-ca.xml",

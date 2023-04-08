@@ -2,7 +2,6 @@
   <library name="Gradle: io.insert-koin:koin-android:3.3.3@aar">
     <CLASSES>
       <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/76f6274d1b06edadbcf8986da7f95c9e/transformed/koin-android-3.3.3/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/76f6274d1b06edadbcf8986da7f95c9e/transformed/koin-android-3.3.3/res" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-3/76f6274d1b06edadbcf8986da7f95c9e/transformed/koin-android-3.3.3/AndroidManifest.xml" />
     </CLASSES>
     <JAVADOC>

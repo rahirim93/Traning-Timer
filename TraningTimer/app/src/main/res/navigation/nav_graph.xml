@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph.xml"
     app:startDestination="@id/launchFragment">
 
@@ -9,19 +10,56 @@
         android:name="com.example.traningtimer.ui.launch.LaunchFragment"
         android:label="@string/app_name">
         <action
-            android:id="@+id/toMainFragment"
-            app:destination="@id/mainFragment" />
+            android:id="@+id/tosettingsFragment"
+            app:destination="@id/settingsFragment" />
     </fragment>
     <fragment
         android:id="@+id/mainFragment"
         android:name="com.example.traningtimer.ui.main.MainFragment"
-        android:label="@string/app_name">
+        android:label="@string/app_name"
+        tools:layout="@layout/activity_main">
         <action
             android:id="@+id/toSecondFragment"
             app:destination="@id/secondFragment" />
+        <action
+            android:id="@+id/toSaveFragment"
+            app:destination="@id/saveFragment" />
     </fragment>
     <fragment
         android:id="@+id/secondFragment"
         android:name="com.example.traningtimer.ui.second.SecondFragment"
-        android:label="SecondFragment" />
+        android:label="SecondFragment"
+        tools:layout="@layout/activity_main2"/>
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.example.traningtimer.ui.settings.SettingsFragment"
+        android:label="SettingsFragment"
+        tools:layout="@layout/fragment_settings">
+        <action
+            android:id="@+id/toMainFragment"
+            app:destination="@id/mainFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/saveFragment"
+        android:name="com.example.traningtimer.ui.save.SaveFragment"
+        android:label="SaveFragment"
+        tools:layout="@layout/fragment_save">
+        <action
+            android:id="@+id/toListFragment"
+            app:destination="@id/listFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/listFragment"
+        android:name="com.example.traningtimer.ui.list.ListFragment"
+        android:label="ListFragment"
+        tools:layout="@layout/fragment_list">
+        <action
+            android:id="@+id/toEditFragment"
+            app:destination="@id/editFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/editFragment"
+        android:name="com.example.traningtimer.ui.edit.EditFragment"
+        android:label="EditFragment"
+        tools:layout="@layout/fragment_edit"/>
 </navigation>

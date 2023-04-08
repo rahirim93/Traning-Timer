@@ -3,9 +3,15 @@ package com.example.traningtimer
 import android.app.Application
 import android.app.NotificationChannel
 import android.app.NotificationManager
+import android.media.audiofx.Equalizer.Settings
 import android.os.Build
 import com.example.traningtimer.database.TrainingDatabase
+import com.example.traningtimer.ui.edit.EditFragmentViewModel
+import com.example.traningtimer.ui.list.ListFragmentViewModel
 import com.example.traningtimer.ui.main.MainViewModelFrag
+import com.example.traningtimer.ui.save.SaveFragmentViewModel
+import com.example.traningtimer.ui.second.SecondFragmentViewModel
+import com.example.traningtimer.ui.settings.SettingsFragmentViewModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.SupervisorJob
 import org.koin.android.ext.koin.androidContext
@@ -31,6 +37,11 @@ class MyAppApplication: Application() {
         }
         viewModel { MainViewModel(get()) }
         viewModel { MainViewModelFrag(get()) }
+        viewModel { SecondFragmentViewModel(get()) }
+        viewModel { SettingsFragmentViewModel(get()) }
+        viewModel { SaveFragmentViewModel(get()) }
+        viewModel { ListFragmentViewModel(get()) }
+        viewModel { EditFragmentViewModel(get()) }
     }
 
     override fun onCreate() {

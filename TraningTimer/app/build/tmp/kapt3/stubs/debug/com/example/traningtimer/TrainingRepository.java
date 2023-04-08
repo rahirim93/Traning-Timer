@@ -2,7 +2,7 @@ package com.example.traningtimer;
 
 import java.lang.System;
 
-@kotlin.Metadata(mv = {1, 7, 1}, k = 1, d1 = {"\u0000V\n\u0002\u0018\u0002\n\u0002\u0010\u0000\n\u0000\n\u0002\u0018\u0002\n\u0000\n\u0002\u0018\u0002\n\u0000\n\u0002\u0018\u0002\n\u0002\b\u0002\n\u0002\u0018\u0002\n\u0002\b\u0002\n\u0002\u0018\u0002\n\u0000\n\u0002\u0010\u0002\n\u0000\n\u0002\u0018\u0002\n\u0002\b\u0002\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0002\b\u0002\n\u0002\u0018\u0002\n\u0002\u0010 \n\u0002\b\u0003\u0018\u00002\u00020\u0001B\u001d\u0012\u0006\u0010\u0002\u001a\u00020\u0003\u0012\u0006\u0010\u0004\u001a\u00020\u0005\u0012\u0006\u0010\u0006\u001a\u00020\u0007\u00a2\u0006\u0002\u0010\bJ\u000e\u0010\u000e\u001a\u00020\u000f2\u0006\u0010\u0010\u001a\u00020\u0011J\u001e\u0010\u0012\u001a\u00020\u000f2\u0016\u0010\u0013\u001a\u0012\u0012\u0004\u0012\u00020\u00150\u0014j\b\u0012\u0004\u0012\u00020\u0015`\u0016J\u0006\u0010\u0017\u001a\u00020\u000fJ\u0012\u0010\u0018\u001a\u000e\u0012\n\u0012\b\u0012\u0004\u0012\u00020\u00110\u001a0\u0019J\u001e\u0010\u001b\u001a\u00020\u000f2\u0016\u0010\u0013\u001a\u0012\u0012\u0004\u0012\u00020\u00150\u0014j\b\u0012\u0004\u0012\u00020\u0015`\u0016J\u001e\u0010\u001c\u001a\u00020\u000f2\u0016\u0010\u0013\u001a\u0012\u0012\u0004\u0012\u00020\u00150\u0014j\b\u0012\u0004\u0012\u00020\u0015`\u0016R\u000e\u0010\u0004\u001a\u00020\u0005X\u0082\u0004\u00a2\u0006\u0002\n\u0000R\u000e\u0010\u0006\u001a\u00020\u0007X\u0082\u0004\u00a2\u0006\u0002\n\u0000R\u0016\u0010\t\u001a\n \u000b*\u0004\u0018\u00010\n0\nX\u0082\u0004\u00a2\u0006\u0002\n\u0000R\u0016\u0010\f\u001a\n \u000b*\u0004\u0018\u00010\r0\rX\u0082\u0004\u00a2\u0006\u0002\n\u0000R\u000e\u0010\u0002\u001a\u00020\u0003X\u0082\u0004\u00a2\u0006\u0002\n\u0000\u00a8\u0006\u001d"}, d2 = {"Lcom/example/traningtimer/TrainingRepository;", "", "trainingDao", "Lcom/example/traningtimer/database/TrainingDao;", "appScope", "Lkotlinx/coroutines/CoroutineScope;", "context", "Landroid/content/Context;", "(Lcom/example/traningtimer/database/TrainingDao;Lkotlinx/coroutines/CoroutineScope;Landroid/content/Context;)V", "executor", "Ljava/util/concurrent/ExecutorService;", "kotlin.jvm.PlatformType", "sharedPreferences", "Landroid/content/SharedPreferences;", "addItem", "", "trainingEntity", "Lcom/example/traningtimer/database/TrainingEntity;", "clearSharedPreferences", "listButtons", "Ljava/util/ArrayList;", "Landroid/widget/Button;", "Lkotlin/collections/ArrayList;", "deleteAll", "getAllLiveData", "Landroidx/lifecycle/LiveData;", "", "loadStateArrayButtons", "saveStateArrayButtons", "app_debug"})
+@kotlin.Metadata(mv = {1, 7, 1}, k = 1, d1 = {"\u0000p\n\u0002\u0018\u0002\n\u0002\u0010\u0000\n\u0000\n\u0002\u0018\u0002\n\u0000\n\u0002\u0018\u0002\n\u0000\n\u0002\u0018\u0002\n\u0002\b\u0002\n\u0002\u0018\u0002\n\u0002\b\u0002\n\u0002\u0018\u0002\n\u0000\n\u0002\u0010\u0002\n\u0000\n\u0002\u0018\u0002\n\u0002\b\u0005\n\u0002\u0018\u0002\n\u0000\n\u0002\u0018\u0002\n\u0000\n\u0002\u0018\u0002\n\u0002\u0010 \n\u0002\b\u0002\n\u0002\u0010\b\n\u0002\b\u0002\n\u0002\u0018\u0002\n\u0000\n\u0002\u0010\u000b\n\u0002\b\u0002\n\u0002\u0010\u000e\n\u0002\b\u0014\u0018\u00002\u00020\u0001B\u001d\u0012\u0006\u0010\u0002\u001a\u00020\u0003\u0012\u0006\u0010\u0004\u001a\u00020\u0005\u0012\u0006\u0010\u0006\u001a\u00020\u0007\u00a2\u0006\u0002\u0010\bJ\u000e\u0010\u000e\u001a\u00020\u000f2\u0006\u0010\u0010\u001a\u00020\u0011J\u0006\u0010\u0012\u001a\u00020\u000fJ\u0019\u0010\u0013\u001a\u00020\u000f2\u0006\u0010\u0010\u001a\u00020\u0011H\u0086@\u00f8\u0001\u0000\u00a2\u0006\u0002\u0010\u0014J\u0006\u0010\u0015\u001a\u00020\u000fJ\u0018\u0010\u0016\u001a\n\u0012\u0006\u0012\u0004\u0018\u00010\u00110\u00172\b\u0010\u0018\u001a\u0004\u0018\u00010\u0019J\u0012\u0010\u001a\u001a\u000e\u0012\n\u0012\b\u0012\u0004\u0012\u00020\u00110\u001c0\u001bJ\u0012\u0010\u001d\u001a\u000e\u0012\n\u0012\b\u0012\u0004\u0012\u00020\u00110\u001c0\u0017J\u0016\u0010\u001e\u001a\u00020\u001f2\u0006\u0010\u0018\u001a\u00020\u001f2\u0006\u0010 \u001a\u00020\u001fJ\u0006\u0010!\u001a\u00020\"J\u0016\u0010#\u001a\u00020$2\u0006\u0010\u0018\u001a\u00020\u001f2\u0006\u0010 \u001a\u00020$J\u0006\u0010%\u001a\u00020$J\u0016\u0010&\u001a\u00020\'2\u0006\u0010\u0018\u001a\u00020\u001f2\u0006\u0010 \u001a\u00020\'J\u0006\u0010(\u001a\u00020\u001fJ\u0016\u0010)\u001a\u00020\u001f2\u0006\u0010\u0018\u001a\u00020\u001f2\u0006\u0010 \u001a\u00020\u001fJ\u0006\u0010*\u001a\u00020\u001fJ\u0019\u0010+\u001a\u00020\u000f2\u0006\u0010\u0010\u001a\u00020\u0011H\u0086@\u00f8\u0001\u0000\u00a2\u0006\u0002\u0010\u0014J\u0016\u0010,\u001a\u00020\u000f2\u0006\u0010\u0018\u001a\u00020\u001f2\u0006\u0010-\u001a\u00020\u001fJ\u0006\u0010.\u001a\u00020\u000fJ\u0016\u0010/\u001a\u00020\u000f2\u0006\u0010\u0018\u001a\u00020\u001f2\u0006\u00100\u001a\u00020$J\u000e\u00101\u001a\u00020\u000f2\u0006\u00102\u001a\u00020$J\u0016\u00103\u001a\u00020\u000f2\u0006\u0010\u0018\u001a\u00020\u001f2\u0006\u00104\u001a\u00020\'J\u000e\u00105\u001a\u00020\u000f2\u0006\u00106\u001a\u00020\u001fJ\u0016\u00107\u001a\u00020\u000f2\u0006\u0010\u0018\u001a\u00020\u001f2\u0006\u00108\u001a\u00020\u001fJ\u000e\u00109\u001a\u00020\u000f2\u0006\u0010:\u001a\u00020\u001fR\u000e\u0010\u0004\u001a\u00020\u0005X\u0082\u0004\u00a2\u0006\u0002\n\u0000R\u000e\u0010\u0006\u001a\u00020\u0007X\u0082\u0004\u00a2\u0006\u0002\n\u0000R\u0016\u0010\t\u001a\n \u000b*\u0004\u0018\u00010\n0\nX\u0082\u0004\u00a2\u0006\u0002\n\u0000R\u0016\u0010\f\u001a\n \u000b*\u0004\u0018\u00010\r0\rX\u0082\u0004\u00a2\u0006\u0002\n\u0000R\u000e\u0010\u0002\u001a\u00020\u0003X\u0082\u0004\u00a2\u0006\u0002\n\u0000\u0082\u0002\u0004\n\u0002\b\u0019\u00a8\u0006;"}, d2 = {"Lcom/example/traningtimer/TrainingRepository;", "", "trainingDao", "Lcom/example/traningtimer/database/TrainingDao;", "appScope", "Lkotlinx/coroutines/CoroutineScope;", "context", "Landroid/content/Context;", "(Lcom/example/traningtimer/database/TrainingDao;Lkotlinx/coroutines/CoroutineScope;Landroid/content/Context;)V", "executor", "Ljava/util/concurrent/ExecutorService;", "kotlin.jvm.PlatformType", "sharedPreferences", "Landroid/content/SharedPreferences;", "addItem", "", "trainingEntity", "Lcom/example/traningtimer/database/TrainingEntity;", "clearSharPref", "delete", "(Lcom/example/traningtimer/database/TrainingEntity;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;", "deleteAll", "find", "Landroidx/lifecycle/LiveData;", "id", "Ljava/util/UUID;", "getAllFlow", "Lkotlinx/coroutines/flow/Flow;", "", "getAllLiveData", "getColor", "", "defaultValue", "getDate", "Ljava/util/Calendar;", "getEnabled", "", "getStarted", "getText", "", "getType", "getVisibility", "getWeight", "save", "setColor", "color", "setDate", "setEnabled", "isEnabled", "setStarted", "isStarted", "setText", "text", "setType", "type", "setVisibility", "visibility", "setWeight", "weight", "app_debug"})
 public final class TrainingRepository {
     private final com.example.traningtimer.database.TrainingDao trainingDao = null;
     private final kotlinx.coroutines.CoroutineScope appScope = null;
@@ -10,9 +10,8 @@ public final class TrainingRepository {
     private final java.util.concurrent.ExecutorService executor = null;
     
     /**
-     * Сохранение состояния кнопок сделаем пока следующим образом.
-     * В активити создаем массив кнопок которые хотим сохранить и передаем
-     * сюда и здесь сохраняем в sharPref. Подгружаем также.
+     * Отразить в окне настроек уже выбранные вес и тип.
+     * Отразить также что тренировка была уже начата если мы зашли туда после ее начала.
      */
     private final android.content.SharedPreferences sharedPreferences = null;
     
@@ -28,22 +27,98 @@ public final class TrainingRepository {
         return null;
     }
     
+    @org.jetbrains.annotations.NotNull()
+    public final kotlinx.coroutines.flow.Flow<java.util.List<com.example.traningtimer.database.TrainingEntity>> getAllFlow() {
+        return null;
+    }
+    
     public final void addItem(@org.jetbrains.annotations.NotNull()
     com.example.traningtimer.database.TrainingEntity trainingEntity) {
+    }
+    
+    @org.jetbrains.annotations.NotNull()
+    public final androidx.lifecycle.LiveData<com.example.traningtimer.database.TrainingEntity> find(@org.jetbrains.annotations.Nullable()
+    java.util.UUID id) {
+        return null;
+    }
+    
+    @org.jetbrains.annotations.Nullable()
+    public final java.lang.Object save(@org.jetbrains.annotations.NotNull()
+    com.example.traningtimer.database.TrainingEntity trainingEntity, @org.jetbrains.annotations.NotNull()
+    kotlin.coroutines.Continuation<? super kotlin.Unit> continuation) {
+        return null;
+    }
+    
+    @org.jetbrains.annotations.Nullable()
+    public final java.lang.Object delete(@org.jetbrains.annotations.NotNull()
+    com.example.traningtimer.database.TrainingEntity trainingEntity, @org.jetbrains.annotations.NotNull()
+    kotlin.coroutines.Continuation<? super kotlin.Unit> continuation) {
+        return null;
     }
     
     public final void deleteAll() {
     }
     
-    public final void saveStateArrayButtons(@org.jetbrains.annotations.NotNull()
-    java.util.ArrayList<android.widget.Button> listButtons) {
+    public final void clearSharPref() {
     }
     
-    public final void loadStateArrayButtons(@org.jetbrains.annotations.NotNull()
-    java.util.ArrayList<android.widget.Button> listButtons) {
+    @org.jetbrains.annotations.NotNull()
+    public final java.lang.String getText(int id, @org.jetbrains.annotations.NotNull()
+    java.lang.String defaultValue) {
+        return null;
     }
     
-    public final void clearSharedPreferences(@org.jetbrains.annotations.NotNull()
-    java.util.ArrayList<android.widget.Button> listButtons) {
+    public final int getColor(int id, int defaultValue) {
+        return 0;
+    }
+    
+    public final boolean getEnabled(int id, boolean defaultValue) {
+        return false;
+    }
+    
+    public final int getVisibility(int id, int defaultValue) {
+        return 0;
+    }
+    
+    public final void setText(int id, @org.jetbrains.annotations.NotNull()
+    java.lang.String text) {
+    }
+    
+    public final void setColor(int id, int color) {
+    }
+    
+    public final void setEnabled(int id, boolean isEnabled) {
+    }
+    
+    public final void setVisibility(int id, int visibility) {
+    }
+    
+    public final boolean getStarted() {
+        return false;
+    }
+    
+    public final void setStarted(boolean isStarted) {
+    }
+    
+    public final int getWeight() {
+        return 0;
+    }
+    
+    public final void setWeight(int weight) {
+    }
+    
+    public final int getType() {
+        return 0;
+    }
+    
+    public final void setType(int type) {
+    }
+    
+    @org.jetbrains.annotations.NotNull()
+    public final java.util.Calendar getDate() {
+        return null;
+    }
+    
+    public final void setDate() {
     }
 }
