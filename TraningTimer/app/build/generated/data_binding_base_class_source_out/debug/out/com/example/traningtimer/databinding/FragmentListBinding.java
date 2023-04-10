@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.widget.Toolbar;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewbinding.ViewBinding;
@@ -22,9 +23,14 @@ public final class FragmentListBinding implements ViewBinding {
   @NonNull
   public final RecyclerView list;
 
-  private FragmentListBinding(@NonNull ConstraintLayout rootView, @NonNull RecyclerView list) {
+  @NonNull
+  public final Toolbar toolbar;
+
+  private FragmentListBinding(@NonNull ConstraintLayout rootView, @NonNull RecyclerView list,
+      @NonNull Toolbar toolbar) {
     this.rootView = rootView;
     this.list = list;
+    this.toolbar = toolbar;
   }
 
   @Override
@@ -60,7 +66,13 @@ public final class FragmentListBinding implements ViewBinding {
         break missingId;
       }
 
-      return new FragmentListBinding((ConstraintLayout) rootView, list);
+      id = R.id.toolbar;
+      Toolbar toolbar = ViewBindings.findChildViewById(rootView, id);
+      if (toolbar == null) {
+        break missingId;
+      }
+
+      return new FragmentListBinding((ConstraintLayout) rootView, list, toolbar);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

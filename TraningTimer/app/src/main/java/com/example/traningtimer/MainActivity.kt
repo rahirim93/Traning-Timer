@@ -396,21 +396,9 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, SensorEventListe
 //        //return PendingIntent.getActivity(this, 0, alarmInfoIntent, PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE)
 //    }
 
-    override fun onClick(v: View?) {
-        val intent = Intent(this, MainActivity2::class.java)
-        intent.putExtra(EXTRA_BUTTON_1, v?.id)
-        resultLauncher.launch(intent)
-    }
 
-    private val receiver = object : BroadcastReceiver() {
-        override fun onReceive(context: Context?, intent: Intent?) {
-            val startAlarm = intent?.getIntExtra(SET_ALARM, 0)
-            if (startAlarm == 100) {
-                Toast.makeText(context, "Сработала тревога", Toast.LENGTH_SHORT).show()
-                setTestAlarm()
-            }
-        }
-    }
+
+
 
     override fun onSensorChanged(event: SensorEvent?) {
         if (event != null) {
@@ -424,28 +412,9 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, SensorEventListe
         zyView.text = zyAngle.toInt().toString()
     }
 
-    private fun setRingerModeMine(ringerMode: Int){
-        if (!notificationManager.isNotificationPolicyAccessGranted) {
-            val intent = Intent(Settings.ACTION_NOTIFICATION_POLICY_ACCESS_SETTINGS)
-            startActivity(intent)
-        }
-        val am = getSystemService(Context.AUDIO_SERVICE) as AudioManager
-        am.ringerMode = ringerMode
-    }
 
-    private fun actionOnService(action: Actions) {
-        if (getServiceState(this) == ServiceState.STOPPED && action == Actions.STOP) return
-        Intent(this, EndlessService::class.java).also {
-            it.action = action.name
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                //log("Starting the service in >=26 Mode")
-                startForegroundService(it)
-                return
-            }
-            //log("Starting the service in < 26 Mode")
-            startService(it)
-        }
-    }
+
+
 
     override fun onResume() {
         super.onResume()
@@ -492,9 +461,9 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, SensorEventListe
         //finish() #todo зачем здесть эта строчка
     }
 
-    override fun onAccuracyChanged(sensor: Sensor?, accuracy: Int) {
-    }
 
+
+    // Перенесено
     private fun createArrayButtons() {
         arrayButtons.add(button1)
         arrayButtons.add(button2)
@@ -506,5 +475,42 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, SensorEventListe
         arrayButtons.add(button8)
         arrayButtons.add(button9)
         arrayButtons.add(button10)
+    }
+    override fun onClick(v: View?) {
+        val intent = Intent(this, MainActivity2::class.java)
+        intent.putExtra(EXTRA_BUTTON_1, v?.id)
+        resultLauncher.launch(intent)
+    }
+    override fun onAccuracyChanged(sensor: Sensor?, accuracy: Int) {
+    }
+    private fun setRingerModeMine(ringerMode: Int){
+        if (!notificationManager.isNotificationPolicyAccessGranted) {
+            val intent = Intent(Settings.ACTION_NOTIFICATION_POLICY_ACCESS_SETTINGS)
+            startActivity(intent)
+        }
+        val am = getSystemService(Context.AUDIO_SERVICE) as AudioManager
+        am.ringerMode = ringerMode
+    }
+    private val receiver = object : BroadcastReceiver() {
+        override fun onReceive(context: Context?, intent: Intent?) {
+            val startAlarm = intent?.getIntExtra(SET_ALARM, 0)
+            if (startAlarm == 100) {
+                Toast.makeText(context, "Сработала тревога", Toast.LENGTH_SHORT).show()
+                setTestAlarm()
+            }
+        }
+    }
+    private fun actionOnService(action: Actions) {
+        if (getServiceState(this) == ServiceState.STOPPED && action == Actions.STOP) return
+        Intent(this, EndlessService::class.java).also {
+            it.action = action.name
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                //log("Starting the service in >=26 Mode")
+                startForegroundService(it)
+                return
+            }
+            //log("Starting the service in < 26 Mode")
+            startService(it)
+        }
     }
 }

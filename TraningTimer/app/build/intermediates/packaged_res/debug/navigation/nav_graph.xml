@@ -38,6 +38,9 @@
         <action
             android:id="@+id/toMainFragment"
             app:destination="@id/mainFragment" />
+        <action
+            android:id="@+id/toListFragment"
+            app:destination="@id/listFragment" />
     </fragment>
     <fragment
         android:id="@+id/saveFragment"

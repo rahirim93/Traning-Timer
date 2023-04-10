@@ -71,19 +71,8 @@ public final class MainActivity extends androidx.appcompat.app.AppCompatActivity
     }
     
     @java.lang.Override()
-    public void onClick(@org.jetbrains.annotations.Nullable()
-    android.view.View v) {
-    }
-    
-    @java.lang.Override()
     public void onSensorChanged(@org.jetbrains.annotations.Nullable()
     android.hardware.SensorEvent event) {
-    }
-    
-    private final void setRingerModeMine(int ringerMode) {
-    }
-    
-    private final void actionOnService(com.example.traningtimer.traningService.Actions action) {
     }
     
     @java.lang.Override()
@@ -94,11 +83,22 @@ public final class MainActivity extends androidx.appcompat.app.AppCompatActivity
     protected void onDestroy() {
     }
     
+    private final void createArrayButtons() {
+    }
+    
+    @java.lang.Override()
+    public void onClick(@org.jetbrains.annotations.Nullable()
+    android.view.View v) {
+    }
+    
     @java.lang.Override()
     public void onAccuracyChanged(@org.jetbrains.annotations.Nullable()
     android.hardware.Sensor sensor, int accuracy) {
     }
     
-    private final void createArrayButtons() {
+    private final void setRingerModeMine(int ringerMode) {
+    }
+    
+    private final void actionOnService(com.example.traningtimer.traningService.Actions action) {
     }
 }

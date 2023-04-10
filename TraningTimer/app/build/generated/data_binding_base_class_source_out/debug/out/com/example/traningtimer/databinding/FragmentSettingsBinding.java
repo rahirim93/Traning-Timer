@@ -34,6 +34,9 @@ public final class FragmentSettingsBinding implements ViewBinding {
   public final Button button32;
 
   @NonNull
+  public final Button buttonList;
+
+  @NonNull
   public final Button buttonReset;
 
   @NonNull
@@ -65,15 +68,17 @@ public final class FragmentSettingsBinding implements ViewBinding {
 
   private FragmentSettingsBinding(@NonNull ConstraintLayout rootView, @NonNull Button button0,
       @NonNull Button button16, @NonNull Button button24, @NonNull Button button32,
-      @NonNull Button buttonReset, @NonNull Button buttonStart, @NonNull Button buttonType1,
-      @NonNull Button buttonType2, @NonNull Button buttonType3, @NonNull Button buttonType4,
-      @NonNull LinearLayout linearLayout, @NonNull LinearLayout linearLayout2,
-      @NonNull TextView textView2, @NonNull TextView textView3) {
+      @NonNull Button buttonList, @NonNull Button buttonReset, @NonNull Button buttonStart,
+      @NonNull Button buttonType1, @NonNull Button buttonType2, @NonNull Button buttonType3,
+      @NonNull Button buttonType4, @NonNull LinearLayout linearLayout,
+      @NonNull LinearLayout linearLayout2, @NonNull TextView textView2,
+      @NonNull TextView textView3) {
     this.rootView = rootView;
     this.button0 = button0;
     this.button16 = button16;
     this.button24 = button24;
     this.button32 = button32;
+    this.buttonList = buttonList;
     this.buttonReset = buttonReset;
     this.buttonStart = buttonStart;
     this.buttonType1 = buttonType1;
@@ -134,6 +139,12 @@ public final class FragmentSettingsBinding implements ViewBinding {
       id = R.id.button32;
       Button button32 = ViewBindings.findChildViewById(rootView, id);
       if (button32 == null) {
+        break missingId;
+      }
+
+      id = R.id.buttonList;
+      Button buttonList = ViewBindings.findChildViewById(rootView, id);
+      if (buttonList == null) {
         break missingId;
       }
 
@@ -198,8 +209,8 @@ public final class FragmentSettingsBinding implements ViewBinding {
       }
 
       return new FragmentSettingsBinding((ConstraintLayout) rootView, button0, button16, button24,
-          button32, buttonReset, buttonStart, buttonType1, buttonType2, buttonType3, buttonType4,
-          linearLayout, linearLayout2, textView2, textView3);
+          button32, buttonList, buttonReset, buttonStart, buttonType1, buttonType2, buttonType3,
+          buttonType4, linearLayout, linearLayout2, textView2, textView3);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

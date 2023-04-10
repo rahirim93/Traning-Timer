@@ -16,7 +16,7 @@ import kotlinx.coroutines.withContext
 import java.util.UUID
 
 
-private const val SHARED_PREFERENCES_NAME1 = "shared_preferences_training_timer"
+const val SHARED_PREFERENCES_NAME1 = "shared_preferences_training_timer"
 
 class TrainingRepository(
     private val trainingDao: TrainingDao,
@@ -27,6 +27,16 @@ class TrainingRepository(
     private val executor = Executors.newSingleThreadExecutor()
     fun getAllLiveData(): LiveData<List<TrainingEntity>> = trainingDao.getAll()
     fun getAllFlow(): Flow<List<TrainingEntity>> = trainingDao.getAllFlow()
+    fun filtered(filterMode: Int = 0) : Flow<List<TrainingEntity>> {
+        return when(filterMode) {
+            1 -> trainingDao.filtered(1)
+            2 -> trainingDao.filtered(2)
+            3 -> trainingDao.filtered(3)
+            4 -> trainingDao.filtered(4)
+            5 -> trainingDao.filtered12()
+            else -> { trainingDao.getAllFlow() }
+        }
+    }
     fun addItem(trainingEntity: TrainingEntity) { executor.execute { trainingDao.addTraining(trainingEntity) } }
     fun find(id: UUID?): LiveData<TrainingEntity?> = trainingDao.findLiveData(id)
     suspend fun save(trainingEntity: TrainingEntity) {

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/filter"
+        android:icon="@drawable/ic_filter"
+        android:title="Item"
+        app:showAsAction="ifRoom|withText">
+        <menu >
+            <group
+                android:id="@+id/filter_group"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checkableBehavior="single">
+                <item
+                    android:id="@+id/all"
+                    android:checked="true"
+                    android:title="Все" />
+                <item
+                    android:id="@+id/type12"
+                    android:title="Подтягивания" />
+                <item
+                    android:id="@+id/type1"
+                    android:title="Подтягивания пр." />
+                <item
+                    android:id="@+id/type2"
+                    android:title="Подтягивания обр." />
+                <item
+                    android:id="@+id/type3"
+                    android:title="Отжимания" />
+                <item
+                    android:id="@+id/type4"
+                    android:title="Выходы" />
+            </group>
+        </menu>
+    </item>
+</menu>

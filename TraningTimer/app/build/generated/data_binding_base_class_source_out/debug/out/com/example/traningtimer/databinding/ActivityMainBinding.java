@@ -76,6 +76,9 @@ public final class ActivityMainBinding implements ViewBinding {
   public final Button buttonStopAlarm;
 
   @NonNull
+  public final Button buttonTimeRelax;
+
+  @NonNull
   public final Button buttonType1;
 
   @NonNull
@@ -108,10 +111,10 @@ public final class ActivityMainBinding implements ViewBinding {
       @NonNull Button button5, @NonNull Button button6, @NonNull Button button7,
       @NonNull Button button8, @NonNull Button button9, @NonNull Button buttonReport,
       @NonNull Button buttonReset, @NonNull Button buttonResetSettings, @NonNull Button buttonStart,
-      @NonNull Button buttonStop, @NonNull Button buttonStopAlarm, @NonNull Button buttonType1,
-      @NonNull Button buttonType2, @NonNull Button buttonType3, @NonNull Button buttonWeight0,
-      @NonNull Button buttonWeight16, @NonNull GridLayout gridLayout, @NonNull TextView xyValue,
-      @NonNull TextView xzValue, @NonNull TextView zyValue) {
+      @NonNull Button buttonStop, @NonNull Button buttonStopAlarm, @NonNull Button buttonTimeRelax,
+      @NonNull Button buttonType1, @NonNull Button buttonType2, @NonNull Button buttonType3,
+      @NonNull Button buttonWeight0, @NonNull Button buttonWeight16, @NonNull GridLayout gridLayout,
+      @NonNull TextView xyValue, @NonNull TextView xzValue, @NonNull TextView zyValue) {
     this.rootView = rootView;
     this.button1 = button1;
     this.button10 = button10;
@@ -131,6 +134,7 @@ public final class ActivityMainBinding implements ViewBinding {
     this.buttonStart = buttonStart;
     this.buttonStop = buttonStop;
     this.buttonStopAlarm = buttonStopAlarm;
+    this.buttonTimeRelax = buttonTimeRelax;
     this.buttonType1 = buttonType1;
     this.buttonType2 = buttonType2;
     this.buttonType3 = buttonType3;
@@ -277,6 +281,12 @@ public final class ActivityMainBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.buttonTimeRelax;
+      Button buttonTimeRelax = ViewBindings.findChildViewById(rootView, id);
+      if (buttonTimeRelax == null) {
+        break missingId;
+      }
+
       id = R.id.buttonType1;
       Button buttonType1 = ViewBindings.findChildViewById(rootView, id);
       if (buttonType1 == null) {
@@ -334,8 +344,8 @@ public final class ActivityMainBinding implements ViewBinding {
       return new ActivityMainBinding((LinearLayout) rootView, button1, button10, button2, button3,
           button3minTimer, button4, button4minTimer, button5, button6, button7, button8, button9,
           buttonReport, buttonReset, buttonResetSettings, buttonStart, buttonStop, buttonStopAlarm,
-          buttonType1, buttonType2, buttonType3, buttonWeight0, buttonWeight16, gridLayout, xyValue,
-          xzValue, zyValue);
+          buttonTimeRelax, buttonType1, buttonType2, buttonType3, buttonWeight0, buttonWeight16,
+          gridLayout, xyValue, xzValue, zyValue);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

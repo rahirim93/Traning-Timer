@@ -42,11 +42,11 @@ class EndlessService : Service(), SensorEventListener {
     private var zyAngle = 0f
     // Переменные датчика положения
 
-    // Перменные для обработки движений
+    // Переменные для обработки движений
     private var rightMove: Boolean = false
     private var leftMove: Boolean = false
     private var mode = MODE_WAITING
-    // Перменные для обработки движений
+    // Переменные для обработки движений
 
     // Переменные для таймера
     private lateinit var alarmManager: AlarmManager
@@ -153,7 +153,7 @@ class EndlessService : Service(), SensorEventListener {
                 rightMove = false // Сброс состояний движений
                 leftMove = false    // Сброс состояний движений
 
-                if (ringtone.isPlaying) ringtone.stop() // Отключение прогрывания мелодии
+                if (ringtone.isPlaying) ringtone.stop() // Отключение проигрывания мелодии
 
                 setTestAlarm()
 

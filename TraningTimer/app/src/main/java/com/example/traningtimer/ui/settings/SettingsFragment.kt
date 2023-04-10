@@ -162,6 +162,11 @@ class SettingsFragment: Fragment() {
             }
         }
 
+        // Переход на фрагмент списка
+        binding?.buttonList?.setOnClickListener {
+            findNavController().navigate(SettingsFragmentDirections.toListFragment())
+        }
+
         // Выход из приложения при смахивании вправо.
         requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, object : OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {

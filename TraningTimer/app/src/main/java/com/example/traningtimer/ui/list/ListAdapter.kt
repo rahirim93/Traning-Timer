@@ -31,5 +31,6 @@ private object DiffCallback : DiffUtil.ItemCallback<TrainingEntity>() {
         oldItem.date.timeInMillis == newItem.date.timeInMillis &&
                 oldItem.type == newItem.type &&
                 oldItem.weight == newItem.weight &&
-                oldItem.count == newItem.count
+                oldItem.count == newItem.count &&
+                oldItem.isChecked == newItem.isChecked
 }

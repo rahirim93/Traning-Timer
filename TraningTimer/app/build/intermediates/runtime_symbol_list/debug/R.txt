@@ -2764,6 +2764,7 @@ int drawable ic_arrow_back_black_24 0x7f070087
 int drawable ic_check 0x7f0700df
 int drawable ic_clear_black_24 0x7f070088
 int drawable ic_clock_black_24dp 0x7f070089
+int drawable ic_filter 0x7f0700e0
 int drawable ic_keyboard_black_24dp 0x7f07008a
 int drawable ic_launcher_background 0x7f07008b
 int drawable ic_launcher_foreground 0x7f07008c
@@ -2990,6 +2991,7 @@ int id buttonSave 0x7f08026d
 int id buttonStart 0x7f080086
 int id buttonStop 0x7f080087
 int id buttonStopAlarm 0x7f080088
+int id buttonTimeRelax 0x7f080272
 int id buttonType1 0x7f080089
 int id buttonType2 0x7f08008a
 int id buttonType3 0x7f08008b
@@ -3096,6 +3098,8 @@ int id fill 0x7f0800ec
 int id fill_horizontal 0x7f0800ed
 int id fill_vertical 0x7f0800ee
 int id filled 0x7f0800ef
+int id filter 0x7f080275
+int id filter_group 0x7f080276
 int id fitCenter 0x7f0800f0
 int id fitEnd 0x7f0800f1
 int id fitStart 0x7f0800f2
@@ -3418,6 +3422,7 @@ int id toMainFragment 0x7f080229
 int id toSaveFragment 0x7f08022a
 int id toSecondFragment 0x7f08022b
 int id toggle 0x7f08022c
+int id toolbar 0x7f080273
 int id top 0x7f08022d
 int id topPanel 0x7f08022e
 int id tosettingsFragment 0x7f08022f
@@ -3430,6 +3435,11 @@ int id transition_position 0x7f080235
 int id transition_scene_layoutid_cache 0x7f080236
 int id transition_transform 0x7f080237
 int id triangle 0x7f080238
+int id type1 0x7f080279
+int id type12 0x7f080277
+int id type2 0x7f08027a
+int id type3 0x7f080278
+int id type4 0x7f08027b
 int id unchecked 0x7f080239
 int id uniform 0x7f08023a
 int id unlabeled 0x7f08023b
@@ -3649,6 +3659,7 @@ int layout select_dialog_item_material 0x7f0b006e
 int layout select_dialog_multichoice_material 0x7f0b006f
 int layout select_dialog_singlechoice_material 0x7f0b0070
 int layout support_simple_spinner_dropdown_item 0x7f0b0071
+int menu actions_list 0x7f140000
 int mipmap ic_launcher 0x7f0d0000
 int mipmap ic_launcher_round 0x7f0d0001
 int navigation nav_graph 0x7f0e0000

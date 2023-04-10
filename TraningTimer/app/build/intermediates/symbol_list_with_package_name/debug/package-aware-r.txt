@@ -2765,6 +2765,7 @@ drawable ic_arrow_back_black_24
 drawable ic_check
 drawable ic_clear_black_24
 drawable ic_clock_black_24dp
+drawable ic_filter
 drawable ic_keyboard_black_24dp
 drawable ic_launcher_background
 drawable ic_launcher_foreground
@@ -2991,6 +2992,7 @@ id buttonSave
 id buttonStart
 id buttonStop
 id buttonStopAlarm
+id buttonTimeRelax
 id buttonType1
 id buttonType2
 id buttonType3
@@ -3097,6 +3099,8 @@ id fill
 id fill_horizontal
 id fill_vertical
 id filled
+id filter
+id filter_group
 id fitCenter
 id fitEnd
 id fitStart
@@ -3419,6 +3423,7 @@ id toMainFragment
 id toSaveFragment
 id toSecondFragment
 id toggle
+id toolbar
 id top
 id topPanel
 id tosettingsFragment
@@ -3431,6 +3436,11 @@ id transition_position
 id transition_scene_layoutid_cache
 id transition_transform
 id triangle
+id type1
+id type12
+id type2
+id type3
+id type4
 id unchecked
 id uniform
 id unlabeled
@@ -3650,6 +3660,7 @@ layout select_dialog_item_material
 layout select_dialog_multichoice_material
 layout select_dialog_singlechoice_material
 layout support_simple_spinner_dropdown_item
+menu actions_list
 mipmap ic_launcher
 mipmap ic_launcher_round
 navigation nav_graph

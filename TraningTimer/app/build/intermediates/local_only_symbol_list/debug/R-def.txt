@@ -8,8 +8,10 @@ color teal_200
 color teal_700
 color white
 drawable ic_check
+drawable ic_filter
 drawable ic_launcher_background
 drawable ic_launcher_foreground
+id all
 id button0
 id button1
 id button10
@@ -51,6 +53,7 @@ id buttonSave
 id buttonStart
 id buttonStop
 id buttonStopAlarm
+id buttonTimeRelax
 id buttonType1
 id buttonType2
 id buttonType3
@@ -71,6 +74,8 @@ id editText6
 id editText7
 id editText8
 id editText9
+id filter
+id filter_group
 id gridLayout
 id isChecked
 id launchFragment
@@ -111,7 +116,13 @@ id toListFragment
 id toMainFragment
 id toSaveFragment
 id toSecondFragment
+id toolbar
 id tosettingsFragment
+id type1
+id type12
+id type2
+id type3
+id type4
 id xyValue
 id xzValue
 id zyValue
@@ -124,6 +135,7 @@ layout fragment_list
 layout fragment_save
 layout fragment_settings
 layout list_item
+menu actions_list
 mipmap ic_launcher
 mipmap ic_launcher_round
 navigation nav_graph
