@@ -2978,7 +2978,6 @@ int id button8 0x7f08007c
 int id button9 0x7f08007d
 int id buttonAdd 0x7f08007e
 int id buttonCheck 0x7f080271
-int id buttonClearDatabase 0x7f08007f
 int id buttonDate 0x7f08026b
 int id buttonDelete 0x7f08026c
 int id buttonList 0x7f080080
@@ -2996,6 +2995,7 @@ int id buttonType1 0x7f080089
 int id buttonType2 0x7f08008a
 int id buttonType3 0x7f08008b
 int id buttonType4 0x7f08008c
+int id buttonUnblock 0x7f08027d
 int id buttonWeight0 0x7f08008d
 int id buttonWeight16 0x7f08008e
 int id buttonWeight24 0x7f08026e

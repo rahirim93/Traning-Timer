@@ -142,4 +142,18 @@ class TrainingRepository(
             apply()
         }
     }
+    fun getBlocked(): Boolean = sharedPreferences.getBoolean("KEY_BLOCKED", true)
+    fun changeBlocked() {
+        if (sharedPreferences.getBoolean("KEY_BLOCKED", true)) {
+            sharedPreferences.edit().apply {
+                putBoolean("KEY_BLOCKED", false)
+                apply()
+            }
+        } else {
+            sharedPreferences.edit().apply {
+                putBoolean("KEY_BLOCKED", true)
+                apply()
+            }
+        }
+    }
 }

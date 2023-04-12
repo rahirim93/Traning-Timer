@@ -27,6 +27,10 @@ class ListFragmentViewModel(private val trainingRepository: TrainingRepository):
         }
     }
 
+    fun getBlocked() = trainingRepository.getBlocked()
+
+    fun changeBlocked() = trainingRepository.changeBlocked()
+
 
 //    val states = trainingRepository.getAllFlow()
 //        .map { ListViewState(it) }

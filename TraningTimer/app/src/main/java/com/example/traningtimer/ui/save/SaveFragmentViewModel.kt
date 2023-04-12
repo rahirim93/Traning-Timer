@@ -19,4 +19,8 @@ class SaveFragmentViewModel(private val trainingRepository: TrainingRepository):
     fun clearDatabase() = trainingRepository.deleteAll()
 
     fun getDate() = trainingRepository.getDate()
+
+    fun getBlocked() = trainingRepository.getBlocked()
+
+    fun changeBlocked() = trainingRepository.changeBlocked()
 }

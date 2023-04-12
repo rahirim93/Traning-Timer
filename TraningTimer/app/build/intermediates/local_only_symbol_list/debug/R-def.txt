@@ -41,7 +41,6 @@ id button8
 id button9
 id buttonAdd
 id buttonCheck
-id buttonClearDatabase
 id buttonDate
 id buttonDelete
 id buttonList
@@ -58,6 +57,7 @@ id buttonType1
 id buttonType2
 id buttonType3
 id buttonType4
+id buttonUnblock
 id buttonWeight0
 id buttonWeight16
 id buttonWeight24

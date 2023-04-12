@@ -24,25 +24,25 @@ public final class FragmentSaveBinding implements ViewBinding {
   public final Button buttonAdd;
 
   @NonNull
-  public final Button buttonClearDatabase;
-
-  @NonNull
   public final Button buttonList;
 
   @NonNull
   public final Button buttonPrint;
 
   @NonNull
+  public final Button buttonUnblock;
+
+  @NonNull
   public final TextView textView4;
 
   private FragmentSaveBinding(@NonNull ConstraintLayout rootView, @NonNull Button buttonAdd,
-      @NonNull Button buttonClearDatabase, @NonNull Button buttonList, @NonNull Button buttonPrint,
+      @NonNull Button buttonList, @NonNull Button buttonPrint, @NonNull Button buttonUnblock,
       @NonNull TextView textView4) {
     this.rootView = rootView;
     this.buttonAdd = buttonAdd;
-    this.buttonClearDatabase = buttonClearDatabase;
     this.buttonList = buttonList;
     this.buttonPrint = buttonPrint;
+    this.buttonUnblock = buttonUnblock;
     this.textView4 = textView4;
   }
 
@@ -79,12 +79,6 @@ public final class FragmentSaveBinding implements ViewBinding {
         break missingId;
       }
 
-      id = R.id.buttonClearDatabase;
-      Button buttonClearDatabase = ViewBindings.findChildViewById(rootView, id);
-      if (buttonClearDatabase == null) {
-        break missingId;
-      }
-
       id = R.id.buttonList;
       Button buttonList = ViewBindings.findChildViewById(rootView, id);
       if (buttonList == null) {
@@ -97,14 +91,20 @@ public final class FragmentSaveBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.buttonUnblock;
+      Button buttonUnblock = ViewBindings.findChildViewById(rootView, id);
+      if (buttonUnblock == null) {
+        break missingId;
+      }
+
       id = R.id.textView4;
       TextView textView4 = ViewBindings.findChildViewById(rootView, id);
       if (textView4 == null) {
         break missingId;
       }
 
-      return new FragmentSaveBinding((ConstraintLayout) rootView, buttonAdd, buttonClearDatabase,
-          buttonList, buttonPrint, textView4);
+      return new FragmentSaveBinding((ConstraintLayout) rootView, buttonAdd, buttonList,
+          buttonPrint, buttonUnblock, textView4);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

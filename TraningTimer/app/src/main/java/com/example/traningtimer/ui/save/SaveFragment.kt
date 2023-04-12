@@ -67,6 +67,21 @@ class SaveFragment: Fragment() {
                         count = stringForDB,
                         weight = saveViewModel.getWeight(),
                         type = saveViewModel.getType()))
+
+        }
+
+        if (saveViewModel.getBlocked()) {
+            binding?.buttonUnblock?.text = "Разблокировать"
+        } else {
+            binding?.buttonUnblock?.text = "Заблокировать"
+        }
+        binding?.buttonUnblock?.setOnClickListener {
+            saveViewModel.changeBlocked()
+            if (saveViewModel.getBlocked()) {
+                binding?.buttonUnblock?.text = "Разблокировать"
+            } else {
+                binding?.buttonUnblock?.text = "Заблокировать"
+            }
         }
 
         binding?.buttonList?.setOnClickListener {

@@ -92,7 +92,11 @@ class ListFragment: Fragment() {
                 if (!it.isChecked) {
                     findNavController().navigate(R.id.toEditFragment, bundleOf("itemKey" to it.id.toString()))
                 } else {
-                    Toast.makeText(requireContext(), "Заблокировано", Toast.LENGTH_SHORT).show()
+                    if (listViewModel.getBlocked()) {
+                        Toast.makeText(requireContext(), "Заблокировано", Toast.LENGTH_SHORT).show()
+                    } else {
+                        findNavController().navigate(R.id.toEditFragment, bundleOf("itemKey" to it.id.toString()))
+                    }
                 }
 
             }
