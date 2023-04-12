@@ -39,6 +39,7 @@ class TrainingRepository(
     }
     fun addItem(trainingEntity: TrainingEntity) { executor.execute { trainingDao.addTraining(trainingEntity) } }
     fun find(id: UUID?): LiveData<TrainingEntity?> = trainingDao.findLiveData(id)
+    fun findLastTraining(): LiveData<Calendar?> = trainingDao.findLastTraining()
     suspend fun save(trainingEntity: TrainingEntity) {
         withContext(appScope.coroutineContext) {
             trainingDao.save(trainingEntity)

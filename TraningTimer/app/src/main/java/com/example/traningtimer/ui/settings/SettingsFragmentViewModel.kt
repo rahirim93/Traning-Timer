@@ -14,4 +14,6 @@ class SettingsFragmentViewModel(private val trainingRepository: TrainingReposito
     fun setType(type: Int) = trainingRepository.setType(type)
 
     fun setDate() = trainingRepository.setDate()
+
+    fun getDateLiveData() = trainingRepository.findLastTraining()
 }

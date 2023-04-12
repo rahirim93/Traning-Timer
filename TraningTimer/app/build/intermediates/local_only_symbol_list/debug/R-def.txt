@@ -110,6 +110,7 @@ id textView8
 id textView9
 id textViewCount
 id textViewDate
+id textViewLastTraining
 id textViewTypeWeight
 id toEditFragment
 id toListFragment

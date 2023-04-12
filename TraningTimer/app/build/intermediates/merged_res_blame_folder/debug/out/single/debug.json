@@ -68,8 +68,8 @@
         "source": "C:\\Users\\Viacheslav\\.gradle\\daemon\\7.3.3\\com.example.traningtimer.app-main-52:\\mipmap-xxxhdpi\\ic_launcher.webp"
     },
     {
-        "merged": "com.example.traningtimer.app-merged_res-50:/menu_actions_list.xml.flat",
-        "source": "com.example.traningtimer.app-main-52:/menu/actions_list.xml"
+        "merged": "com.example.traningtimer.app-merged_res-50:/layout_fragment_settings.xml.flat",
+        "source": "com.example.traningtimer.app-main-52:/layout/fragment_settings.xml"
     },
     {
         "merged": "C:\\Users\\Viacheslav\\.gradle\\daemon\\7.3.3\\com.example.traningtimer.app-merged_res-50:\\mipmap-xhdpi_ic_launcher_round.webp.flat",

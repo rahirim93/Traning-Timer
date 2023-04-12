@@ -3403,6 +3403,7 @@ id textView8
 id textView9
 id textViewCount
 id textViewDate
+id textViewLastTraining
 id textViewTypeWeight
 id text_input_end_icon
 id text_input_error_icon

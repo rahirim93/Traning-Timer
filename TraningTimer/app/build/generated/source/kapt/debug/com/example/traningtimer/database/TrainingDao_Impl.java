@@ -560,6 +560,36 @@ public final class TrainingDao_Impl implements TrainingDao {
     });
   }
 
+  @Override
+  public LiveData<Calendar> findLastTraining() {
+    final String _sql = "SELECT MAX(date) FROM training_table";
+    final RoomSQLiteQuery _statement = RoomSQLiteQuery.acquire(_sql, 0);
+    return __db.getInvalidationTracker().createLiveData(new String[]{"training_table"}, false, new Callable<Calendar>() {
+      @Override
+      public Calendar call() throws Exception {
+        final Cursor _cursor = DBUtil.query(__db, _statement, false, null);
+        try {
+          final Calendar _result;
+          if(_cursor.moveToFirst()) {
+            final long _tmp;
+            _tmp = _cursor.getLong(0);
+            _result = __trainingTypeConverters.toCalendar(_tmp);
+          } else {
+            _result = null;
+          }
+          return _result;
+        } finally {
+          _cursor.close();
+        }
+      }
+
+      @Override
+      protected void finalize() {
+        _statement.release();
+      }
+    });
+  }
+
   public static List<Class<?>> getRequiredConverters() {
     return Collections.emptyList();
   }

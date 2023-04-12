@@ -101,6 +101,8 @@ class EditFragment: Fragment(), OnEditorActionListener {
             }
         }
 
+
+
         initDatePicker()
 
         // Вызов datePicker

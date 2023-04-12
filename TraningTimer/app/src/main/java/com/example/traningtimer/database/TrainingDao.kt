@@ -29,6 +29,10 @@ interface TrainingDao {
     @Query("SELECT * FROM training_table WHERE id = :itemId")
     fun findLiveData(itemId: UUID?): LiveData<TrainingEntity?>
 
+    //@Query("SELECT * FROM training_table WHERE MAX(date)")
+    @Query("SELECT MAX(date) FROM training_table")
+    fun findLastTraining(): LiveData<Calendar?>
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun save(vararg entities: TrainingEntity)
 

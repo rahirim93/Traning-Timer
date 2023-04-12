@@ -5,11 +5,14 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.traningtimer.databinding.FragmentSettingsBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import java.text.SimpleDateFormat
+import java.util.*
 
 class SettingsFragment: Fragment() {
 
@@ -173,6 +176,12 @@ class SettingsFragment: Fragment() {
                 activity?.finishAndRemoveTask()
             }
         })
+
+        settingsViewModel.getDateLiveData().observe(viewLifecycleOwner) {item ->
+            val calendar = Calendar.getInstance()
+            calendar.timeInMillis = item?.timeInMillis?.plus(345600000)!!
+            binding?.textViewLastTraining?.text = "Следующая тренировка: ${SimpleDateFormat("dd.MM.yyyy", Locale.getDefault()).format(calendar?.time)}"
+        }
     }
 
     override fun onDestroyView() {
