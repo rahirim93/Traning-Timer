@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.GridLayout
+import android.widget.SeekBar
 import androidx.core.os.bundleOf
 import androidx.core.view.forEach
 import androidx.fragment.app.Fragment
@@ -18,6 +19,7 @@ class SecondFragment : Fragment(), View.OnClickListener {
 
     private var binding: ActivityMain2Binding? = null
     private val secondFragmentViewModel: SecondFragmentViewModel by viewModel()
+    private val arrayButtons = arrayListOf<Button>()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -35,8 +37,25 @@ class SecondFragment : Fragment(), View.OnClickListener {
             if (it2 is GridLayout) {
                 it2.forEach {
                     it.setOnClickListener(this)
+                    arrayButtons.add(it as Button)
                 }
             }
+        }
+
+        binding?.seekBar?.apply {
+            progress = secondFragmentViewModel.getSeekBarState()
+            for(i in 0 until arrayButtons.size) {
+                arrayButtons[i].text = "${progress + i}"
+            }
+            setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
+                override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
+                    for (i in 0 until arrayButtons.size) {
+                        arrayButtons[i].text = "${progress+i}"
+                    }
+                }
+                override fun onStartTrackingTouch(seekBar: SeekBar?) {  }
+                override fun onStopTrackingTouch(seekBar: SeekBar?) {  }
+            })
         }
     }
 
@@ -71,7 +90,9 @@ class SecondFragment : Fragment(), View.OnClickListener {
     }
 
     override fun onDestroyView() {
+        secondFragmentViewModel.setSeekBarState(binding?.seekBar?.progress!!)
         binding = null
+        arrayButtons.clear()
         super.onDestroyView()
     }
 }

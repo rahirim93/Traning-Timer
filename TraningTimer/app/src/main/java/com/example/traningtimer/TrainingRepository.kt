@@ -156,4 +156,11 @@ class TrainingRepository(
             }
         }
     }
+    fun getSeekBarState(): Int = sharedPreferences.getInt("SEEKBAR_STATE", 0)
+    fun setSeekBarState(state: Int) {
+        sharedPreferences.edit().apply {
+            putInt("SEEKBAR_STATE", state)
+            apply()
+        }
+    }
 }

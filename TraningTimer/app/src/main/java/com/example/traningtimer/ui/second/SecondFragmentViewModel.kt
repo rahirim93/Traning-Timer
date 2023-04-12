@@ -13,4 +13,6 @@ class SecondFragmentViewModel(private val trainingRepository: TrainingRepository
     fun setColor(id: Int, color: Int) = trainingRepository.setColor(id, color)
     fun setEnabled(id: Int, isEnabled: Boolean) = trainingRepository.setEnabled(id, isEnabled)
     fun setVisibility(id: Int, visibility: Int) = trainingRepository.setVisibility(id, visibility)
+    fun setSeekBarState(state: Int) = trainingRepository.setSeekBarState(state)
+    fun getSeekBarState() = trainingRepository.getSeekBarState()
 }

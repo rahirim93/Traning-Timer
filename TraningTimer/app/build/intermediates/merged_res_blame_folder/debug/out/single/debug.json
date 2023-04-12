@@ -64,6 +64,10 @@
         "source": "C:\\Users\\Viacheslav\\.gradle\\daemon\\7.3.3\\com.example.traningtimer.app-main-52:\\navigation\\nav_graph.xml"
     },
     {
+        "merged": "com.example.traningtimer.app-merged_res-50:/layout_activity_main2.xml.flat",
+        "source": "com.example.traningtimer.app-main-52:/layout/activity_main2.xml"
+    },
+    {
         "merged": "C:\\Users\\Viacheslav\\.gradle\\daemon\\7.3.3\\com.example.traningtimer.app-merged_res-50:\\mipmap-xxxhdpi_ic_launcher.webp.flat",
         "source": "C:\\Users\\Viacheslav\\.gradle\\daemon\\7.3.3\\com.example.traningtimer.app-main-52:\\mipmap-xxxhdpi\\ic_launcher.webp"
     },
@@ -98,10 +102,6 @@
     {
         "merged": "C:\\Users\\Viacheslav\\.gradle\\daemon\\7.3.3\\com.example.traningtimer.app-merged_res-50:\\layout_fragment_save.xml.flat",
         "source": "C:\\Users\\Viacheslav\\.gradle\\daemon\\7.3.3\\com.example.traningtimer.app-main-52:\\layout\\fragment_save.xml"
-    },
-    {
-        "merged": "com.example.traningtimer.app-merged_res-50:/layout_fragment_save.xml.flat",
-        "source": "com.example.traningtimer.app-main-52:/layout/fragment_save.xml"
     },
     {
         "merged": "C:\\Users\\Viacheslav\\.gradle\\daemon\\7.3.3\\com.example.traningtimer.app-merged_res-50:\\xml_backup_rules.xml.flat",

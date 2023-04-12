@@ -28,7 +28,7 @@
             android:layout_columnWeight="1"
             android:insetTop="0dp"
             android:insetBottom="0dp"
-            android:text="4"
+            android:text="0"
             android:textSize="30sp" />
 
         <Button
@@ -40,7 +40,7 @@
             android:layout_columnWeight="1"
             android:insetTop="0dp"
             android:insetBottom="0dp"
-            android:text="5"
+            android:text="1"
             android:textSize="30sp" />
 
         <Button
@@ -52,7 +52,7 @@
             android:layout_columnWeight="1"
             android:insetTop="0dp"
             android:insetBottom="0dp"
-            android:text="6"
+            android:text="3"
             android:textSize="30sp" />
 
         <Button
@@ -64,7 +64,7 @@
             android:layout_columnWeight="1"
             android:insetTop="0dp"
             android:insetBottom="0dp"
-            android:text="7"
+            android:text="4"
             android:textSize="30sp" />
 
         <Button
@@ -76,7 +76,7 @@
             android:layout_columnWeight="1"
             android:insetTop="0dp"
             android:insetBottom="0dp"
-            android:text="8"
+            android:text="5"
             android:textSize="30sp" />
 
         <Button
@@ -89,7 +89,7 @@
             android:layout_columnWeight="1"
             android:insetTop="0dp"
             android:insetBottom="0dp"
-            android:text="9"
+            android:text="6"
             android:textSize="30sp" />
 
         <Button
@@ -102,7 +102,7 @@
             android:layout_columnWeight="1"
             android:insetTop="0dp"
             android:insetBottom="0dp"
-            android:text="10"
+            android:text="7"
             android:textSize="30sp" />
 
         <Button
@@ -115,7 +115,7 @@
             android:layout_columnWeight="1"
             android:insetTop="0dp"
             android:insetBottom="0dp"
-            android:text="11"
+            android:text="8"
             android:textSize="30sp" />
 
         <Button
@@ -127,7 +127,7 @@
             android:layout_columnWeight="1"
             android:insetTop="0dp"
             android:insetBottom="0dp"
-            android:text="12"
+            android:text="9"
             android:textSize="30sp" />
 
         <Button
@@ -140,7 +140,7 @@
             android:layout_columnWeight="1"
             android:insetTop="0dp"
             android:insetBottom="0dp"
-            android:text="13"
+            android:text="10"
             android:textSize="30sp" />
 
         <Button
@@ -153,7 +153,7 @@
             android:layout_columnWeight="1"
             android:insetTop="0dp"
             android:insetBottom="0dp"
-            android:text="14"
+            android:text="11"
             android:textSize="30sp" />
 
         <Button
@@ -166,7 +166,7 @@
             android:layout_columnWeight="1"
             android:insetTop="0dp"
             android:insetBottom="0dp"
-            android:text="15"
+            android:text="12"
             android:textSize="30sp" />
     </GridLayout>
 
