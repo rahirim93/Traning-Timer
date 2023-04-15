@@ -2761,10 +2761,12 @@ int drawable design_ic_visibility_off 0x7f070084
 int drawable design_password_eye 0x7f070085
 int drawable design_snackbar_background 0x7f070086
 int drawable ic_arrow_back_black_24 0x7f070087
+int drawable ic_chart 0x7f0700e1
 int drawable ic_check 0x7f0700df
 int drawable ic_clear_black_24 0x7f070088
 int drawable ic_clock_black_24dp 0x7f070089
 int drawable ic_filter 0x7f0700e0
+int drawable ic_filter_graph 0x7f0700e2
 int drawable ic_keyboard_black_24dp 0x7f07008a
 int drawable ic_launcher_background 0x7f07008b
 int drawable ic_launcher_foreground 0x7f07008c
@@ -3012,6 +3014,7 @@ int id center_vertical 0x7f080097
 int id chain 0x7f080098
 int id chain2 0x7f080099
 int id chains 0x7f08009a
+int id chart 0x7f08027e
 int id checkbox 0x7f08009b
 int id checked 0x7f08009c
 int id chronometer 0x7f08009d
@@ -3099,7 +3102,9 @@ int id fill_horizontal 0x7f0800ed
 int id fill_vertical 0x7f0800ee
 int id filled 0x7f0800ef
 int id filter 0x7f080275
+int id filterGraph 0x7f080280
 int id filter_group 0x7f080276
+int id filter_group_graph 0x7f080281
 int id fitCenter 0x7f0800f0
 int id fitEnd 0x7f0800f1
 int id fitStart 0x7f0800f2
@@ -3142,6 +3147,8 @@ int id inward 0x7f080116
 int id isChecked 0x7f080270
 int id is_pooling_container_tag 0x7f080117
 int id italic 0x7f080118
+int id itemTotal 0x7f080287
+int id itemWeight 0x7f080288
 int id item_touch_helper_previous_elevation 0x7f080119
 int id jumpToEnd 0x7f08011a
 int id jumpToStart 0x7f08011b

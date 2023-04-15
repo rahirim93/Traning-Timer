@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewbinding.ViewBinding;
 import androidx.viewbinding.ViewBindings;
 import com.example.traningtimer.R;
+import com.github.mikephil.charting.charts.LineChart;
 import java.lang.NullPointerException;
 import java.lang.Override;
 import java.lang.String;
@@ -21,14 +22,18 @@ public final class FragmentListBinding implements ViewBinding {
   private final ConstraintLayout rootView;
 
   @NonNull
+  public final LineChart chart;
+
+  @NonNull
   public final RecyclerView list;
 
   @NonNull
   public final Toolbar toolbar;
 
-  private FragmentListBinding(@NonNull ConstraintLayout rootView, @NonNull RecyclerView list,
-      @NonNull Toolbar toolbar) {
+  private FragmentListBinding(@NonNull ConstraintLayout rootView, @NonNull LineChart chart,
+      @NonNull RecyclerView list, @NonNull Toolbar toolbar) {
     this.rootView = rootView;
+    this.chart = chart;
     this.list = list;
     this.toolbar = toolbar;
   }
@@ -60,6 +65,12 @@ public final class FragmentListBinding implements ViewBinding {
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
+      id = R.id.chart;
+      LineChart chart = ViewBindings.findChildViewById(rootView, id);
+      if (chart == null) {
+        break missingId;
+      }
+
       id = R.id.list;
       RecyclerView list = ViewBindings.findChildViewById(rootView, id);
       if (list == null) {
@@ -72,7 +83,7 @@ public final class FragmentListBinding implements ViewBinding {
         break missingId;
       }
 
-      return new FragmentListBinding((ConstraintLayout) rootView, list, toolbar);
+      return new FragmentListBinding((ConstraintLayout) rootView, chart, list, toolbar);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

@@ -3,6 +3,34 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
+        android:id="@+id/filterGraph"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:icon="@drawable/ic_filter_graph"
+        android:title="Item"
+        android:visible="false"
+        app:showAsAction="ifRoom|withText">
+        <menu>
+            <group
+                android:id="@+id/filter_group_graph"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checkableBehavior="single">
+                <item
+                    android:id="@+id/itemWeight"
+                    android:title="Вес" />
+                <item
+                    android:id="@+id/itemTotal"
+                    android:title="Всего" />
+            </group>
+        </menu>
+    </item>
+    <item
+        android:id="@+id/graph"
+        android:icon="@drawable/ic_chart"
+        android:title="Item"
+        app:showAsAction="ifRoom|withText" />
+    <item
         android:id="@+id/filter"
         android:icon="@drawable/ic_filter"
         android:title="Item"

@@ -7,8 +7,10 @@ color purple_700
 color teal_200
 color teal_700
 color white
+drawable ic_chart
 drawable ic_check
 drawable ic_filter
+drawable ic_filter_graph
 drawable ic_launcher_background
 drawable ic_launcher_foreground
 id all
@@ -62,6 +64,7 @@ id buttonWeight0
 id buttonWeight16
 id buttonWeight24
 id buttonWeight32
+id chart
 id date
 id editFragment
 id editText1
@@ -75,9 +78,14 @@ id editText7
 id editText8
 id editText9
 id filter
+id filterGraph
 id filter_group
+id filter_group_graph
+id graph
 id gridLayout
 id isChecked
+id itemTotal
+id itemWeight
 id launchFragment
 id linearLayout
 id linearLayout2
