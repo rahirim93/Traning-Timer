@@ -123,6 +123,11 @@ class ListFragment: Fragment() {
                         drawGraph(list, 2)
                         true
                     }
+                    R.id.itemTonn -> {
+                        menuItem.isChecked = true
+                        drawGraph(list, 3)
+                        true
+                    }
                     else -> false
                 }
             }
@@ -183,10 +188,28 @@ class ListFragment: Fragment() {
                     }
                     y = sum.toFloat()
                 }
+                if (type == 3) {
+                    val a = list1[i].count.split(";").toMutableList()
+                    a.removeLast()
+                    var sum = 0
+                    a.forEach {
+                        sum += it.toInt()
+                    }
+                    y = sum.toFloat() * list1[i].weight.toFloat() / 1000.0F
+                }
                 prepareList.add(Entry(x, y))
             }
             listEntry1 = prepareList
             dataSet1 = LineDataSet(listEntry1, "label")
+            dataSet1.apply {
+                color = Color.parseColor("#369C2F")
+                setCircleColor(Color.parseColor("#369C2F"))
+                circleHoleColor = Color.BLACK
+                circleHoleRadius = 3.0F
+                circleRadius = 5.0F
+                lineWidth = 3.0F
+                setDrawValues(false)
+            }
             dataSets.clear()
             dataSets.add(dataSet1)
             lineData = LineData(dataSets)

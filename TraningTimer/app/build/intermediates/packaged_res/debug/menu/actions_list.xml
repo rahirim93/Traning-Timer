@@ -22,6 +22,9 @@
                 <item
                     android:id="@+id/itemTotal"
                     android:title="Всего" />
+                <item
+                    android:id="@+id/itemTonn"
+                    android:title="Тоннаж" />
             </group>
         </menu>
     </item>
