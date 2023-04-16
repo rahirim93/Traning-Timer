@@ -24,12 +24,14 @@ import com.github.mikephil.charting.data.Entry
 import com.github.mikephil.charting.data.LineData
 import com.github.mikephil.charting.data.LineDataSet
 import com.github.mikephil.charting.formatter.ValueFormatter
+import com.github.mikephil.charting.highlight.Highlight
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet
+import com.github.mikephil.charting.listener.OnChartValueSelectedListener
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.text.SimpleDateFormat
 import java.util.*
 
-class ListFragment: Fragment() {
+class ListFragment: Fragment(), OnChartValueSelectedListener {
 
     private var binding: FragmentListBinding? = null
     private val listViewModel: ListFragmentViewModel by viewModel()
@@ -166,6 +168,12 @@ class ListFragment: Fragment() {
                 drawGraph(it.items, 1)
             }
         }
+
+        binding?.textViewValue?.setOnClickListener {
+            binding?.chart?.onTouchListener?.setLastHighlighted(null)
+            binding?.chart?.highlightValues(null)
+            binding?.textViewValue?.text = ""
+        }
     }
 
     private fun drawGraph(list: List<TrainingEntity>, type: Int) {
@@ -215,13 +223,15 @@ class ListFragment: Fragment() {
             lineData = LineData(dataSets)
             binding?.chart?.data = lineData
             binding?.chart?.invalidate()
+            binding?.chart?.setOnChartValueSelectedListener(this)
+
 
             binding?.chart?.apply {
                 xAxis.apply {
                     position = XAxis.XAxisPosition.BOTTOM
                     textColor = Color.WHITE
                     valueFormatter = MyValueFormatter()
-                    setLabelCount(9, true)
+                    setLabelCount(7, true)
                 }
                 axisLeft.apply {
                     textColor = Color.WHITE
@@ -233,14 +243,26 @@ class ListFragment: Fragment() {
                 axisRight.apply {
                     isEnabled = false
                 }
-                //setVisibleXRangeMaximum(1728_000_000F)
+                setVisibleXRangeMaximum(31_536_000_000F)
+                moveViewToX(listEntry1.last().x)
             }
         }
+    }
+
+    override fun onValueSelected(e: Entry?, h: Highlight?) {
+        val y = e?.y.toString()
+        val date = Calendar.getInstance()
+        date.timeInMillis = e?.x?.toLong()!!
+        binding?.textViewValue?.text = "Величина: ${y}\nДата: ${SimpleDateFormat("dd.MM.yyyy", Locale.getDefault()).format(date.time)}"
+    }
+
+    override fun onNothingSelected() {
+
     }
 }
 
 class MyValueFormatter : ValueFormatter() {
-    private val format = SimpleDateFormat("dd/MM", Locale.getDefault())
+    private val format = SimpleDateFormat("dd/MM/YY", Locale.getDefault())
     override fun getAxisLabel(value: Float, axis: AxisBase?): String {
         val calendar = Calendar.getInstance()
         calendar.timeInMillis = value.toLong()

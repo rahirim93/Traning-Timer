@@ -3412,6 +3412,7 @@ int id textViewCount 0x7f08022b
 int id textViewDate 0x7f08022c
 int id textViewLastTraining 0x7f08022d
 int id textViewTypeWeight 0x7f08022e
+int id textViewValue 0x7f08026f
 int id text_input_end_icon 0x7f08022f
 int id text_input_error_icon 0x7f080230
 int id text_input_start_icon 0x7f080231

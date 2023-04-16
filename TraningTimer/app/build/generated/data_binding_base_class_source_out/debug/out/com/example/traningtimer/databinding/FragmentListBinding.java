@@ -4,6 +4,7 @@ package com.example.traningtimer.databinding;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.Toolbar;
@@ -28,13 +29,17 @@ public final class FragmentListBinding implements ViewBinding {
   public final RecyclerView list;
 
   @NonNull
+  public final TextView textViewValue;
+
+  @NonNull
   public final Toolbar toolbar;
 
   private FragmentListBinding(@NonNull ConstraintLayout rootView, @NonNull LineChart chart,
-      @NonNull RecyclerView list, @NonNull Toolbar toolbar) {
+      @NonNull RecyclerView list, @NonNull TextView textViewValue, @NonNull Toolbar toolbar) {
     this.rootView = rootView;
     this.chart = chart;
     this.list = list;
+    this.textViewValue = textViewValue;
     this.toolbar = toolbar;
   }
 
@@ -77,13 +82,20 @@ public final class FragmentListBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.textViewValue;
+      TextView textViewValue = ViewBindings.findChildViewById(rootView, id);
+      if (textViewValue == null) {
+        break missingId;
+      }
+
       id = R.id.toolbar;
       Toolbar toolbar = ViewBindings.findChildViewById(rootView, id);
       if (toolbar == null) {
         break missingId;
       }
 
-      return new FragmentListBinding((ConstraintLayout) rootView, chart, list, toolbar);
+      return new FragmentListBinding((ConstraintLayout) rootView, chart, list, textViewValue,
+          toolbar);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

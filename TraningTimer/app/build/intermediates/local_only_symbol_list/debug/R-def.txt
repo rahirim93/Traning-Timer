@@ -121,6 +121,7 @@ id textViewCount
 id textViewDate
 id textViewLastTraining
 id textViewTypeWeight
+id textViewValue
 id toEditFragment
 id toListFragment
 id toMainFragment
