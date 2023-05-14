@@ -19,7 +19,10 @@ class ListAdapter(private val inflater: LayoutInflater,
         onItemClick)
 
     override fun onBindViewHolder(holder: TrainingViewHolder, position: Int) {
-        holder.bind(getItem(position))
+        if (position < currentList.size - 1) {
+            holder.bind(getItem(position), getItem(position + 1))
+        }
+
     }
 }
 

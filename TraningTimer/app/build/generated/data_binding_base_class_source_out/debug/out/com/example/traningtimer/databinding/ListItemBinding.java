@@ -21,24 +21,112 @@ public final class ListItemBinding implements ViewBinding {
   private final ConstraintLayout rootView;
 
   @NonNull
+  public final TextView equal;
+
+  @NonNull
   public final ImageView isChecked;
 
   @NonNull
-  public final TextView textViewCount;
+  public final TextView plus1;
+
+  @NonNull
+  public final TextView plus2;
+
+  @NonNull
+  public final TextView plus3;
+
+  @NonNull
+  public final TextView plus4;
+
+  @NonNull
+  public final TextView plus5;
+
+  @NonNull
+  public final TextView plus6;
+
+  @NonNull
+  public final TextView plus7;
+
+  @NonNull
+  public final TextView plus8;
+
+  @NonNull
+  public final TextView plus9;
+
+  @NonNull
+  public final TextView textViewCount1;
+
+  @NonNull
+  public final TextView textViewCount10;
+
+  @NonNull
+  public final TextView textViewCount2;
+
+  @NonNull
+  public final TextView textViewCount3;
+
+  @NonNull
+  public final TextView textViewCount4;
+
+  @NonNull
+  public final TextView textViewCount5;
+
+  @NonNull
+  public final TextView textViewCount6;
+
+  @NonNull
+  public final TextView textViewCount7;
+
+  @NonNull
+  public final TextView textViewCount8;
+
+  @NonNull
+  public final TextView textViewCount9;
 
   @NonNull
   public final TextView textViewDate;
 
   @NonNull
+  public final TextView textViewSum;
+
+  @NonNull
   public final TextView textViewTypeWeight;
 
-  private ListItemBinding(@NonNull ConstraintLayout rootView, @NonNull ImageView isChecked,
-      @NonNull TextView textViewCount, @NonNull TextView textViewDate,
+  private ListItemBinding(@NonNull ConstraintLayout rootView, @NonNull TextView equal,
+      @NonNull ImageView isChecked, @NonNull TextView plus1, @NonNull TextView plus2,
+      @NonNull TextView plus3, @NonNull TextView plus4, @NonNull TextView plus5,
+      @NonNull TextView plus6, @NonNull TextView plus7, @NonNull TextView plus8,
+      @NonNull TextView plus9, @NonNull TextView textViewCount1, @NonNull TextView textViewCount10,
+      @NonNull TextView textViewCount2, @NonNull TextView textViewCount3,
+      @NonNull TextView textViewCount4, @NonNull TextView textViewCount5,
+      @NonNull TextView textViewCount6, @NonNull TextView textViewCount7,
+      @NonNull TextView textViewCount8, @NonNull TextView textViewCount9,
+      @NonNull TextView textViewDate, @NonNull TextView textViewSum,
       @NonNull TextView textViewTypeWeight) {
     this.rootView = rootView;
+    this.equal = equal;
     this.isChecked = isChecked;
-    this.textViewCount = textViewCount;
+    this.plus1 = plus1;
+    this.plus2 = plus2;
+    this.plus3 = plus3;
+    this.plus4 = plus4;
+    this.plus5 = plus5;
+    this.plus6 = plus6;
+    this.plus7 = plus7;
+    this.plus8 = plus8;
+    this.plus9 = plus9;
+    this.textViewCount1 = textViewCount1;
+    this.textViewCount10 = textViewCount10;
+    this.textViewCount2 = textViewCount2;
+    this.textViewCount3 = textViewCount3;
+    this.textViewCount4 = textViewCount4;
+    this.textViewCount5 = textViewCount5;
+    this.textViewCount6 = textViewCount6;
+    this.textViewCount7 = textViewCount7;
+    this.textViewCount8 = textViewCount8;
+    this.textViewCount9 = textViewCount9;
     this.textViewDate = textViewDate;
+    this.textViewSum = textViewSum;
     this.textViewTypeWeight = textViewTypeWeight;
   }
 
@@ -69,15 +157,129 @@ public final class ListItemBinding implements ViewBinding {
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
+      id = R.id.equal;
+      TextView equal = ViewBindings.findChildViewById(rootView, id);
+      if (equal == null) {
+        break missingId;
+      }
+
       id = R.id.isChecked;
       ImageView isChecked = ViewBindings.findChildViewById(rootView, id);
       if (isChecked == null) {
         break missingId;
       }
 
-      id = R.id.textViewCount;
-      TextView textViewCount = ViewBindings.findChildViewById(rootView, id);
-      if (textViewCount == null) {
+      id = R.id.plus1;
+      TextView plus1 = ViewBindings.findChildViewById(rootView, id);
+      if (plus1 == null) {
+        break missingId;
+      }
+
+      id = R.id.plus2;
+      TextView plus2 = ViewBindings.findChildViewById(rootView, id);
+      if (plus2 == null) {
+        break missingId;
+      }
+
+      id = R.id.plus3;
+      TextView plus3 = ViewBindings.findChildViewById(rootView, id);
+      if (plus3 == null) {
+        break missingId;
+      }
+
+      id = R.id.plus4;
+      TextView plus4 = ViewBindings.findChildViewById(rootView, id);
+      if (plus4 == null) {
+        break missingId;
+      }
+
+      id = R.id.plus5;
+      TextView plus5 = ViewBindings.findChildViewById(rootView, id);
+      if (plus5 == null) {
+        break missingId;
+      }
+
+      id = R.id.plus6;
+      TextView plus6 = ViewBindings.findChildViewById(rootView, id);
+      if (plus6 == null) {
+        break missingId;
+      }
+
+      id = R.id.plus7;
+      TextView plus7 = ViewBindings.findChildViewById(rootView, id);
+      if (plus7 == null) {
+        break missingId;
+      }
+
+      id = R.id.plus8;
+      TextView plus8 = ViewBindings.findChildViewById(rootView, id);
+      if (plus8 == null) {
+        break missingId;
+      }
+
+      id = R.id.plus9;
+      TextView plus9 = ViewBindings.findChildViewById(rootView, id);
+      if (plus9 == null) {
+        break missingId;
+      }
+
+      id = R.id.textViewCount1;
+      TextView textViewCount1 = ViewBindings.findChildViewById(rootView, id);
+      if (textViewCount1 == null) {
+        break missingId;
+      }
+
+      id = R.id.textViewCount10;
+      TextView textViewCount10 = ViewBindings.findChildViewById(rootView, id);
+      if (textViewCount10 == null) {
+        break missingId;
+      }
+
+      id = R.id.textViewCount2;
+      TextView textViewCount2 = ViewBindings.findChildViewById(rootView, id);
+      if (textViewCount2 == null) {
+        break missingId;
+      }
+
+      id = R.id.textViewCount3;
+      TextView textViewCount3 = ViewBindings.findChildViewById(rootView, id);
+      if (textViewCount3 == null) {
+        break missingId;
+      }
+
+      id = R.id.textViewCount4;
+      TextView textViewCount4 = ViewBindings.findChildViewById(rootView, id);
+      if (textViewCount4 == null) {
+        break missingId;
+      }
+
+      id = R.id.textViewCount5;
+      TextView textViewCount5 = ViewBindings.findChildViewById(rootView, id);
+      if (textViewCount5 == null) {
+        break missingId;
+      }
+
+      id = R.id.textViewCount6;
+      TextView textViewCount6 = ViewBindings.findChildViewById(rootView, id);
+      if (textViewCount6 == null) {
+        break missingId;
+      }
+
+      id = R.id.textViewCount7;
+      TextView textViewCount7 = ViewBindings.findChildViewById(rootView, id);
+      if (textViewCount7 == null) {
+        break missingId;
+      }
+
+      id = R.id.textViewCount8;
+      TextView textViewCount8 = ViewBindings.findChildViewById(rootView, id);
+      if (textViewCount8 == null) {
+        break missingId;
+      }
+
+      id = R.id.textViewCount9;
+      TextView textViewCount9 = ViewBindings.findChildViewById(rootView, id);
+      if (textViewCount9 == null) {
         break missingId;
       }
 
@@ -87,14 +289,22 @@ public final class ListItemBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.textViewSum;
+      TextView textViewSum = ViewBindings.findChildViewById(rootView, id);
+      if (textViewSum == null) {
+        break missingId;
+      }
+
       id = R.id.textViewTypeWeight;
       TextView textViewTypeWeight = ViewBindings.findChildViewById(rootView, id);
       if (textViewTypeWeight == null) {
         break missingId;
       }
 
-      return new ListItemBinding((ConstraintLayout) rootView, isChecked, textViewCount,
-          textViewDate, textViewTypeWeight);
+      return new ListItemBinding((ConstraintLayout) rootView, equal, isChecked, plus1, plus2, plus3,
+          plus4, plus5, plus6, plus7, plus8, plus9, textViewCount1, textViewCount10, textViewCount2,
+          textViewCount3, textViewCount4, textViewCount5, textViewCount6, textViewCount7,
+          textViewCount8, textViewCount9, textViewDate, textViewSum, textViewTypeWeight);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

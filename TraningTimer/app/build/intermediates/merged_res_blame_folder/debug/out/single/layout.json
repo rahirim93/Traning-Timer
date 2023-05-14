@@ -8,6 +8,10 @@
         "source": "C:\\Users\\Viacheslav\\.gradle\\daemon\\7.3.3\\com.example.traningtimer.app-main-52:\\layout\\list_item.xml"
     },
     {
+        "merged": "com.example.traningtimer.app-mergeDebugResources-49:/layout/list_item.xml",
+        "source": "com.example.traningtimer.app-main-52:/layout/list_item.xml"
+    },
+    {
         "merged": "C:\\Users\\Viacheslav\\.gradle\\daemon\\7.3.3\\com.example.traningtimer.app-mergeDebugResources-49:\\layout\\fragment_save.xml",
         "source": "C:\\Users\\Viacheslav\\.gradle\\daemon\\7.3.3\\com.example.traningtimer.app-main-52:\\layout\\fragment_save.xml"
     },
@@ -28,8 +32,8 @@
         "source": "C:\\Users\\Viacheslav\\.gradle\\daemon\\7.3.3\\com.example.traningtimer.app-main-52:\\layout\\activity_main2.xml"
     },
     {
-        "merged": "com.example.traningtimer.app-mergeDebugResources-49:/layout/fragment_settings.xml",
-        "source": "com.example.traningtimer.app-main-52:/layout/fragment_settings.xml"
+        "merged": "C:\\Users\\Viacheslav\\.gradle\\daemon\\7.3.3\\com.example.traningtimer.app-mergeDebugResources-49:\\layout\\list_item2.xml",
+        "source": "C:\\Users\\Viacheslav\\.gradle\\daemon\\7.3.3\\com.example.traningtimer.app-main-52:\\layout\\list_item2.xml"
     },
     {
         "merged": "C:\\Users\\Viacheslav\\.gradle\\daemon\\7.3.3\\com.example.traningtimer.app-mergeDebugResources-49:\\layout\\activity_start.xml",
