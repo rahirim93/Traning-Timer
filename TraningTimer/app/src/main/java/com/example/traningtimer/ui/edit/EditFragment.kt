@@ -188,6 +188,18 @@ class EditFragment: Fragment(), OnEditorActionListener {
             editFragmentViewModel.delete(trainingEntity!!)
             findNavController().popBackStack()
         }
+
+        // Предзаполнение
+        binding?.buttonFill?.setOnClickListener {
+            listEditText.forEachIndexed { index, editText ->
+                if (index in 1..4) {
+                    editText?.setText("${listEditText[index - 1]?.text.toString().toInt() + 1}")
+                }
+                if (index in 5..9) {
+                    editText?.setText("${listEditText[index - 1]?.text.toString().toInt() - 1}")
+                }
+            }
+        }
     }
 
     private fun initDatePicker() {

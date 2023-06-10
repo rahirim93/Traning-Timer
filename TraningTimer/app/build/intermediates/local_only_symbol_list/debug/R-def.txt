@@ -45,6 +45,7 @@ id buttonAdd
 id buttonCheck
 id buttonDate
 id buttonDelete
+id buttonFill
 id buttonList
 id buttonPrint
 id buttonReport

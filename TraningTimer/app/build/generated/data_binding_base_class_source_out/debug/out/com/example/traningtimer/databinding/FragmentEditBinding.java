@@ -32,6 +32,9 @@ public final class FragmentEditBinding implements ViewBinding {
   public final Button buttonDelete;
 
   @NonNull
+  public final Button buttonFill;
+
+  @NonNull
   public final Button buttonSave;
 
   @NonNull
@@ -134,23 +137,24 @@ public final class FragmentEditBinding implements ViewBinding {
   public final TextView textView9;
 
   private FragmentEditBinding(@NonNull ConstraintLayout rootView, @NonNull Button buttonCheck,
-      @NonNull Button buttonDate, @NonNull Button buttonDelete, @NonNull Button buttonSave,
-      @NonNull Button buttonType1, @NonNull Button buttonType2, @NonNull Button buttonType3,
-      @NonNull Button buttonType4, @NonNull Button buttonWeight0, @NonNull Button buttonWeight16,
-      @NonNull Button buttonWeight24, @NonNull Button buttonWeight32,
-      @NonNull ConstraintLayout date, @NonNull EditText editText1, @NonNull EditText editText10,
-      @NonNull EditText editText2, @NonNull EditText editText3, @NonNull EditText editText4,
-      @NonNull EditText editText5, @NonNull EditText editText6, @NonNull EditText editText7,
-      @NonNull EditText editText8, @NonNull EditText editText9, @NonNull LinearLayout linearLayout3,
-      @NonNull LinearLayout linearLayout4, @NonNull TextView textView10,
-      @NonNull TextView textView11, @NonNull TextView textView12, @NonNull TextView textView13,
-      @NonNull TextView textView14, @NonNull TextView textView15, @NonNull TextView textView16,
-      @NonNull TextView textView5, @NonNull TextView textView6, @NonNull TextView textView7,
-      @NonNull TextView textView8, @NonNull TextView textView9) {
+      @NonNull Button buttonDate, @NonNull Button buttonDelete, @NonNull Button buttonFill,
+      @NonNull Button buttonSave, @NonNull Button buttonType1, @NonNull Button buttonType2,
+      @NonNull Button buttonType3, @NonNull Button buttonType4, @NonNull Button buttonWeight0,
+      @NonNull Button buttonWeight16, @NonNull Button buttonWeight24,
+      @NonNull Button buttonWeight32, @NonNull ConstraintLayout date, @NonNull EditText editText1,
+      @NonNull EditText editText10, @NonNull EditText editText2, @NonNull EditText editText3,
+      @NonNull EditText editText4, @NonNull EditText editText5, @NonNull EditText editText6,
+      @NonNull EditText editText7, @NonNull EditText editText8, @NonNull EditText editText9,
+      @NonNull LinearLayout linearLayout3, @NonNull LinearLayout linearLayout4,
+      @NonNull TextView textView10, @NonNull TextView textView11, @NonNull TextView textView12,
+      @NonNull TextView textView13, @NonNull TextView textView14, @NonNull TextView textView15,
+      @NonNull TextView textView16, @NonNull TextView textView5, @NonNull TextView textView6,
+      @NonNull TextView textView7, @NonNull TextView textView8, @NonNull TextView textView9) {
     this.rootView = rootView;
     this.buttonCheck = buttonCheck;
     this.buttonDate = buttonDate;
     this.buttonDelete = buttonDelete;
+    this.buttonFill = buttonFill;
     this.buttonSave = buttonSave;
     this.buttonType1 = buttonType1;
     this.buttonType2 = buttonType2;
@@ -229,6 +233,12 @@ public final class FragmentEditBinding implements ViewBinding {
       id = R.id.buttonDelete;
       Button buttonDelete = ViewBindings.findChildViewById(rootView, id);
       if (buttonDelete == null) {
+        break missingId;
+      }
+
+      id = R.id.buttonFill;
+      Button buttonFill = ViewBindings.findChildViewById(rootView, id);
+      if (buttonFill == null) {
         break missingId;
       }
 
@@ -433,7 +443,7 @@ public final class FragmentEditBinding implements ViewBinding {
       }
 
       return new FragmentEditBinding((ConstraintLayout) rootView, buttonCheck, buttonDate,
-          buttonDelete, buttonSave, buttonType1, buttonType2, buttonType3, buttonType4,
+          buttonDelete, buttonFill, buttonSave, buttonType1, buttonType2, buttonType3, buttonType4,
           buttonWeight0, buttonWeight16, buttonWeight24, buttonWeight32, date, editText1,
           editText10, editText2, editText3, editText4, editText5, editText6, editText7, editText8,
           editText9, linearLayout3, linearLayout4, textView10, textView11, textView12, textView13,
