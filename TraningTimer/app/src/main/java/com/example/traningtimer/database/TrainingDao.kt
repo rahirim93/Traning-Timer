@@ -44,4 +44,14 @@ interface TrainingDao {
 
     @Insert
     fun addTraining(trainingEntity: TrainingEntity)
+
+    // Запрос последней тренировки подтягиваний
+    @Query("SELECT * FROM (SELECT * FROM TRAINING_TABLE WHERE type = 1 OR type = 2) WHERE  date = (SELECT MAX(date) FROM ( SELECT * FROM TRAINING_TABLE WHERE type = 1 OR type = 2))")
+    fun getLastTrainingByType() : LiveData<TrainingEntity>
+
+    // Запрос последней тренировки для остальных видов тренировок
+    @Query("SELECT * FROM (SELECT * FROM TRAINING_TABLE WHERE type = :type) WHERE  date = (SELECT MAX(date) FROM ( SELECT * FROM TRAINING_TABLE WHERE type = :type))")
+    fun getLastTrainingByType2(type: Int) : LiveData<TrainingEntity>
+
+    //SELECT * FROM (SELECT * FROM TRAINING_TABLE WHERE type = 1 OR type = 2) WHERE  date = (SELECT MAX(date) FROM ( SELECT * FROM TRAINING_TABLE WHERE type = 1 OR type = 2))
 }

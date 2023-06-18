@@ -27,6 +27,8 @@ import com.example.traningtimer.traningService.ServiceState
 import com.example.traningtimer.traningService.getServiceState
 import com.example.traningtimer.ui.second.SecondFragment
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import java.text.SimpleDateFormat
+import java.util.*
 
 const val SHARED_TRAINING_TIME = "training time"
 class MainFragment : Fragment(), View.OnClickListener {
@@ -76,7 +78,17 @@ class MainFragment : Fragment(), View.OnClickListener {
 
 
 
-
+        mainViewModel.getLastTraining().observe(viewLifecycleOwner) {item ->
+            val data = item.count.split(";").toMutableList() // Делим строку на массив строк
+            data.removeLast() // Удаляем последний элемент так как он пустой
+            var string = ""
+            data.forEachIndexed { index, s ->
+                string += s
+                if (index == data.lastIndex) return@forEachIndexed
+                string += " + "
+            }
+            binding?.textViewLastTraining?.text = string
+        }
 
     }
 

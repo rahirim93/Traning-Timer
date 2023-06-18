@@ -97,6 +97,9 @@ public final class ActivityMainBinding implements ViewBinding {
   public final GridLayout gridLayout;
 
   @NonNull
+  public final TextView textViewLastTraining;
+
+  @NonNull
   public final TextView xyValue;
 
   @NonNull
@@ -114,7 +117,8 @@ public final class ActivityMainBinding implements ViewBinding {
       @NonNull Button buttonStop, @NonNull Button buttonStopAlarm, @NonNull Button buttonTimeRelax,
       @NonNull Button buttonType1, @NonNull Button buttonType2, @NonNull Button buttonType3,
       @NonNull Button buttonWeight0, @NonNull Button buttonWeight16, @NonNull GridLayout gridLayout,
-      @NonNull TextView xyValue, @NonNull TextView xzValue, @NonNull TextView zyValue) {
+      @NonNull TextView textViewLastTraining, @NonNull TextView xyValue, @NonNull TextView xzValue,
+      @NonNull TextView zyValue) {
     this.rootView = rootView;
     this.button1 = button1;
     this.button10 = button10;
@@ -141,6 +145,7 @@ public final class ActivityMainBinding implements ViewBinding {
     this.buttonWeight0 = buttonWeight0;
     this.buttonWeight16 = buttonWeight16;
     this.gridLayout = gridLayout;
+    this.textViewLastTraining = textViewLastTraining;
     this.xyValue = xyValue;
     this.xzValue = xzValue;
     this.zyValue = zyValue;
@@ -323,6 +328,12 @@ public final class ActivityMainBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.textViewLastTraining;
+      TextView textViewLastTraining = ViewBindings.findChildViewById(rootView, id);
+      if (textViewLastTraining == null) {
+        break missingId;
+      }
+
       id = R.id.xyValue;
       TextView xyValue = ViewBindings.findChildViewById(rootView, id);
       if (xyValue == null) {
@@ -345,7 +356,7 @@ public final class ActivityMainBinding implements ViewBinding {
           button3minTimer, button4, button4minTimer, button5, button6, button7, button8, button9,
           buttonReport, buttonReset, buttonResetSettings, buttonStart, buttonStop, buttonStopAlarm,
           buttonTimeRelax, buttonType1, buttonType2, buttonType3, buttonWeight0, buttonWeight16,
-          gridLayout, xyValue, xzValue, zyValue);
+          gridLayout, textViewLastTraining, xyValue, xzValue, zyValue);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

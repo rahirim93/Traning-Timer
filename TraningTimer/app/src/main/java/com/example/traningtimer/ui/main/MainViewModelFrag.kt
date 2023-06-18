@@ -11,6 +11,8 @@ class MainViewModelFrag(private val trainingRepository: TrainingRepository): Vie
     fun getEnabled(id: Int, defaultValue: Boolean) = trainingRepository.getEnabled(id, defaultValue)
     fun getVisibility(id: Int, defaultValue: Int) = trainingRepository.getVisibility(id, defaultValue)
 
+    fun getLastTraining() = trainingRepository.getLastTraining(trainingRepository.getType())
+
     fun setText(id: Int, text: String) = trainingRepository.setText(id, text)
     fun setColor(id: Int, color: Int) = trainingRepository.setColor(id, color)
     fun setEnabled(id: Int, isEnabled: Boolean) = trainingRepository.setEnabled(id, isEnabled)

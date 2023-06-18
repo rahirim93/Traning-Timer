@@ -2,9 +2,11 @@ package com.example.traningtimer
 
 import android.content.Context
 import android.graphics.Color
+import android.text.method.TextKeyListener.clear
 import android.view.View
 import android.widget.Button
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import com.example.traningtimer.database.TrainingDao
 import com.example.traningtimer.database.TrainingEntity
 import kotlinx.coroutines.CoroutineScope
@@ -37,6 +39,13 @@ class TrainingRepository(
             else -> { trainingDao.getAllFlow() }
         }
     }
+
+    fun getLastTraining(type: Int) : LiveData<TrainingEntity> =
+        if (type == 1 || type == 2) trainingDao.getLastTrainingByType()
+        else trainingDao.getLastTrainingByType2(type)
+
+
+
     fun addItem(trainingEntity: TrainingEntity) { executor.execute { trainingDao.addTraining(trainingEntity) } }
     fun find(id: UUID?): LiveData<TrainingEntity?> = trainingDao.findLiveData(id)
     fun findLastTraining(): LiveData<Calendar?> = trainingDao.findLastTraining()

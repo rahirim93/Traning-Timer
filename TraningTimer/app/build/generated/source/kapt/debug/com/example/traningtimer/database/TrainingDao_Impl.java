@@ -590,6 +590,130 @@ public final class TrainingDao_Impl implements TrainingDao {
     });
   }
 
+  @Override
+  public LiveData<TrainingEntity> getLastTrainingByType() {
+    final String _sql = "SELECT * FROM (SELECT * FROM TRAINING_TABLE WHERE type = 1 OR type = 2) WHERE  date = (SELECT MAX(date) FROM ( SELECT * FROM TRAINING_TABLE WHERE type = 1 OR type = 2))";
+    final RoomSQLiteQuery _statement = RoomSQLiteQuery.acquire(_sql, 0);
+    return __db.getInvalidationTracker().createLiveData(new String[]{"TRAINING_TABLE"}, false, new Callable<TrainingEntity>() {
+      @Override
+      public TrainingEntity call() throws Exception {
+        final Cursor _cursor = DBUtil.query(__db, _statement, false, null);
+        try {
+          final int _cursorIndexOfId = CursorUtil.getColumnIndexOrThrow(_cursor, "id");
+          final int _cursorIndexOfDate = CursorUtil.getColumnIndexOrThrow(_cursor, "date");
+          final int _cursorIndexOfCount = CursorUtil.getColumnIndexOrThrow(_cursor, "count");
+          final int _cursorIndexOfWeight = CursorUtil.getColumnIndexOrThrow(_cursor, "weight");
+          final int _cursorIndexOfType = CursorUtil.getColumnIndexOrThrow(_cursor, "type");
+          final int _cursorIndexOfIsChecked = CursorUtil.getColumnIndexOrThrow(_cursor, "isChecked");
+          final TrainingEntity _result;
+          if(_cursor.moveToFirst()) {
+            final UUID _tmpId;
+            final String _tmp;
+            if (_cursor.isNull(_cursorIndexOfId)) {
+              _tmp = null;
+            } else {
+              _tmp = _cursor.getString(_cursorIndexOfId);
+            }
+            _tmpId = __trainingTypeConverters.toUUID(_tmp);
+            final Calendar _tmpDate;
+            final long _tmp_1;
+            _tmp_1 = _cursor.getLong(_cursorIndexOfDate);
+            _tmpDate = __trainingTypeConverters.toCalendar(_tmp_1);
+            final String _tmpCount;
+            if (_cursor.isNull(_cursorIndexOfCount)) {
+              _tmpCount = null;
+            } else {
+              _tmpCount = _cursor.getString(_cursorIndexOfCount);
+            }
+            final int _tmpWeight;
+            _tmpWeight = _cursor.getInt(_cursorIndexOfWeight);
+            final int _tmpType;
+            _tmpType = _cursor.getInt(_cursorIndexOfType);
+            final boolean _tmpIsChecked;
+            final int _tmp_2;
+            _tmp_2 = _cursor.getInt(_cursorIndexOfIsChecked);
+            _tmpIsChecked = _tmp_2 != 0;
+            _result = new TrainingEntity(_tmpId,_tmpDate,_tmpCount,_tmpWeight,_tmpType,_tmpIsChecked);
+          } else {
+            _result = null;
+          }
+          return _result;
+        } finally {
+          _cursor.close();
+        }
+      }
+
+      @Override
+      protected void finalize() {
+        _statement.release();
+      }
+    });
+  }
+
+  @Override
+  public LiveData<TrainingEntity> getLastTrainingByType2(final int type) {
+    final String _sql = "SELECT * FROM (SELECT * FROM TRAINING_TABLE WHERE type = ?) WHERE  date = (SELECT MAX(date) FROM ( SELECT * FROM TRAINING_TABLE WHERE type = ?))";
+    final RoomSQLiteQuery _statement = RoomSQLiteQuery.acquire(_sql, 2);
+    int _argIndex = 1;
+    _statement.bindLong(_argIndex, type);
+    _argIndex = 2;
+    _statement.bindLong(_argIndex, type);
+    return __db.getInvalidationTracker().createLiveData(new String[]{"TRAINING_TABLE"}, false, new Callable<TrainingEntity>() {
+      @Override
+      public TrainingEntity call() throws Exception {
+        final Cursor _cursor = DBUtil.query(__db, _statement, false, null);
+        try {
+          final int _cursorIndexOfId = CursorUtil.getColumnIndexOrThrow(_cursor, "id");
+          final int _cursorIndexOfDate = CursorUtil.getColumnIndexOrThrow(_cursor, "date");
+          final int _cursorIndexOfCount = CursorUtil.getColumnIndexOrThrow(_cursor, "count");
+          final int _cursorIndexOfWeight = CursorUtil.getColumnIndexOrThrow(_cursor, "weight");
+          final int _cursorIndexOfType = CursorUtil.getColumnIndexOrThrow(_cursor, "type");
+          final int _cursorIndexOfIsChecked = CursorUtil.getColumnIndexOrThrow(_cursor, "isChecked");
+          final TrainingEntity _result;
+          if(_cursor.moveToFirst()) {
+            final UUID _tmpId;
+            final String _tmp;
+            if (_cursor.isNull(_cursorIndexOfId)) {
+              _tmp = null;
+            } else {
+              _tmp = _cursor.getString(_cursorIndexOfId);
+            }
+            _tmpId = __trainingTypeConverters.toUUID(_tmp);
+            final Calendar _tmpDate;
+            final long _tmp_1;
+            _tmp_1 = _cursor.getLong(_cursorIndexOfDate);
+            _tmpDate = __trainingTypeConverters.toCalendar(_tmp_1);
+            final String _tmpCount;
+            if (_cursor.isNull(_cursorIndexOfCount)) {
+              _tmpCount = null;
+            } else {
+              _tmpCount = _cursor.getString(_cursorIndexOfCount);
+            }
+            final int _tmpWeight;
+            _tmpWeight = _cursor.getInt(_cursorIndexOfWeight);
+            final int _tmpType;
+            _tmpType = _cursor.getInt(_cursorIndexOfType);
+            final boolean _tmpIsChecked;
+            final int _tmp_2;
+            _tmp_2 = _cursor.getInt(_cursorIndexOfIsChecked);
+            _tmpIsChecked = _tmp_2 != 0;
+            _result = new TrainingEntity(_tmpId,_tmpDate,_tmpCount,_tmpWeight,_tmpType,_tmpIsChecked);
+          } else {
+            _result = null;
+          }
+          return _result;
+        } finally {
+          _cursor.close();
+        }
+      }
+
+      @Override
+      protected void finalize() {
+        _statement.release();
+      }
+    });
+  }
+
   public static List<Class<?>> getRequiredConverters() {
     return Collections.emptyList();
   }
