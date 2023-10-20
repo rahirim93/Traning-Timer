@@ -7,7 +7,7 @@ public final class VibrateHelper {
     private android.os.Vibrator vibrator;
     private int vibrateDelay = 1000;
     
-    public VibrateHelper(@org.jetbrains.annotations.NotNull()
+    public VibrateHelper(@org.jetbrains.annotations.NotNull
     android.content.Context context) {
         super();
     }

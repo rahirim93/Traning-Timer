@@ -4,7 +4,7 @@
             "outputFile": "com.example.traningtimer.app-mergeDebugResources-48:/values-h550dp-port-v13/values-h550dp-port-v13.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\Viacheslav\\.gradle\\caches\\transforms-3\\f8edbf28177431e5105196302ad2d946\\transformed\\material-1.8.0\\res\\values-h550dp-port-v13\\values-h550dp-port-v13.xml",
+                    "source": "C:\\Users\\Viacheslav\\.gradle\\caches\\transforms-3\\d2a2d4d094a005d0d52e300eec87cb49\\transformed\\material-1.8.0\\res\\values-h550dp-port-v13\\values-h550dp-port-v13.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",

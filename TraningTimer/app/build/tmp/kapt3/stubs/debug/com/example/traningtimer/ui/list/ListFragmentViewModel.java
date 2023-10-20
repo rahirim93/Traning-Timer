@@ -6,16 +6,16 @@ import java.lang.System;
 public final class ListFragmentViewModel extends androidx.lifecycle.ViewModel {
     private final com.example.traningtimer.TrainingRepository trainingRepository = null;
     private final kotlinx.coroutines.flow.MutableStateFlow<com.example.traningtimer.ui.list.ListViewState> _states = null;
-    @org.jetbrains.annotations.NotNull()
+    @org.jetbrains.annotations.NotNull
     private final kotlinx.coroutines.flow.StateFlow<com.example.traningtimer.ui.list.ListViewState> states = null;
     private kotlinx.coroutines.Job job;
     
-    public ListFragmentViewModel(@org.jetbrains.annotations.NotNull()
+    public ListFragmentViewModel(@org.jetbrains.annotations.NotNull
     com.example.traningtimer.TrainingRepository trainingRepository) {
         super();
     }
     
-    @org.jetbrains.annotations.NotNull()
+    @org.jetbrains.annotations.NotNull
     public final kotlinx.coroutines.flow.StateFlow<com.example.traningtimer.ui.list.ListViewState> getStates() {
         return null;
     }

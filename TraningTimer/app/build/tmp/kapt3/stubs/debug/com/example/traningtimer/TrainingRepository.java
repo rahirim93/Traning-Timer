@@ -15,58 +15,58 @@ public final class TrainingRepository {
      */
     private final android.content.SharedPreferences sharedPreferences = null;
     
-    public TrainingRepository(@org.jetbrains.annotations.NotNull()
-    com.example.traningtimer.database.TrainingDao trainingDao, @org.jetbrains.annotations.NotNull()
-    kotlinx.coroutines.CoroutineScope appScope, @org.jetbrains.annotations.NotNull()
+    public TrainingRepository(@org.jetbrains.annotations.NotNull
+    com.example.traningtimer.database.TrainingDao trainingDao, @org.jetbrains.annotations.NotNull
+    kotlinx.coroutines.CoroutineScope appScope, @org.jetbrains.annotations.NotNull
     android.content.Context context) {
         super();
     }
     
-    @org.jetbrains.annotations.NotNull()
+    @org.jetbrains.annotations.NotNull
     public final androidx.lifecycle.LiveData<java.util.List<com.example.traningtimer.database.TrainingEntity>> getAllLiveData() {
         return null;
     }
     
-    @org.jetbrains.annotations.NotNull()
+    @org.jetbrains.annotations.NotNull
     public final kotlinx.coroutines.flow.Flow<java.util.List<com.example.traningtimer.database.TrainingEntity>> getAllFlow() {
         return null;
     }
     
-    @org.jetbrains.annotations.NotNull()
+    @org.jetbrains.annotations.NotNull
     public final kotlinx.coroutines.flow.Flow<java.util.List<com.example.traningtimer.database.TrainingEntity>> filtered(int filterMode) {
         return null;
     }
     
-    @org.jetbrains.annotations.NotNull()
+    @org.jetbrains.annotations.NotNull
     public final androidx.lifecycle.LiveData<com.example.traningtimer.database.TrainingEntity> getLastTraining(int type) {
         return null;
     }
     
-    public final void addItem(@org.jetbrains.annotations.NotNull()
+    public final void addItem(@org.jetbrains.annotations.NotNull
     com.example.traningtimer.database.TrainingEntity trainingEntity) {
     }
     
-    @org.jetbrains.annotations.NotNull()
-    public final androidx.lifecycle.LiveData<com.example.traningtimer.database.TrainingEntity> find(@org.jetbrains.annotations.Nullable()
+    @org.jetbrains.annotations.NotNull
+    public final androidx.lifecycle.LiveData<com.example.traningtimer.database.TrainingEntity> find(@org.jetbrains.annotations.Nullable
     java.util.UUID id) {
         return null;
     }
     
-    @org.jetbrains.annotations.NotNull()
+    @org.jetbrains.annotations.NotNull
     public final androidx.lifecycle.LiveData<java.util.Calendar> findLastTraining() {
         return null;
     }
     
-    @org.jetbrains.annotations.Nullable()
-    public final java.lang.Object save(@org.jetbrains.annotations.NotNull()
-    com.example.traningtimer.database.TrainingEntity trainingEntity, @org.jetbrains.annotations.NotNull()
+    @org.jetbrains.annotations.Nullable
+    public final java.lang.Object save(@org.jetbrains.annotations.NotNull
+    com.example.traningtimer.database.TrainingEntity trainingEntity, @org.jetbrains.annotations.NotNull
     kotlin.coroutines.Continuation<? super kotlin.Unit> continuation) {
         return null;
     }
     
-    @org.jetbrains.annotations.Nullable()
-    public final java.lang.Object delete(@org.jetbrains.annotations.NotNull()
-    com.example.traningtimer.database.TrainingEntity trainingEntity, @org.jetbrains.annotations.NotNull()
+    @org.jetbrains.annotations.Nullable
+    public final java.lang.Object delete(@org.jetbrains.annotations.NotNull
+    com.example.traningtimer.database.TrainingEntity trainingEntity, @org.jetbrains.annotations.NotNull
     kotlin.coroutines.Continuation<? super kotlin.Unit> continuation) {
         return null;
     }
@@ -77,8 +77,8 @@ public final class TrainingRepository {
     public final void clearSharPref() {
     }
     
-    @org.jetbrains.annotations.NotNull()
-    public final java.lang.String getText(int id, @org.jetbrains.annotations.NotNull()
+    @org.jetbrains.annotations.NotNull
+    public final java.lang.String getText(int id, @org.jetbrains.annotations.NotNull
     java.lang.String defaultValue) {
         return null;
     }
@@ -95,7 +95,7 @@ public final class TrainingRepository {
         return 0;
     }
     
-    public final void setText(int id, @org.jetbrains.annotations.NotNull()
+    public final void setText(int id, @org.jetbrains.annotations.NotNull
     java.lang.String text) {
     }
     
@@ -129,7 +129,7 @@ public final class TrainingRepository {
     public final void setType(int type) {
     }
     
-    @org.jetbrains.annotations.NotNull()
+    @org.jetbrains.annotations.NotNull
     public final java.util.Calendar getDate() {
         return null;
     }

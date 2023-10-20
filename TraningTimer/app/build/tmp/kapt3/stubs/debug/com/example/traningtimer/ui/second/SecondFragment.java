@@ -7,13 +7,13 @@ public final class SecondFragment extends androidx.fragment.app.Fragment impleme
     private com.example.traningtimer.databinding.ActivityMain2Binding binding;
     private final kotlin.Lazy secondFragmentViewModel$delegate = null;
     private final java.util.ArrayList<android.widget.Button> arrayButtons = null;
-    @org.jetbrains.annotations.NotNull()
+    @org.jetbrains.annotations.NotNull
     public static final com.example.traningtimer.ui.second.SecondFragment.Companion Companion = null;
-    @org.jetbrains.annotations.NotNull()
+    @org.jetbrains.annotations.NotNull
     public static final java.lang.String BUTTON_ID = "BUTTON_ID";
-    @org.jetbrains.annotations.NotNull()
+    @org.jetbrains.annotations.NotNull
     public static final java.lang.String COUNT = "COUNT";
-    @org.jetbrains.annotations.NotNull()
+    @org.jetbrains.annotations.NotNull
     public static final java.lang.String REQUEST_CODE = "REQUEST_CODE";
     
     public SecondFragment() {
@@ -24,27 +24,27 @@ public final class SecondFragment extends androidx.fragment.app.Fragment impleme
         return null;
     }
     
-    @org.jetbrains.annotations.NotNull()
-    @java.lang.Override()
-    public android.view.View onCreateView(@org.jetbrains.annotations.NotNull()
-    android.view.LayoutInflater inflater, @org.jetbrains.annotations.Nullable()
-    android.view.ViewGroup container, @org.jetbrains.annotations.Nullable()
+    @org.jetbrains.annotations.NotNull
+    @java.lang.Override
+    public android.view.View onCreateView(@org.jetbrains.annotations.NotNull
+    android.view.LayoutInflater inflater, @org.jetbrains.annotations.Nullable
+    android.view.ViewGroup container, @org.jetbrains.annotations.Nullable
     android.os.Bundle savedInstanceState) {
         return null;
     }
     
-    @java.lang.Override()
-    public void onViewCreated(@org.jetbrains.annotations.NotNull()
-    android.view.View view, @org.jetbrains.annotations.Nullable()
+    @java.lang.Override
+    public void onViewCreated(@org.jetbrains.annotations.NotNull
+    android.view.View view, @org.jetbrains.annotations.Nullable
     android.os.Bundle savedInstanceState) {
     }
     
-    @java.lang.Override()
-    public void onClick(@org.jetbrains.annotations.Nullable()
+    @java.lang.Override
+    public void onClick(@org.jetbrains.annotations.Nullable
     android.view.View v) {
     }
     
-    @java.lang.Override()
+    @java.lang.Override
     public void onDestroyView() {
     }
     

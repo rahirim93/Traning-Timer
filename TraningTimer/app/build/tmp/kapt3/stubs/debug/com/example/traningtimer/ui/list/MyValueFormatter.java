@@ -10,9 +10,9 @@ public final class MyValueFormatter extends com.github.mikephil.charting.formatt
         super();
     }
     
-    @org.jetbrains.annotations.NotNull()
-    @java.lang.Override()
-    public java.lang.String getAxisLabel(float value, @org.jetbrains.annotations.Nullable()
+    @org.jetbrains.annotations.NotNull
+    @java.lang.Override
+    public java.lang.String getAxisLabel(float value, @org.jetbrains.annotations.Nullable
     com.github.mikephil.charting.components.AxisBase axis) {
         return null;
     }

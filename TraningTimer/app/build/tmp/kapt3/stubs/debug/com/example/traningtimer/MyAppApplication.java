@@ -10,7 +10,7 @@ public final class MyAppApplication extends android.app.Application {
         super();
     }
     
-    @java.lang.Override()
+    @java.lang.Override
     public void onCreate() {
     }
 }

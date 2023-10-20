@@ -50,12 +50,12 @@ public final class EndlessService extends android.app.Service implements android
     public final void setTimeBeep(int p0) {
     }
     
-    @java.lang.Override()
+    @java.lang.Override
     public void onCreate() {
     }
     
-    @java.lang.Override()
-    public void onSensorChanged(@org.jetbrains.annotations.Nullable()
+    @java.lang.Override
+    public void onSensorChanged(@org.jetbrains.annotations.Nullable
     android.hardware.SensorEvent event) {
     }
     
@@ -65,14 +65,14 @@ public final class EndlessService extends android.app.Service implements android
     private final void setAlarm(java.util.Calendar calendar, android.app.PendingIntent alarmActionPendingIntent) {
     }
     
-    @java.lang.Override()
-    public int onStartCommand(@org.jetbrains.annotations.Nullable()
+    @java.lang.Override
+    public int onStartCommand(@org.jetbrains.annotations.Nullable
     android.content.Intent intent, int flags, int startId) {
         return 0;
     }
     
-    @java.lang.Override()
-    public void onAccuracyChanged(@org.jetbrains.annotations.Nullable()
+    @java.lang.Override
+    public void onAccuracyChanged(@org.jetbrains.annotations.Nullable
     android.hardware.Sensor sensor, int accuracy) {
     }
     
@@ -85,12 +85,12 @@ public final class EndlessService extends android.app.Service implements android
     private final void stopService() {
     }
     
-    @java.lang.Override()
-    public void onTaskRemoved(@org.jetbrains.annotations.NotNull()
+    @java.lang.Override
+    public void onTaskRemoved(@org.jetbrains.annotations.NotNull
     android.content.Intent rootIntent) {
     }
     
-    @java.lang.Override()
+    @java.lang.Override
     public void onDestroy() {
     }
     
@@ -98,9 +98,9 @@ public final class EndlessService extends android.app.Service implements android
         return null;
     }
     
-    @org.jetbrains.annotations.Nullable()
-    @java.lang.Override()
-    public android.os.IBinder onBind(@org.jetbrains.annotations.NotNull()
+    @org.jetbrains.annotations.Nullable
+    @java.lang.Override
+    public android.os.IBinder onBind(@org.jetbrains.annotations.NotNull
     android.content.Intent intent) {
         return null;
     }

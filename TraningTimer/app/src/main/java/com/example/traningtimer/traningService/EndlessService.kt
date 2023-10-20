@@ -1,11 +1,13 @@
 package com.example.traningtimer.traningService
 
+import android.Manifest
 import android.app.AlarmManager
 import android.app.PendingIntent
 import android.app.Service
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
+import android.content.pm.PackageManager
 import android.hardware.Sensor
 import android.hardware.SensorEvent
 import android.hardware.SensorEventListener
@@ -14,7 +16,9 @@ import android.media.Ringtone
 import android.media.RingtoneManager
 import android.net.Uri
 import android.os.*
+import android.util.Log
 import android.widget.Toast
+import androidx.core.app.ActivityCompat
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import com.example.traningtimer.*
@@ -87,10 +91,15 @@ class EndlessService : Service(), SensorEventListener {
 
         notificationManagerCompat = NotificationManagerCompat.from(this)
 
-        notificationUri = Uri.parse("content://media/internal/audio/media/119?title=Beep-Beep&canonical=1")
-        ringtone = RingtoneManager.getRingtone(this, notificationUri)
-        notificationUriBeep = Uri.parse("content://media/internal/audio/media/119?title=Beep_Once&canonical=1")
-        ringtoneBeep = RingtoneManager.getRingtone(this, notificationUriBeep)
+        //notificationUri = Uri.parse("content://media/internal/audio/media/119?title=Beep-Beep&canonical=1")
+        //ringtone = RingtoneManager.getRingtone(this, notificationUri)
+        //notificationUriBeep = Uri.parse("content://media/internal/audio/media/119?title=Beep_Once&canonical=1")
+        //ringtoneBeep = RingtoneManager.getRingtone(this, notificationUriBeep)
+
+        ringtone = RingtoneManager.getRingtone(this, RingtoneManager.getDefaultUri(RingtoneManager.TYPE_ALARM))
+        ringtoneBeep = RingtoneManager.getRingtone(this, RingtoneManager.getDefaultUri(RingtoneManager.TYPE_ALARM))
+
+
 
         builder = createNotification()
         val notification = createNotification().build()
@@ -107,6 +116,7 @@ class EndlessService : Service(), SensorEventListener {
 
     override fun onSensorChanged(event: SensorEvent?) {
         if (mode == MODE_WAITING) {
+
             // Считывание показаний датчика положения
             if (event != null) {
                 xyAngle = event.values[0]  //Плоскость XY
@@ -123,6 +133,8 @@ class EndlessService : Service(), SensorEventListener {
 
             // Срабатывание правого движения
             if (zyAngle < -40 && !rightMove && xzAngle < 0) {
+                Log.d("rahirim", "right")
+
                 rightMove = true
                 vibratorHelper.vibrateDelay = 500
                 timeRightMove = Calendar.getInstance().timeInMillis
@@ -130,11 +142,15 @@ class EndlessService : Service(), SensorEventListener {
 
             // Срабатывание левого движения
             if (zyAngle > 40 && rightMove && xzAngle < 0) {
+                Log.d("rahirim", "left")
+
                 leftMove = true
             }
 
             // Вибрация через определенный промежуток времени
             if (Calendar.getInstance().timeInMillis - counter > vibratorHelper.vibrateDelay) {
+                Log.d("rahirim", "work")
+
                 counter = Calendar.getInstance().timeInMillis
                 vibratorHelper.vibrate()
             }
@@ -192,7 +208,7 @@ class EndlessService : Service(), SensorEventListener {
 
     private fun setTestAlarm() {
         if (sharedPreferences != null) {
-            timeTraining = sharedPreferences!!.getInt(SHARED_TRAINING_TIME, 0)
+            timeTraining = sharedPreferences!!.getInt(SHARED_TRAINING_TIME, 180)
             log("Time = $timeTraining")
         }
         timeToAlarm.timeInMillis = Calendar.getInstance().timeInMillis + (timeTraining * 1000)
@@ -287,6 +303,20 @@ class EndlessService : Service(), SensorEventListener {
     }
     private fun updateNotification(string: String){
         builder.setContentText(string)
+        if (ActivityCompat.checkSelfPermission(
+                this,
+                Manifest.permission.POST_NOTIFICATIONS
+            ) != PackageManager.PERMISSION_GRANTED
+        ) {
+            // TODO: Consider calling
+            //    ActivityCompat#requestPermissions
+            // here to request the missing permissions, and then overriding
+            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+            //                                          int[] grantResults)
+            // to handle the case where the user grants the permission. See the documentation
+            // for ActivityCompat#requestPermissions for more details.
+            return
+        }
         notificationManagerCompat.notify(1, builder.build())
     }
     private fun stopService() {
@@ -312,7 +342,7 @@ class EndlessService : Service(), SensorEventListener {
         val restartServiceIntent = Intent(applicationContext, EndlessService::class.java).also {
             it.setPackage(packageName)
         }
-        val restartServicePendingIntent: PendingIntent = PendingIntent.getService(this, 1, restartServiceIntent, PendingIntent.FLAG_ONE_SHOT)
+        val restartServicePendingIntent: PendingIntent = PendingIntent.getService(this, 1, restartServiceIntent, PendingIntent.FLAG_IMMUTABLE)
         applicationContext.getSystemService(Context.ALARM_SERVICE)
         val alarmService: AlarmManager = applicationContext.getSystemService(Context.ALARM_SERVICE) as AlarmManager
         alarmService.set(AlarmManager.ELAPSED_REALTIME, SystemClock.elapsedRealtime() + 1000, restartServicePendingIntent)

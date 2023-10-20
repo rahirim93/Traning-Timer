@@ -6,7 +6,7 @@ import java.lang.System;
 public final class SettingsFragmentViewModel extends androidx.lifecycle.ViewModel {
     private final com.example.traningtimer.TrainingRepository trainingRepository = null;
     
-    public SettingsFragmentViewModel(@org.jetbrains.annotations.NotNull()
+    public SettingsFragmentViewModel(@org.jetbrains.annotations.NotNull
     com.example.traningtimer.TrainingRepository trainingRepository) {
         super();
     }
@@ -35,7 +35,7 @@ public final class SettingsFragmentViewModel extends androidx.lifecycle.ViewMode
     public final void setDate() {
     }
     
-    @org.jetbrains.annotations.NotNull()
+    @org.jetbrains.annotations.NotNull
     public final androidx.lifecycle.LiveData<java.util.Calendar> getDateLiveData() {
         return null;
     }

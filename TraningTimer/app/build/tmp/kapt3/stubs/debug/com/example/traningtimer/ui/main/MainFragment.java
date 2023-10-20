@@ -33,11 +33,11 @@ public final class MainFragment extends androidx.fragment.app.Fragment implement
         return null;
     }
     
-    @org.jetbrains.annotations.NotNull()
-    @java.lang.Override()
-    public android.view.View onCreateView(@org.jetbrains.annotations.NotNull()
-    android.view.LayoutInflater inflater, @org.jetbrains.annotations.Nullable()
-    android.view.ViewGroup container, @org.jetbrains.annotations.Nullable()
+    @org.jetbrains.annotations.NotNull
+    @java.lang.Override
+    public android.view.View onCreateView(@org.jetbrains.annotations.NotNull
+    android.view.LayoutInflater inflater, @org.jetbrains.annotations.Nullable
+    android.view.ViewGroup container, @org.jetbrains.annotations.Nullable
     android.os.Bundle savedInstanceState) {
         return null;
     }
@@ -48,14 +48,14 @@ public final class MainFragment extends androidx.fragment.app.Fragment implement
      * если сброшена, то выбрать тренировку вес и тп
      * в репозитории []ранить состояние тренировки вес и тп, так пусковой фрагмент будет понимать запускать ся или нет
      */
-    @java.lang.Override()
-    public void onViewCreated(@org.jetbrains.annotations.NotNull()
-    android.view.View view, @org.jetbrains.annotations.Nullable()
+    @java.lang.Override
+    public void onViewCreated(@org.jetbrains.annotations.NotNull
+    android.view.View view, @org.jetbrains.annotations.Nullable
     android.os.Bundle savedInstanceState) {
     }
     
-    @java.lang.Override()
-    public void onClick(@org.jetbrains.annotations.NotNull()
+    @java.lang.Override
+    public void onClick(@org.jetbrains.annotations.NotNull
     android.view.View v) {
     }
     
@@ -71,7 +71,7 @@ public final class MainFragment extends androidx.fragment.app.Fragment implement
     private final void actionOnService(com.example.traningtimer.traningService.Actions action) {
     }
     
-    @java.lang.Override()
+    @java.lang.Override
     public void onDestroyView() {
     }
 }

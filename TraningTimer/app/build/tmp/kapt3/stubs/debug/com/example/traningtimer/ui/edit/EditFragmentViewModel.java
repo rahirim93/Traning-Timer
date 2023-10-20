@@ -6,32 +6,32 @@ import java.lang.System;
 public final class EditFragmentViewModel extends androidx.lifecycle.ViewModel {
     private final com.example.traningtimer.TrainingRepository trainingRepository = null;
     private final androidx.lifecycle.MutableLiveData<java.util.UUID> itemIdLiveData = null;
-    @org.jetbrains.annotations.NotNull()
+    @org.jetbrains.annotations.NotNull
     private androidx.lifecycle.LiveData<com.example.traningtimer.database.TrainingEntity> itemLiveData;
     
-    public EditFragmentViewModel(@org.jetbrains.annotations.NotNull()
+    public EditFragmentViewModel(@org.jetbrains.annotations.NotNull
     com.example.traningtimer.TrainingRepository trainingRepository) {
         super();
     }
     
-    @org.jetbrains.annotations.NotNull()
+    @org.jetbrains.annotations.NotNull
     public final androidx.lifecycle.LiveData<com.example.traningtimer.database.TrainingEntity> getItemLiveData() {
         return null;
     }
     
-    public final void setItemLiveData(@org.jetbrains.annotations.NotNull()
+    public final void setItemLiveData(@org.jetbrains.annotations.NotNull
     androidx.lifecycle.LiveData<com.example.traningtimer.database.TrainingEntity> p0) {
     }
     
-    public final void getItem(@org.jetbrains.annotations.NotNull()
+    public final void getItem(@org.jetbrains.annotations.NotNull
     java.util.UUID id) {
     }
     
-    public final void save(@org.jetbrains.annotations.NotNull()
+    public final void save(@org.jetbrains.annotations.NotNull
     com.example.traningtimer.database.TrainingEntity model) {
     }
     
-    public final void delete(@org.jetbrains.annotations.NotNull()
+    public final void delete(@org.jetbrains.annotations.NotNull
     com.example.traningtimer.database.TrainingEntity model) {
     }
 }

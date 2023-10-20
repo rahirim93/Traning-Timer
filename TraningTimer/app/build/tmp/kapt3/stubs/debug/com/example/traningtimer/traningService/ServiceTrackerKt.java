@@ -7,13 +7,13 @@ public final class ServiceTrackerKt {
     private static final java.lang.String name = "SPYSERVICE_KEY";
     private static final java.lang.String key = "SPYSERVICE_STATE";
     
-    public static final void setServiceState(@org.jetbrains.annotations.NotNull()
-    android.content.Context context, @org.jetbrains.annotations.NotNull()
+    public static final void setServiceState(@org.jetbrains.annotations.NotNull
+    android.content.Context context, @org.jetbrains.annotations.NotNull
     com.example.traningtimer.traningService.ServiceState state) {
     }
     
-    @org.jetbrains.annotations.NotNull()
-    public static final com.example.traningtimer.traningService.ServiceState getServiceState(@org.jetbrains.annotations.NotNull()
+    @org.jetbrains.annotations.NotNull
+    public static final com.example.traningtimer.traningService.ServiceState getServiceState(@org.jetbrains.annotations.NotNull
     android.content.Context context) {
         return null;
     }

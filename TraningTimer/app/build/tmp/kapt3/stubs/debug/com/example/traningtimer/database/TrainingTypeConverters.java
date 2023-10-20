@@ -9,28 +9,28 @@ public final class TrainingTypeConverters {
         super();
     }
     
-    @org.jetbrains.annotations.Nullable()
-    @androidx.room.TypeConverter()
-    public final java.util.UUID toUUID(@org.jetbrains.annotations.Nullable()
+    @org.jetbrains.annotations.Nullable
+    @androidx.room.TypeConverter
+    public final java.util.UUID toUUID(@org.jetbrains.annotations.Nullable
     java.lang.String uuid) {
         return null;
     }
     
-    @org.jetbrains.annotations.Nullable()
-    @androidx.room.TypeConverter()
-    public final java.lang.String fromUUID(@org.jetbrains.annotations.Nullable()
+    @org.jetbrains.annotations.Nullable
+    @androidx.room.TypeConverter
+    public final java.lang.String fromUUID(@org.jetbrains.annotations.Nullable
     java.util.UUID uuid) {
         return null;
     }
     
-    @org.jetbrains.annotations.NotNull()
-    @androidx.room.TypeConverter()
+    @org.jetbrains.annotations.NotNull
+    @androidx.room.TypeConverter
     public final java.util.Calendar toCalendar(long dateInMillis) {
         return null;
     }
     
-    @androidx.room.TypeConverter()
-    public final long fromCalendar(@org.jetbrains.annotations.NotNull()
+    @androidx.room.TypeConverter
+    public final long fromCalendar(@org.jetbrains.annotations.NotNull
     java.util.Calendar dateCalendar) {
         return 0L;
     }

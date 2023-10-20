@@ -25,6 +25,7 @@ import com.example.traningtimer.traningService.Actions
 import com.example.traningtimer.traningService.EndlessService
 import com.example.traningtimer.traningService.ServiceState
 import com.example.traningtimer.traningService.getServiceState
+import com.example.traningtimer.traningService.log
 import com.example.traningtimer.ui.second.SecondFragment
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.text.SimpleDateFormat
@@ -69,6 +70,10 @@ class MainFragment : Fragment(), View.OnClickListener {
 
         initButtons()
 
+        listTrainingButtons.forEach {
+            it.textSize = 10.0F
+        }
+
         setThings()
 
         // Включаем режим звонка
@@ -79,15 +84,18 @@ class MainFragment : Fragment(), View.OnClickListener {
 
 
         mainViewModel.getLastTraining().observe(viewLifecycleOwner) {item ->
-            val data = item.count.split(";").toMutableList() // Делим строку на массив строк
-            data.removeLast() // Удаляем последний элемент так как он пустой
-            var string = ""
-            data.forEachIndexed { index, s ->
-                string += s
-                if (index == data.lastIndex) return@forEachIndexed
-                string += " + "
+            if (item != null) {
+                val data = item.count.split(";").toMutableList() // Делим строку на массив строк
+                data.removeLast() // Удаляем последний элемент так как он пустой
+                var string = ""
+                data.forEachIndexed { index, s ->
+                    string += s
+                    if (index == data.lastIndex) return@forEachIndexed
+                    string += " + "
+                }
+                binding?.textViewLastTraining?.text = string
             }
-            binding?.textViewLastTraining?.text = string
+
         }
 
     }
@@ -149,6 +157,7 @@ class MainFragment : Fragment(), View.OnClickListener {
         }
         // Изменение времени отдыха
         binding?.buttonTimeRelax?.setOnClickListener {
+            log("${sharedPreferences.getInt(SHARED_TRAINING_TIME,0)}")
 
             when(sharedPreferences.getInt(SHARED_TRAINING_TIME, 180)) {
                 120 -> {

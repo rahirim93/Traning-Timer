@@ -4,7 +4,7 @@
             "outputFile": "com.example.traningtimer.app-mergeDebugResources-48:/values-large-v4/values-large-v4.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\Viacheslav\\.gradle\\caches\\transforms-3\\ed9a4595aa5f9d48f47fb8a3186b91c5\\transformed\\appcompat-1.6.1\\res\\values-large-v4\\values-large-v4.xml",
+                    "source": "C:\\Users\\Viacheslav\\.gradle\\caches\\transforms-3\\6fede8cf1b3b2db432d83b9695636850\\transformed\\appcompat-1.6.1\\res\\values-large-v4\\values-large-v4.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10",
                         "startColumns": "4,4,4,4,4,4,4,4,4",
@@ -14,7 +14,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\Viacheslav\\.gradle\\caches\\transforms-3\\f8edbf28177431e5105196302ad2d946\\transformed\\material-1.8.0\\res\\values-large-v4\\values-large-v4.xml",
+                    "source": "C:\\Users\\Viacheslav\\.gradle\\caches\\transforms-3\\d2a2d4d094a005d0d52e300eec87cb49\\transformed\\material-1.8.0\\res\\values-large-v4\\values-large-v4.xml",
                     "from": {
                         "startLines": "2,3,4,10",
                         "startColumns": "4,4,4,4",

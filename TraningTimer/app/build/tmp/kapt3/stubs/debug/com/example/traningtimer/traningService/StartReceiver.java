@@ -9,9 +9,9 @@ public final class StartReceiver extends android.content.BroadcastReceiver {
         super();
     }
     
-    @java.lang.Override()
-    public void onReceive(@org.jetbrains.annotations.NotNull()
-    android.content.Context context, @org.jetbrains.annotations.NotNull()
+    @java.lang.Override
+    public void onReceive(@org.jetbrains.annotations.NotNull
+    android.content.Context context, @org.jetbrains.annotations.NotNull
     android.content.Intent intent) {
     }
 }

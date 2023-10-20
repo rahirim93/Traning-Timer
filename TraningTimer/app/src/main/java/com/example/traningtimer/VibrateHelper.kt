@@ -9,6 +9,7 @@ import android.os.Vibrator
 class VibrateHelper(context: Context) {
 
     private var vibrator: Vibrator = context.getSystemService(Service.VIBRATOR_SERVICE) as Vibrator
+
     var vibrateDelay = 1000
 
     fun vibrate() {

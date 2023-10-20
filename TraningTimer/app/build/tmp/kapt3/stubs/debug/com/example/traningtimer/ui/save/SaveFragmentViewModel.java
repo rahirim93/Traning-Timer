@@ -6,13 +6,13 @@ import java.lang.System;
 public final class SaveFragmentViewModel extends androidx.lifecycle.ViewModel {
     private final com.example.traningtimer.TrainingRepository trainingRepository = null;
     
-    public SaveFragmentViewModel(@org.jetbrains.annotations.NotNull()
+    public SaveFragmentViewModel(@org.jetbrains.annotations.NotNull
     com.example.traningtimer.TrainingRepository trainingRepository) {
         super();
     }
     
-    @org.jetbrains.annotations.NotNull()
-    public final java.lang.String getText(int id, @org.jetbrains.annotations.NotNull()
+    @org.jetbrains.annotations.NotNull
+    public final java.lang.String getText(int id, @org.jetbrains.annotations.NotNull
     java.lang.String defaultValue) {
         return null;
     }
@@ -29,11 +29,11 @@ public final class SaveFragmentViewModel extends androidx.lifecycle.ViewModel {
         return 0;
     }
     
-    public final void addItem(@org.jetbrains.annotations.NotNull()
+    public final void addItem(@org.jetbrains.annotations.NotNull
     com.example.traningtimer.database.TrainingEntity trainingEntity) {
     }
     
-    @org.jetbrains.annotations.NotNull()
+    @org.jetbrains.annotations.NotNull
     public final androidx.lifecycle.LiveData<java.util.List<com.example.traningtimer.database.TrainingEntity>> getAllLiveData() {
         return null;
     }
@@ -41,7 +41,7 @@ public final class SaveFragmentViewModel extends androidx.lifecycle.ViewModel {
     public final void clearDatabase() {
     }
     
-    @org.jetbrains.annotations.NotNull()
+    @org.jetbrains.annotations.NotNull
     public final java.util.Calendar getDate() {
         return null;
     }

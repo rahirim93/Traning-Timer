@@ -7,10 +7,10 @@ public final class MainViewModel extends androidx.lifecycle.ViewModel {
     private final com.example.traningtimer.TrainingRepository trainingRepository = null;
     private int weight = -1;
     private int type = -1;
-    @org.jetbrains.annotations.NotNull()
+    @org.jetbrains.annotations.NotNull
     private androidx.lifecycle.LiveData<java.util.List<com.example.traningtimer.database.TrainingEntity>> allLiveData;
     
-    public MainViewModel(@org.jetbrains.annotations.NotNull()
+    public MainViewModel(@org.jetbrains.annotations.NotNull
     com.example.traningtimer.TrainingRepository trainingRepository) {
         super();
     }
@@ -29,20 +29,20 @@ public final class MainViewModel extends androidx.lifecycle.ViewModel {
     public final void setType(int p0) {
     }
     
-    @java.lang.Override()
+    @java.lang.Override
     protected void onCleared() {
     }
     
-    @org.jetbrains.annotations.NotNull()
+    @org.jetbrains.annotations.NotNull
     public final androidx.lifecycle.LiveData<java.util.List<com.example.traningtimer.database.TrainingEntity>> getAllLiveData() {
         return null;
     }
     
-    public final void setAllLiveData(@org.jetbrains.annotations.NotNull()
+    public final void setAllLiveData(@org.jetbrains.annotations.NotNull
     androidx.lifecycle.LiveData<java.util.List<com.example.traningtimer.database.TrainingEntity>> p0) {
     }
     
-    public final void addTraining(@org.jetbrains.annotations.NotNull()
+    public final void addTraining(@org.jetbrains.annotations.NotNull
     com.example.traningtimer.database.TrainingEntity trainingEntity) {
     }
     

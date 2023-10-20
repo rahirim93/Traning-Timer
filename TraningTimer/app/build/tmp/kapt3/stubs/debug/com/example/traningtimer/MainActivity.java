@@ -53,8 +53,8 @@ public final class MainActivity extends androidx.appcompat.app.AppCompatActivity
         return null;
     }
     
-    @java.lang.Override()
-    protected void onCreate(@org.jetbrains.annotations.Nullable()
+    @java.lang.Override
+    protected void onCreate(@org.jetbrains.annotations.Nullable
     android.os.Bundle savedInstanceState) {
     }
     
@@ -70,29 +70,29 @@ public final class MainActivity extends androidx.appcompat.app.AppCompatActivity
     private final void setAlarm(java.util.Calendar calendar, android.app.PendingIntent alarmActionPendingIntent) {
     }
     
-    @java.lang.Override()
-    public void onSensorChanged(@org.jetbrains.annotations.Nullable()
+    @java.lang.Override
+    public void onSensorChanged(@org.jetbrains.annotations.Nullable
     android.hardware.SensorEvent event) {
     }
     
-    @java.lang.Override()
+    @java.lang.Override
     protected void onResume() {
     }
     
-    @java.lang.Override()
+    @java.lang.Override
     protected void onDestroy() {
     }
     
     private final void createArrayButtons() {
     }
     
-    @java.lang.Override()
-    public void onClick(@org.jetbrains.annotations.Nullable()
+    @java.lang.Override
+    public void onClick(@org.jetbrains.annotations.Nullable
     android.view.View v) {
     }
     
-    @java.lang.Override()
-    public void onAccuracyChanged(@org.jetbrains.annotations.Nullable()
+    @java.lang.Override
+    public void onAccuracyChanged(@org.jetbrains.annotations.Nullable
     android.hardware.Sensor sensor, int accuracy) {
     }
     

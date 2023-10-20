@@ -6,13 +6,13 @@ import java.lang.System;
 public final class SecondFragmentViewModel extends androidx.lifecycle.ViewModel {
     private final com.example.traningtimer.TrainingRepository trainingRepository = null;
     
-    public SecondFragmentViewModel(@org.jetbrains.annotations.NotNull()
+    public SecondFragmentViewModel(@org.jetbrains.annotations.NotNull
     com.example.traningtimer.TrainingRepository trainingRepository) {
         super();
     }
     
-    @org.jetbrains.annotations.NotNull()
-    public final java.lang.String getText(int id, @org.jetbrains.annotations.NotNull()
+    @org.jetbrains.annotations.NotNull
+    public final java.lang.String getText(int id, @org.jetbrains.annotations.NotNull
     java.lang.String defaultValue) {
         return null;
     }
@@ -29,7 +29,7 @@ public final class SecondFragmentViewModel extends androidx.lifecycle.ViewModel 
         return 0;
     }
     
-    public final void setText(int id, @org.jetbrains.annotations.NotNull()
+    public final void setText(int id, @org.jetbrains.annotations.NotNull
     java.lang.String text) {
     }
     

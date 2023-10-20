@@ -4,7 +4,7 @@
             "outputFile": "com.example.traningtimer.app-mergeDebugResources-48:/values-v18/values-v18.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\Viacheslav\\.gradle\\caches\\transforms-3\\ed9a4595aa5f9d48f47fb8a3186b91c5\\transformed\\appcompat-1.6.1\\res\\values-v18\\values-v18.xml",
+                    "source": "C:\\Users\\Viacheslav\\.gradle\\caches\\transforms-3\\6fede8cf1b3b2db432d83b9695636850\\transformed\\appcompat-1.6.1\\res\\values-v18\\values-v18.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",

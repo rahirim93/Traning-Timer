@@ -4,24 +4,7 @@
             "outputFile": "com.example.traningtimer.app-mergeDebugResources-48:/values-ko/values-ko.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\Viacheslav\\.gradle\\caches\\transforms-3\\7452a23594a756569f45097998c5ec11\\transformed\\core-1.9.0\\res\\values-ko\\values-ko.xml",
-                    "from": {
-                        "startLines": "2",
-                        "startColumns": "4",
-                        "startOffsets": "55",
-                        "endColumns": "100",
-                        "endOffsets": "151"
-                    },
-                    "to": {
-                        "startLines": "98",
-                        "startColumns": "4",
-                        "startOffsets": "7523",
-                        "endColumns": "100",
-                        "endOffsets": "7619"
-                    }
-                },
-                {
-                    "source": "C:\\Users\\Viacheslav\\.gradle\\caches\\transforms-3\\f8edbf28177431e5105196302ad2d946\\transformed\\material-1.8.0\\res\\values-ko\\values-ko.xml",
+                    "source": "C:\\Users\\Viacheslav\\.gradle\\caches\\transforms-3\\d2a2d4d094a005d0d52e300eec87cb49\\transformed\\material-1.8.0\\res\\values-ko\\values-ko.xml",
                     "from": {
                         "startLines": "2,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
@@ -40,7 +23,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\Viacheslav\\.gradle\\caches\\transforms-3\\5484bd415ce9e557a2808102af718a4a\\transformed\\navigation-ui-2.5.3\\res\\values-ko\\values-ko.xml",
+                    "source": "C:\\Users\\Viacheslav\\.gradle\\caches\\transforms-3\\975c60c614e204620f2999263d5f0949\\transformed\\navigation-ui-2.5.3\\res\\values-ko\\values-ko.xml",
                     "from": {
                         "startLines": "2,3",
                         "startColumns": "4,4",
@@ -57,7 +40,24 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\Viacheslav\\.gradle\\caches\\transforms-3\\ed9a4595aa5f9d48f47fb8a3186b91c5\\transformed\\appcompat-1.6.1\\res\\values-ko\\values-ko.xml",
+                    "source": "C:\\Users\\Viacheslav\\.gradle\\caches\\transforms-3\\860cd912f164a6f696a8f9fb11afc69e\\transformed\\core-1.9.0\\res\\values-ko\\values-ko.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "100",
+                        "endOffsets": "151"
+                    },
+                    "to": {
+                        "startLines": "98",
+                        "startColumns": "4",
+                        "startOffsets": "7523",
+                        "endColumns": "100",
+                        "endOffsets": "7619"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\Viacheslav\\.gradle\\caches\\transforms-3\\6fede8cf1b3b2db432d83b9695636850\\transformed\\appcompat-1.6.1\\res\\values-ko\\values-ko.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
