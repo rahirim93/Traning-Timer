@@ -68,6 +68,8 @@ class SaveFragment: Fragment() {
                         weight = saveViewModel.getWeight(),
                         type = saveViewModel.getType()))
 
+            findNavController().navigate(SaveFragmentDirections.toListFragment())
+
         }
 
         if (saveViewModel.getBlocked()) {
